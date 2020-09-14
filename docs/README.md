@@ -43,13 +43,13 @@ Questions on the forum are the best course action as every students on the unit 
 
 | Week | Lecture      | Lab          | Independent Work           | Reading Material |
 |------|--------------|--------------|----------------------------|------------------|
-| 1    | Lecture 1 (Software Vulnerabilities & Attacks I)    | Lab 1        | [Exercise Sheet 1](EXERCISES1.md) | Reading List 1 |
-| 2    | Lecture 2 (OS Security)    | Lab 2        | Exercise Sheet 2 | Reading List 2 |
-| 3    | Lecture 3  (Software Vulnerabilities & Attacks II)   | Lab 3        | Exercise Sheet 3 | Reading List 3 |
-| 4    | Lecture 4  (Software Defense I)  | Lab 4        | Exercise Sheet 4 | Reading List 4 |
-| 5    | Lecture 5  (Software Defense II)  | Lab 5        | Exercise Sheet 7 | Reading List 5 |
-| 6    | Lecture 6  (Hardware Security)  | Lab 6        | [Exercise Sheet 6](EXERCISES5.md) | Reading List 6 |
-| 7    | Lecture 7  (Hardware Vulnerabilities)  | Lab 7        | Exercise Sheet 7 | Reading List 7 |
+| 1    | Lecture 1 (Software Vulnerabilities & Attacks I)    | [Lab 1](labs/LAB1.md)        | [Exercise Sheet 1](EXERCISES1.md) | Reading List 1 |
+| 2    | Lecture 2 (OS Security)    | [Lab 2](labs/LAB2.md)        | Exercise Sheet 2 | Reading List 2 |
+| 3    | Lecture 3  (Software Vulnerabilities & Attacks II)   | [Lab 3](labs/LAB3.md)       | Exercise Sheet 3 | Reading List 3 |
+| 4    | Lecture 4  (Software Defense I)  | [Lab 4](labs/LAB4.md)        | Exercise Sheet 4 | Reading List 4 |
+| 5    | Lecture 5  (Software Defense II)  | [Lab 5](labs/LAB5.md)       | Exercise Sheet 7 | Reading List 5 |
+| 6    | Lecture 6  (Hardware Security)  | [Lab 6](labs/LAB6.md)       | [Exercise Sheet 6](EXERCISES5.md) | Reading List 6 |
+| 7    | Lecture 7  (Hardware Vulnerabilities)  | [Lab 7](labs/LAB7.md)       | Exercise Sheet 7 | Reading List 7 |
 | 8    | N/A          | N/A          | Coursework                 | N/A |
 | 9    | N/A          | N/A          | Coursework                 | N/A |
 | 10   | N/A          | N/A          | Coursework                 | N/A |
