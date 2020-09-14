@@ -43,19 +43,19 @@ Questions on the forum are the best course action as every students on the unit 
 
 ## Course Structure
 
-| Week | Lecture      | Lab          | Independent Work           | Reading Material |
-|------|--------------|--------------|----------------------------|------------------|
-| 1    | Lecture 1 (Software Vulnerabilities & Attacks I)    | [Lab 1](labs/LAB1.md)        | [Exercise Sheet 1](EXERCISES1.md) | Reading List 1 |
-| 2    | Lecture 2 (OS Security)    | [Lab 2](labs/LAB2.md)        | Exercise Sheet 2 | Reading List 2 |
-| 3    | Lecture 3  (Software Vulnerabilities & Attacks II)   | [Lab 3](labs/LAB3.md)       | Exercise Sheet 3 | Reading List 3 |
-| 4    | Lecture 4  (Software Defense I)  | [Lab 4](labs/LAB4.md)        | Exercise Sheet 4 | Reading List 4 |
-| 5    | Lecture 5  (Software Defense II)  | [Lab 5](labs/LAB5.md)       | Exercise Sheet 7 | Reading List 5 |
-| 6    | Lecture 6  (Hardware Security)  | [Lab 6](labs/LAB6.md)       | [Exercise Sheet 6](EXERCISES5.md) | Reading List 6 |
-| 7    | Lecture 7  (Hardware Vulnerabilities)  | [Lab 7](labs/LAB7.md)       | Exercise Sheet 7 | Reading List 7 |
-| 8    | N/A          | N/A          | Coursework                 | N/A |
-| 9    | N/A          | N/A          | Coursework                 | N/A |
-| 10   | N/A          | N/A          | Coursework                 | N/A |
-| 11   | Revision Week          | Revision Week         | Revision Week         | Revision Week          |
+| Week | Lecture      | Lab          | Independent Work           |
+|------|--------------|--------------|----------------------------|
+| 1    | [Lecture 1 (Software Vulnerabilities & Attacks I)](lectures/LECTURE1.md)    | [Lab 1](labs/LAB1.md)        | [Exercise Sheet 1](EXERCISES1.md) |
+| 2    | [Lecture 2 (OS Security)](lectures/LECTURE2.md)    | [Lab 2](labs/LAB2.md)        | Exercise Sheet 2 |
+| 3    | [Lecture 3  (Software Vulnerabilities & Attacks II)](lectures/LECTURE3.md)   | [Lab 3](labs/LAB3.md)       | Exercise Sheet 3 |
+| 4    | [Lecture 4  (Software Defense I)](lectures/LECTURE4.md)  | [Lab 4](labs/LAB4.md)        | Exercise Sheet 4 |
+| 5    | [Lecture 5  (Software Defense II)](lectures/LECTURE5.md)  | [Lab 5](labs/LAB5.md)       | Exercise Sheet 7 |
+| 6    | [Lecture 6  (Hardware Security)](lectures/LECTURE6.md)  | [Lab 6](labs/LAB6.md)       | [Exercise Sheet 6](EXERCISES5.md) |
+| 7    | [Lecture 7  (Hardware Vulnerabilities)](lectures/LECTURE7.md)  | [Lab 7](labs/LAB7.md)       | Exercise Sheet 7 |
+| 8    | N/A          | N/A          | Coursework                 |
+| 9    | N/A          | N/A          | Coursework                 |
+| 10   | N/A          | N/A          | Coursework                 |
+| 11   | Revision Week          | Revision Week         | Revision Week         |
 
 
 As per appropriate for a master-level unit, students are expected to work independently outside of lectures and labs.
