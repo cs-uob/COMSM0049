@@ -69,4 +69,4 @@ This is a fourth year, master-level unit, so a significant amount of independent
 The objective of the unit is to familiarise students with important security topics, but also to familiarise students with academic research.
 Beside enhancing the understanding of the subject, this will provide an opportunity to have a taste of exciting research in the field of security.
 Those papers are available on the unit website and it is *strongly* recommended that students read those papers.
-To make the most out of this exercise, please, check how to [read](https://www.cl.cam.ac.uk/teaching/1011/R01/p83-keshav.pdf) and [review](https://www.cl.cam.ac.uk/teaching/1011/R01/review-writing.pdf) technical papers.
+To make the most out of this exercise, please, check how to [read](papers/keshav2007.pdf) and [review](papers/roscoe-2007.pdf) technical papers.
