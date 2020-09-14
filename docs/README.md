@@ -21,12 +21,13 @@ Coursework.
 ## People
 
 The relevant people for this unit are:
-| Person | Role | Contact |
-|--------|------|---------|
-| Sanjay Rawat | Unit Director | [sanjay.rawat@bristol.ac.uk](mailto:sanjay.rawat@bristol.ac.uk) |
-| Thomas Pasquier | Lecturer | [thomas.pasquier@bristol.ac.uk](mailto:thomas.pasquier@bristol.ac.uk) |
-| Soo Yee Lim | Teaching Assistant | [sooyee.lim@bristol.ac.uk](mailto:sooyee.lim@bristol.ac.uk) |
-| Priyanka Badva | Teaching Assistant | [priyanka.badva@bristol.ac.uk](mailto:priyanka.badva@bristol.ac.uk) |
+
+| Person          | Role               | Contact                                                               |
+|-----------------|--------------------|-----------------------------------------------------------------------|
+| Sanjay Rawat    | Unit Director      | [sanjay.rawat@bristol.ac.uk](mailto:sanjay.rawat@bristol.ac.uk)       |
+| Thomas Pasquier | Lecturer           | [thomas.pasquier@bristol.ac.uk](mailto:thomas.pasquier@bristol.ac.uk) |
+| Soo Yee Lim     | Teaching Assistant | [sooyee.lim@bristol.ac.uk](mailto:sooyee.lim@bristol.ac.uk)           |
+| Priyanka Badva  | Teaching Assistant | [priyanka.badva@bristol.ac.uk](mailto:priyanka.badva@bristol.ac.uk)   |
 
 ## Support
 
