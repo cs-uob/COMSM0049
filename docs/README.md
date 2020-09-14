@@ -39,7 +39,7 @@ The most effective way to get the help you need is to:
 3. Contact one of the TAs: [Soo Yee](mailto:sooyee.lim@bristol.ac.uk) or [Priyanka](mailto:priyanka.badva@bristol.ac.uk).
 4. Contact [Sanjay](mailto:sanjay.rawat@bristol.ac.uk) or [Thomas](mailto:thomas.pasquier@bristol.ac.uk).
 
-Questions on the forum are the best course action as every students on the unit can benefit from the answers.
+Questions on the forum should be you preferred course of action as every students on the unit can benefit from the answers.
 
 ## Course Structure
 
