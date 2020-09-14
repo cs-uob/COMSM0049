@@ -45,13 +45,13 @@ Questions on the forum are the best course action as every students on the unit 
 
 | Week | Lecture      | Lab          | Independent Work           |
 |------|--------------|--------------|----------------------------|
-| 1    | [Lecture 1 (Software Vulnerabilities & Attacks I)](lectures/LECTURE1.md)    | [Lab 1](labs/LAB1.md)        | [Exercise Sheet 1](EXERCISES1.md) |
-| 2    | [Lecture 2 (OS Security)](lectures/LECTURE2.md)    | [Lab 2](labs/LAB2.md)        | Exercise Sheet 2 |
-| 3    | [Lecture 3  (Software Vulnerabilities & Attacks II)](lectures/LECTURE3.md)   | [Lab 3](labs/LAB3.md)       | Exercise Sheet 3 |
-| 4    | [Lecture 4  (Software Defense I)](lectures/LECTURE4.md)  | [Lab 4](labs/LAB4.md)        | Exercise Sheet 4 |
-| 5    | [Lecture 5  (Software Defense II)](lectures/LECTURE5.md)  | [Lab 5](labs/LAB5.md)       | Exercise Sheet 7 |
-| 6    | [Lecture 6  (Hardware Security)](lectures/LECTURE6.md)  | [Lab 6](labs/LAB6.md)       | [Exercise Sheet 6](EXERCISES5.md) |
-| 7    | [Lecture 7  (Hardware Vulnerabilities)](lectures/LECTURE7.md)  | [Lab 7](labs/LAB7.md)       | Exercise Sheet 7 |
+| 1    | [Lecture 1 (Software Vulnerabilities & Attacks I)](lectures/LECTURE1.md)    | [Lab 1](labs/LAB1.md)        | [Exercises Sheet 1](exercises/EXERCISE1.md) |
+| 2    | [Lecture 2 (OS Security)](lectures/LECTURE2.md)    | [Lab 2](labs/LAB2.md)        | [Exercises Sheet 2](exercises/EXERCISE2.md)|
+| 3    | [Lecture 3  (Software Vulnerabilities & Attacks II)](lectures/LECTURE3.md)   | [Lab 3](labs/LAB3.md)       | [Exercises Sheet 3](exercises/EXERCISE3.md) |
+| 4    | [Lecture 4  (Software Defense I)](lectures/LECTURE4.md)  | [Lab 4](labs/LAB4.md)        | [Exercises Sheet 4](exercises/EXERCISE4.md) |
+| 5    | [Lecture 5  (Software Defense II)](lectures/LECTURE5.md)  | [Lab 5](labs/LAB5.md)       | [Exercises Sheet 5](exercises/EXERCISE5.md) |
+| 6    | [Lecture 6  (Hardware Security)](lectures/LECTURE6.md)  | [Lab 6](labs/LAB6.md)       | [Exercises Sheet 6](exercises/EXERCISE6.md) |
+| 7    | [Lecture 7  (Hardware Vulnerabilities)](lectures/LECTURE7.md)  | [Lab 7](labs/LAB7.md)       | [Exercises Sheet 7](exercises/EXERCISE7.md) |
 | 8    | N/A          | N/A          | Coursework                 |
 | 9    | N/A          | N/A          | Coursework                 |
 | 10   | N/A          | N/A          | Coursework                 |
