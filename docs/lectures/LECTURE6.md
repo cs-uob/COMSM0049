@@ -4,7 +4,7 @@ The material is subdivided in small videos.
 Please, watch the videos and go through the reading material in your own time.
 Also remember to work on the accompanying [exercises sheet](../exercises/EXERCISE6.md)
 
-| Video                   | Links                     |                                                                                                                                                                                              |
+| Video                   | Links                     |        Reading Material                                                                                                                                                                                      |
 |-------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Rootkit                 | [video]() [pdf]() [ppt]() | N/A                                                                                                                                                                                          |
 | Attack Surface & Trusted Computing Base                 | [video]() [pdf]() [ppt]() | N/A                                                                                                                                                                                          |
