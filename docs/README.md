@@ -8,8 +8,8 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 
 ### Week 1-7
 | Tuesday 10am-12pm | Thursday 13pm-14pm | Friday 16pm-17pm |
-|--------------|--------------|------------|
-| TAs supported lab (1h) + peer lab         | Q&A          | peer lab   |
+|-------------------|--------------------|------------------|
+| TAs supported lab (1h) + peer lab | Q&A | peer lab        |
 
 This is 4 hours of synchronous activities.
 In addition, you are expected each week to watch the lecture videos and engage in self-directed learning.
