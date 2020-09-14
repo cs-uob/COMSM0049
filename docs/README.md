@@ -52,9 +52,9 @@ Questions on the forum are the best course action as every students on the unit 
 | 5    | [Lecture 5  (Software Defense II)](lectures/LECTURE5.md)  | [Lab 5](labs/LAB5.md)       | [Exercises Sheet 5](exercises/EXERCISE5.md) |
 | 6    | [Lecture 6  (Hardware Security)](lectures/LECTURE6.md)  | [Lab 6](labs/LAB6.md)       | [Exercises Sheet 6](exercises/EXERCISE6.md) |
 | 7    | [Lecture 7  (Hardware Vulnerabilities)](lectures/LECTURE7.md)  | [Lab 7](labs/LAB7.md)       | [Exercises Sheet 7](exercises/EXERCISE7.md) |
-| 8    | N/A          | N/A          | Coursework                 |
-| 9    | N/A          | N/A          | Coursework                 |
-| 10   | N/A          | N/A          | Coursework                 |
+| 8    | N/A          | N/A          | [Coursework](coursework/COURSEWORK.md)                 |
+| 9    | N/A          | N/A          | [Coursework](coursework/COURSEWORK.md)                  |
+| 10   | N/A          | N/A          | [Coursework](coursework/COURSEWORK.md)                  |
 | 11   | Revision Week          | Revision Week         | Revision Week         |
 
 
