@@ -2,7 +2,7 @@
 
 The lecture is subdivided in small videos.
 Please, watch the video and go through the reading material in your own time.
-Also remember to work on the accompanying [exercises sheet](exercises/EXERCISE6.md)
+Also remember to work on the accompanying [exercises sheet](../exercises/EXERCISE6.md)
 
 | Video                   | Links                     |                                                                                                                                                                                              |
 |-------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
