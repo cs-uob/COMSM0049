@@ -1,4 +1,4 @@
-# System & Software Security (S3)
+# Systems & Software Security (S3)
 
 The [System & Software Security Unit](https://www.bris.ac.uk/unit-programme-catalogue/UnitDetails.jsa?ayrCode=21%2F22&unitCode=COMSM0049) at Bristol is assessed either through [exam](https://www.bris.ac.uk/unit-programme-catalogue/UnitDetails.jsa?ayrCode=21%2F22&unitCode=COMSM0050) XOR [coursework](https://www.bris.ac.uk/unit-programme-catalogue/UnitDetails.jsa?ayrCode=21%2F22&unitCode=COMSM0051).
 The exam option is worth 10 credits and the coursework option 20 credits.
