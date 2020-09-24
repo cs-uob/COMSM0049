@@ -1,1 +1,1 @@
-# **COMSM0049:** System & Software Security (S3)
+# **COMSM0049:** Systems & Software Security (S3)
