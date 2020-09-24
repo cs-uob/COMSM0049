@@ -41,6 +41,11 @@ The most effective way to get the help you need is to:
 
 Questions on the forum should be you preferred course of action as every students on the unit can benefit from the answers.
 
+## Final year individual projects
+
+For those interested in going deeper on some topics related to this unit we have
+compiled a [list of final year projects](projects/list.md).
+
 ## Course Structure
 
 | Week | Lecture      | Lab          | Independent Work           |
