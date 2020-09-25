@@ -33,6 +33,7 @@ The relevant people for this unit are:
 | [Thomas Pasquier](https://tfjmp.org/) | Lecturer           | [thomas.pasquier@bristol.ac.uk](mailto:thomas.pasquier@bristol.ac.uk) |
 | Soo Yee Lim     | Head Teaching Assistant | [sooyee.lim@bristol.ac.uk](mailto:sooyee.lim@bristol.ac.uk)           |
 | Priyanka Badva  | Teaching Assistant | [priyanka.badva@bristol.ac.uk](mailto:priyanka.badva@bristol.ac.uk)   |
+| Manolis Samanis | Teaching Assistant | [manolis.samanis@bristol.ac.uk](mailto:manolis.samanis@bristol.ac.uk)   |
 
 ## Support
 
