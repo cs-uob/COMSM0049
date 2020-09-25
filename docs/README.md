@@ -37,7 +37,7 @@ You may need help at different stages of this unit.
 The most effective way to get the help you need is to:
 
 1. Check unit website/handsout/slides.
-2. Ask your question on the forum.
+2. Ask your question on [discord](https://discord.com/channels/755739425584971898/755739426142945283).
 3. Contact one of the TAs: [Soo Yee](mailto:sooyee.lim@bristol.ac.uk) or [Priyanka](mailto:priyanka.badva@bristol.ac.uk).
 4. Contact [Sanjay](mailto:sanjay.rawat@bristol.ac.uk) or [Thomas](mailto:thomas.pasquier@bristol.ac.uk).
 
