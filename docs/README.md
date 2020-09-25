@@ -12,7 +12,7 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 
 | Tuesday 10am-12pm  | Thursday 1pm | Friday 4pm |
 |--------------------|--------------|------------|
-| [TAs Lab + Peer Lab](https://discord.com/channels/755739425584971898/755739426142945283) | [Q&A](https://discord.com/channels/755739425584971898/755739426142945283)          | [Peer Lab](https://discord.com/channels/755739425584971898/755739426142945283)   |
+| [TAs Lab + Peer Lab](https://discord.com/channels/755739425584971898/755739426142945283){:target="_blank"} | [Q&A](https://discord.com/channels/755739425584971898/755739426142945283){:target="_blank"}          | [Peer Lab](https://discord.com/channels/755739425584971898/755739426142945283){:target="_blank"}   |
 
 This is 4 hours of synchronous activities.
 In addition, you are expected each week to watch the lecture videos and engage in self-directed learning.
@@ -37,7 +37,7 @@ You may need help at different stages of this unit.
 The most effective way to get the help you need is to:
 
 1. Check unit website/handsout/slides.
-2. Ask your question on [discord](https://discord.com/channels/755739425584971898/755739426142945283).
+2. Ask your question on [discord](https://discord.com/channels/755739425584971898/755739426142945283){:target="_blank"}.
 3. Contact one of the TAs: [Soo Yee](mailto:sooyee.lim@bristol.ac.uk) or [Priyanka](mailto:priyanka.badva@bristol.ac.uk).
 4. Contact [Sanjay](mailto:sanjay.rawat@bristol.ac.uk) or [Thomas](mailto:thomas.pasquier@bristol.ac.uk).
 
