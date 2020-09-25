@@ -8,7 +8,7 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 
 ### Week 1-7
 
-**[Join the unit discord](https://discord.gg/cwtGHNU)**
+**[Join the unit discord](https://discord.gg/cwtGHNU){:target="_blank"}**
 
 | Tuesday 10am-12pm  | Thursday 1pm | Friday 4pm |
 |--------------------|--------------|------------|
