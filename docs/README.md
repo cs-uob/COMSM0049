@@ -17,6 +17,9 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 This is 4 hours of synchronous activities.
 In addition, you are expected each week to watch the lecture videos and engage in self-directed learning.
 
+**Groups:** you are encouraged to form groups of 3 students for labs.
+If you cannot find lab partners get in touch with the head TA.
+
 ### Week 8-11
 Coursework.
 
