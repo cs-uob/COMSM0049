@@ -8,9 +8,11 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 
 ### Week 1-7
 
+**[Join the unit discord](https://discord.gg/cwtGHNU)**
+
 | Tuesday 10am-12pm  | Thursday 1pm | Friday 4pm |
 |--------------------|--------------|------------|
-| TAs Lab + Peer Lab | Q&A          | Peer Lab   |
+| [TAs Lab + Peer Lab](https://discord.com/channels/755739425584971898/755739426142945283) | [Q&A](https://discord.com/channels/755739425584971898/755739426142945283)          | [Peer Lab](https://discord.com/channels/755739425584971898/755739426142945283)   |
 
 This is 4 hours of synchronous activities.
 In addition, you are expected each week to watch the lecture videos and engage in self-directed learning.
