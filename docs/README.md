@@ -28,7 +28,7 @@ The relevant people for this unit are:
 |-----------------|--------------------|-----------------------------------------------------------------------|
 | [Sanjay Rawat](https://research-information.bris.ac.uk/en/persons/sanjay-rawat)    | Unit Director      | [sanjay.rawat@bristol.ac.uk](mailto:sanjay.rawat@bristol.ac.uk)       |
 | [Thomas Pasquier](https://tfjmp.org/) | Lecturer           | [thomas.pasquier@bristol.ac.uk](mailto:thomas.pasquier@bristol.ac.uk) |
-| Soo Yee Lim     | Teaching Assistant | [sooyee.lim@bristol.ac.uk](mailto:sooyee.lim@bristol.ac.uk)           |
+| Soo Yee Lim     | Head Teaching Assistant | [sooyee.lim@bristol.ac.uk](mailto:sooyee.lim@bristol.ac.uk)           |
 | Priyanka Badva  | Teaching Assistant | [priyanka.badva@bristol.ac.uk](mailto:priyanka.badva@bristol.ac.uk)   |
 
 ## Support
