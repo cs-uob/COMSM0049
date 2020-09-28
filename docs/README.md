@@ -79,5 +79,5 @@ Students will struggle to complete their coursework on time if they haven't enga
 This is a fourth year, master-level unit, so a significant amount of independent work is expected from students.
 The objective of the unit is to familiarise students with important security topics, but also to familiarise students with academic research.
 Beside enhancing the understanding of the subject, this will provide an opportunity to have a taste of exciting research in the field of security.
-Those papers are available on the unit website and it is *strongly* recommended that students read those papers.
+Those papers are available on the unit website and it is recommended that students read those papers.
 To make the most out of this exercise, please, check how to [read](papers/keshav2007.pdf) and [review](papers/roscoe-2007.pdf) technical papers.
