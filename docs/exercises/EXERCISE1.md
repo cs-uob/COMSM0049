@@ -1,5 +1,5 @@
 # Exercises sheet 1
----
+
 ## Assembly/binary/ABI:
 	1. "By design, x86-64 calling convention is faster than x86-32 cdecl calling convention". What do you think about this statement?
 	2. How do you recognize the access to function's arguments and function's local variable at the assembly level. You can assume that these are always accessed w.r.t. RBP register.  
@@ -21,4 +21,3 @@
     You are encouraged to use Google liberally!
 
     2. Explain the examplar code provided on the Dirty COW website.
-  ---
