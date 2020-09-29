@@ -1,3 +1,7 @@
+## Open projects (Sanjay and/or Thomas)
+
+You may come to us with projects idea relating to the course.
+
 ## From container to unikernel (Thomas)
 
 Containers lack strong isolation and prove problematic in a number of application domains. Unikernel is a potential answer but lacks the practicality of container solutions such as Docker. Using something like Linux Lupine [1,2] can you automate the transformation of containers in unikernels? You will particularly focus on containers as used to deploy microservices.
