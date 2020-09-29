@@ -11,5 +11,3 @@
 However, in SELinux, they are checked on any operation to the file.
 Explain why this change was made.
 9. Look at the [Yama LSM documentation](https://www.kernel.org/doc/html/v4.15/admin-guide/LSM/Yama.html) and its [code](https://github.com/torvalds/linux/blob/master/security/yama/yama_lsm.c). Try to explain how it works.
-10. If the POIROT paper describes an IDS system, what type of IDS is it?
-Does the shortcoming align to what was presented in the lecture?
