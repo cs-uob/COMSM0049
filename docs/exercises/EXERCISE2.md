@@ -1,7 +1,7 @@
 # Exercises sheet 2
 
 1. Define the principle of least privileges.
-2. Why Linux basic file access control scheme does not adhere to this principle?
+2. Why Linux basic discretionary access control scheme does not adhere to this principle?
 3. Describe the difference between DAC and MAC.
 4. Explain the Bell-LaPadula Model and the Biba Model.
 5. Why a reference monitor is required?
