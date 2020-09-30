@@ -4,6 +4,8 @@ The [System & Software Security Unit](https://www.bris.ac.uk/unit-programme-cata
 The exam option is worth 10 credits and the coursework option 20 credits.
 As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessment/regulations-and-code-of-practice-for-taught-programmes/programme-design/) "one credit point represents approximately 10 notional hours of student input".
 
+**[Welcome Video!](https://web.microsoftstream.com/video/194159e4-4302-482d-8df5-00bf1794164e)**
+
 ## Schedule
 
 ### Week 1-7
