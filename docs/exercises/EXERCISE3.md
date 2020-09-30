@@ -20,7 +20,8 @@
 		...
 		}
 	
-2. In the context of malloc size (as its parameter), how will you check if the size calculation may contain integer overflow? \[Hint: (re)read about C short, int long type w.r.t. integer overflow.  (see the above article again.). For example: there will be overflow in the expression A + B if for int A and int B, you have A > INT_MAX - B \]  
+2. In the context of malloc size (as its parameter), how will you check if the size calculation may contain integer overflow? \[Hint: (re)read about C short, int long type w.r.t. integer overflow.  (see the above article again.). For example: there will be overflow in the expression A + B if for int A and int B, you have A > INT_MAX - B \]
+3. In the video, we discussed an example of heap overflow [code](../code/heap-metaof.c). Having understood the meta data overflow, change this code to simulate the heap overflow by overflowing the heap pointed to by ptr1 such that it overwrite the meta data as we did in the example. You can use integer overflow vulnerability to induce the bug. For example, your exmaple take a binary file as an input and reads **length** and **width** from the file to get **size** (my multiple/add them) and then allocates *prt1*. It then read data from the file of size **lenght**. By creating a buggy example provides you an eye for detecting buggy code.
 
 ## Return-Oriented Programming:
 1. Read the original article on ROP (up to section 2 is sufficient) By Shacham "The Geometry of Innocent Flesh on the Bone: Return-into-libc without Function Calls" [here](https://hovav.net/ucsd/dist/geometry.pdf). In *section 1.2.5  Wait, What about Zero Bytes*, what problem do you see when the address of a particular gadget contains \00 (e.g. 0x80f400)?
