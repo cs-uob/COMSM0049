@@ -13,7 +13,7 @@
 ## Format String:
 
 1. read about %n specifier and think about what can be done with it? Give a small scenario which uses this specifier to change the behavior of your code. You can write any insecure code yourself and be creative in using %n to change the program behaviour.
-2. For the example, given on the last slide [format2.c](../code/format2.c), think about the problem and exploitation on x86-32 and x86-64 bit systems. Hint: calling convention!
+2. For the example, given on the last slide [format2.c](../code/format2.c), think about the problem and exploitation on x86-32 and x86-64 bit systems. Hint: calling convention! The first example, discussed [format1.c](../code/format1.c)
 
 ## Concurrency Vulnerabilities:
 
