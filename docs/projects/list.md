@@ -7,6 +7,7 @@ You may come to us with projects idea relating to the course.
 Containers lack strong isolation and prove problematic in a number of application domains. Unikernel is a potential answer but lacks the practicality of container solutions such as Docker. Using something like Linux Lupine [1,2] can you automate the transformation of containers in unikernels? You will particularly focus on containers as used to deploy microservices.
 
 [1] [https://github.com/hckuo/Lupine-Linux](https://github.com/hckuo/Lupine-Linux)
+
 [2] [https://dl.acm.org/doi/abs/10.1145/3342195.3387526](https://dl.acm.org/doi/abs/10.1145/3342195.3387526)
 
 **Level of challenge:** very high
@@ -27,6 +28,19 @@ SIGL [1] has been designed to detect malicious installers on Windows. It has bee
 
 **Level of challenge:** moderate
 
+## Self-tuning SPARK (Thomas)
+
+**Not a security project.** We have recently been building [1, 2] an extension to SPARK
+to allow the platform to self-optimise overtime (i.e. automatically associate to a workload
+a good configuration). Your task will be to deploy a SPARK cluster with this extension
+and to perform further benchmarking to understand how it improves performance.
+
+[1] [https://tfjmp.org/files/publications/2020-kdd.pdf](https://tfjmp.org/files/publications/2020-kdd.pdf)
+
+[2] [https://arxiv.org/pdf/2001.08002.pdf](https://arxiv.org/pdf/2001.08002.pdf)
+
+[3] [https://tfjmp.org/files/publications/2019-icdcs.pdf](https://tfjmp.org/files/publications/2019-icdcs.pdf)
+
 ## Capturing whole-system provenance with eBPF (Thomas)
 
 Project already taken.
@@ -46,6 +60,7 @@ Recently eBPF have been extended to support the attachment on program on LSM hoo
 Would it be possible to leverage this feature to implement the scheme described by Sun et al.?
 
 [1] [https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-sun.pdf](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-sun.pdf)
+
 [2] [https://www.kernel.org/doc/html/latest/bpf/bpf_lsm.html](https://www.kernel.org/doc/html/latest/bpf/bpf_lsm.html)
 
 **Level of challenge:** high
