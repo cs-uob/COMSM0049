@@ -41,6 +41,8 @@ and to perform further benchmarking to understand how it improves performance.
 
 [3] [https://tfjmp.org/files/publications/2019-icdcs.pdf](https://tfjmp.org/files/publications/2019-icdcs.pdf)
 
+**Level of challenge:** high
+
 ## Capturing whole-system provenance with eBPF (Thomas)
 
 Project already taken.
