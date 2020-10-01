@@ -39,7 +39,7 @@ This is mostly a software development project. The idea is to extend an existing
 
 **Level of challenge:** moderate
 
-## Implementing security namespaces with eBPF?
+## Implementing security namespaces with eBPF? (Thomas)
 
 The concept of security namespaces was introduced by Sun et al. [1].
 Recently eBPF have been extended to support the attachment on program on LSM hooks.
