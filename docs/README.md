@@ -46,7 +46,7 @@ The most effective way to get the help you need is to:
 
 1. Check unit website/handsout/slides.
 2. Ask your question on [discord](https://discord.com/channels/755739425584971898/755739426142945283){:target="_blank"}.
-3. Contact one of the TAs: [Soo Yee](mailto:sooyee.lim@bristol.ac.uk) or [Priyanka](mailto:priyanka.badva@bristol.ac.uk).
+3. Contact one of the TAs: [Soo Yee](mailto:sooyee.lim@bristol.ac.uk), [Priyanka](mailto:priyanka.badva@bristol.ac.uk) or [Manolis](mailto:manolis.samanis@bristol.ac.uk).
 4. Contact [Sanjay](mailto:sanjay.rawat@bristol.ac.uk) or [Thomas](mailto:thomas.pasquier@bristol.ac.uk).
 
 Questions on the forum should be you preferred course of action as every students on the unit can benefit from the answers.
