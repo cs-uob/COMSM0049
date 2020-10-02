@@ -6,6 +6,8 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 
 **[Welcome Video!](https://web.microsoftstream.com/video/194159e4-4302-482d-8df5-00bf1794164e)**
 
+<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/194159e4-4302-482d-8df5-00bf1794164e?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
+
 ## Schedule
 
 ### Week 1-7
