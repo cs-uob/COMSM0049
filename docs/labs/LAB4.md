@@ -2,6 +2,8 @@
 
 Watch the [video](https://web.microsoftstream.com/video/2463603d-0f94-4e62-863b-f1c40918f072) for details on this lab. Concrete steps are also outlined below.
 
+<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/2463603d-0f94-4e62-863b-f1c40918f072?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
+
 **Aim**: open a port on the victim machine using netcat tool that returns a shell (reverse shell exploit).
 
 Setting up the environment:  
@@ -14,7 +16,7 @@ Setting up the environment:
 4. compile [vuln3.c](../code/vuln3.c) as  
 
 		gcc -fno-stack-protector -m32 -static vuln3.c -o vuln3-32
-		
+
 5. use the same trick as we saw in the lecture video to find the offsets when your input starts overwriting the saved return addr.
 6. start populating supplied ROP exploit python script: [exploit-nc-skeleton.py](../code/exploit-rop-nc-skeleton.py).
 You have helper files to consult [exploit-nc.py](../code/exploit-nc.py) and [exploit-rop.py](../code/exploit-rop.py)
@@ -22,4 +24,3 @@ You have helper files to consult [exploit-nc.py](../code/exploit-nc.py) and [exp
 
 		$/tmp/nc 127.0.0.1 5678
 		pwd
-
