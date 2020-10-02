@@ -25,4 +25,4 @@ You will need to setup a vagrant box and install (or compile) a specific version
 This can be done in the vagrant provision script.
 You are encouraged to use Google liberally!
 
-2. Explain the examplar code provided on the Dirty COW website.
+2. Explain the example code provided on the Dirty COW website.
