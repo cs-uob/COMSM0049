@@ -2,7 +2,7 @@
 
 ## Material
 
-[Vagrantfile](../vagrants/lab1/Vagrantfile)
+[Vagrantfile](../vagrants/lab3/Vagrantfile)
 
 The `./guest` folder on your host machine is dynamically synced to the
 `/vagrant/` in your guest machine. You can use this to easily transfer files in
