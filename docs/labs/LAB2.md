@@ -6,7 +6,7 @@
 
 [stack.c](../vagrants/lab2/stack.c)
 
-[test.c](../vagrants/lab2/stack.c)
+[test.c](../vagrants/lab2/test.c)
 
 ## Instructions
 
