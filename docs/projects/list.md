@@ -58,7 +58,7 @@ This is mostly a software development project. The idea is to extend an existing
 ## Implementing security namespaces with eBPF? (Thomas)
 
 The concept of security namespaces was introduced by Sun et al. [1].
-Recently eBPF have been extended to support the attachment on program on LSM hooks.
+Recently eBPF has been extended to support the attachment of program on LSM hooks.
 Would it be possible to leverage this feature to implement the scheme described by Sun et al.?
 
 [1] [https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-sun.pdf](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-sun.pdf)

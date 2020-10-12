@@ -330,4 +330,4 @@ You should consider when/why you would use an approach rather than an other.
 You may also want to ensure that any policy is inherited when forking new process (it would be a shame to be able to exit the sandbox by simply forking).
 To do so look at the following [cred_prepare](https://github.com/torvalds/linux/blob/master/include/linux/lsm_hooks.h#L604) and [cred_transfer](https://github.com/torvalds/linux/blob/master/include/linux/lsm_hooks.h#L609) hooks.
 
-How does what you implemented comapre to [seccomp-bpf](https://www.kernel.org/doc/html/v4.16/userspace-api/seccomp_filter.html)? Why do you think they implemented it this way?
+How does what you implemented compare to [seccomp-bpf](https://www.kernel.org/doc/html/v4.16/userspace-api/seccomp_filter.html)? Why do you think they implemented it this way?
