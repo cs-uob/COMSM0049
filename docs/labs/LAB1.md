@@ -206,7 +206,7 @@ It should give you the same address for `secret[0]` both times.
 **Note**: you may get unlucky and encounter a fixed address for `secret[1]` which contains control characters such as `0x00` or `0x0c`.
 If this happens, ask a lab assistant for help.
 
-3.  If you have completed Tasks 1 and 2 and have time to spare, you can try either or both of the following **optional extensions** for extra credit:
+3.  If you have completed Tasks 1 and 2 and have time to spare, you can try either or both of the following **optional extensions**:
     1.  Task 2 (modified program) but with ASLR turned on (set the value to `2`).
     2.  Write a program in a language of your choice that carries out attack (2-ii), i.e. it calls `formatstr-root` as a subprocess. You will need to use something like Python's `pexpect` to handle bidirectional communication between programs.
 

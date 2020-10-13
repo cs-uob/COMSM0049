@@ -206,10 +206,10 @@ Recompile the program with stack guard off again (and keep ASLR off), but use th
 - Describe what happens when you run your attack this time.
 - What kind of defence is this?
 
-For extra credit
-----------------
+Extra questions
+---------------
 
-If you have completed all of Tasks 1 and 2, you may want to try the following for extra credit.
+If you have completed all of Tasks 1 and 2, you may want to try the following.
 
 ### Real and Effective UIDs
 
