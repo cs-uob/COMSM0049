@@ -13,6 +13,15 @@ generally) in this folder tree.
 As usual feel free to customize your vagrant provision script to your heart
 desire.
 
+## Warning
+
+Kernel development should not be done on your working OS!
+You may lose data (e.g. crash may corrupt the file system) or you may have difficulty to boot the machine.
+A few suggestions:
+- Use the provided VM!
+- Push your code to github/another machine.
+- Save your VM state (right click on the VM in the virtualbox UI).
+
 ## Lab objectives
 
 The objectives of this lab are as follow:
