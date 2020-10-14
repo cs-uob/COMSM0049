@@ -38,7 +38,7 @@ Something that is coming quite often is how tightly packed week 1 is. Indeed, th
 
 A second topic that came a few time is the audio quality of some of the videos. We acknowledge that there either a computer fan noise or the noise canceller make hearing what is said difficult. We think the audio quality in the subsequent weeks is a bit better, but still not ideal. We will discuss with the department/university to be given access to better equipment if we need to deliver content in this manner again.
 
-A third thing that seemed to not be quite working is the peer sessions. A few of you report that your peer did not join the session and the usefulness was therefore limited. Encouraging online engagement is something we are trying to improve, but it eventually falls down to the students to make the effort to be there. We are open to suggestions on how we could make the peer sessions more useful and how to encourage participation.
+A third thing that seemed to not be quite working is the peer sessions. A few of students reported that their peers did not join the session and the usefulness was therefore limited. Encouraging online engagement is something we are trying to improve, but it eventually falls down to the students to make the effort to be there. We are open to suggestions on how we could make the peer sessions more useful and how to encourage participation.
 
 Some students seem to think the unit is a bit too much work compared to others. “Without the exercise sheet or the extra reading, I feel as though the workload would be similar to that of my other units.”  We think a lot of those comments around “workload” are related to the specific issue around week 1, but we will monitor the situation to make sure that is indeed the root cause.
 
