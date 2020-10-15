@@ -85,3 +85,8 @@ The objective of the unit is to familiarise students with important security top
 Beside enhancing the understanding of the subject, this will provide an opportunity to have a taste of exciting research in the field of security.
 Those papers are available on the unit website and it is recommended that students read those papers.
 To make the most out of this exercise, please, check how to [read](papers/keshav2007.pdf) and [review](papers/roscoe-2007.pdf) technical papers.
+
+## Survey Results
+
+We are actively monitoring how the unit is going through survey.
+You can see the survey results [here](https://cs-uob.github.io/COMSM0049/survey.html).
