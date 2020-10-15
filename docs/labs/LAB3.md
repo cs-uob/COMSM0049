@@ -13,6 +13,12 @@ generally) in this folder tree.
 As usual feel free to customize your vagrant provision script to your heart
 desire.
 
+## Recommended Video
+
+[Week 2 - Video 1](https://web.microsoftstream.com/video/41359978-1a1b-4ef5-969b-127a915b09c7)
+[Week 2 - Video 2](https://web.microsoftstream.com/video/e4514003-2586-4b77-8e6f-ce238e1b3eef)
+[Week 2 - Video 3](https://web.microsoftstream.com/video/bbc136ff-90e2-4538-8996-48f9f0febd17)
+
 ## Warning
 
 Kernel development should not be done on your working OS!
