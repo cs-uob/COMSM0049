@@ -2,6 +2,8 @@
 
 <iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/b510a996-08fd-4169-9292-9dded1f99d5f?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
 
+<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/d93eff54-42cb-4289-a3dc-119d63f6c9a2?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
+
 ## Open projects (Sanjay and/or Thomas)
 
 You may come to us with projects idea relating to the course.
