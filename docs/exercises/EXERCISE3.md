@@ -38,3 +38,10 @@ Can you tell (without executing the code), what value of i will be printed at P1
 1. Read the original article on ROP (up to section 2 is sufficient) By Shacham "The Geometry of Innocent Flesh on the Bone: Return-into-libc without Function Calls" [here](https://hovav.net/ucsd/dist/geometry.pdf). In *section 1.2.5  Wait, What about Zero Bytes*, what problem do you see when the address of a particular gadget contains \00 (e.g. `0x80f400`)?
 2. Suppose you are acting as a security analyst and oversee the operation of a big company. Can you think of a method that may detect a ROP based attack?
 3. In the example that we discussed in the video, why do we need to have a shadow-stack?
+4. Suppose you have the following gadgets (in Intel format, i.e. 1st operand in destination): 
+
+		0x4033ae22: xor eax eax ret;
+		0x40334433: mov ecx eax ret;
+		0x403322aa: inc eax ret;
+		0x40332023: mov ebx ecx ret;
+Construct a ROP chain (the sequence of addresses only. no need to write a code) that will copy 'A' in the ebx register.
