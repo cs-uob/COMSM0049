@@ -90,6 +90,7 @@ eBPF programs are used to instrument the kernel. They are provided from user spa
 ## Loop-aware Fuzzing (Source code) for hunting buffer overflows (Sanjay)
 Buffer overflows remain annoying bugs in unmanaged languages like C/C++. While the code-coverage based fuzzers, like AFL have been successful in finding many such bugs, we keep getting reports on discovery of these nugs and 0-day exploits in the wild. In this project, we aim to specifically target buffer overflow bugs with the assumption (i.e. our scope) that internally such buffers are accessed via loops and such loops are controlled by the induction variable. We will be using LLVM framework [1] to analyse the source code the application to find loops and the induction variable. We will use LLVM taint pass (DSan) [2] to check the taint information of this induction variable. Our fuzzing will involve mutating this variable as much as possible.
 \[1\]: [https://llvm.org/](https://llvm.org/)
+
 \[2\]: [https://clang.llvm.org/docs/DataFlowSanitizer.html](https://clang.llvm.org/docs/DataFlowSanitizer.html)
 
 **Level of challenge: high**
@@ -98,7 +99,9 @@ Buffer overflows remain annoying bugs in unmanaged languages like C/C++. While t
 Buffer overflows remain annoying bugs in unmanaged languages like C/C++. While the code-coverage based fuzzers, like AFL have been successful in finding many such bugs, we keep getting reports on discovery of these nugs and 0-day exploits in the wild. In this project, we aim to specifically target buffer overflow bugs with the assumption (i.e. our scope) that internally such buffers are accessed via loops and such loops are controlled by the induction variable. However, detecting loops in the absence of course code remains a hard problem. Moseley et al. [1] proposed LoopProf to identify loops entirely based on the execution trace of the application. IN this project, we use this technique to identify loops and instructions/memory locations accessed within such loops. We, then, use dynamic taintflow analysis [2] to tag each such memory locations with the taint information. Equipped with this information, we aim to develop a vuzzer (on top of an existing fuzzer VUzzer [3]) to fuzz such tainted memory locations with a higher possibility to hit the used induction variable and thereby triggering the buffer overflow attacks.
 
 \[1\]: [https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.85.7096&rep=rep1&type=pdf](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.85.7096&rep=rep1&type=pdf)
+
 \[2\]: [https://www.cs.columbia.edu/~vpk/research/libdft/](https://www.cs.columbia.edu/~vpk/research/libdft/)
+
 \[3\]: [https://www.cs.vu.nl/~giuffrida/papers/vuzzer-ndss-2017.pdf](https://www.cs.vu.nl/~giuffrida/papers/vuzzer-ndss-2017.pdf)
 
 **Level of challenge: high to very high**
@@ -106,10 +109,15 @@ Buffer overflows remain annoying bugs in unmanaged languages like C/C++. While t
 ## Compilation Based Symbolic Execution and Taintflow for better code-coverage with application to fuzzing (Sanjay)
 
 Code-coverage remains the main strategy for modern fuzzers. Symbolic execution provides a systematic approach to enhance code-coverage (e.g. KLEE [1)]. Accordingly, we have seen several hybrid fuzzers using symbolic execution to get better coverage, e.g QSYM[2]. HOwever, symbolic execution suffers from scalability issues, making it very slow, specially when used in fuzzing. Recently Poeplau et al. [3] proposed a technique (Symbolic execution with SYMCC:Don’t interpret, compile!) which makes symbolic execution much faster. It is implemented over LLVM [4]. In this project, we explore to integrate this technique with LLVM taintflow sanitizer (DSan) [5] to further optimized the constraints to be solved, thereby making it even faster for fuzzing.
+
 \[1\]: [https://klee.github.io/](https://klee.github.io/)
+
 \[2\]: [https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-yun.pdf](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-yun.pdf)
+
 \[3\]: [http://www.s3.eurecom.fr/docs/usenixsec20_symcc.pdf](http://www.s3.eurecom.fr/docs/usenixsec20_symcc.pdf)
+
 \[4\]: [https://llvm.org/](https://llvm.org/)
+
 \[5\]: [https://clang.llvm.org/docs/DataFlowSanitizer.html](https://clang.llvm.org/docs/DataFlowSanitizer.html)
 
 **Level of challenge: very high**
@@ -118,7 +126,9 @@ Code-coverage remains the main strategy for modern fuzzers. Symbolic execution p
 ## Dynamic Analysis Assisted Binary level static Controlflow graph (CFG) and Callgraph precision improvement (Sanjay)
 
 Binary code analysis in challenging, yet unavoidable in several situations. In order to analyse a COTS application (e.g. 3rd party library or malware), we do need to analyse the application’s binary. Any usable program analysis technique involves the generation of CFG and callgraph and the quality of the analysis depends on the precision of the generated CFG. The main source of imprecision arises from indirect jumps (and calls via function pointers), like jmp rax or call rax In such cases, we need to do a backward analysis to find the value of rax, which is also a hard problem as many a times, it may depends on the dynamic behavior of the program or we may have to across boundaries of several functions. In this project, we propose to augment the static CFG by using a dynamic analysis to find the targets of such indirect jumps. We will investigate the use of dynamic binary instrumentation tool (e.g. Intel Pin [1]) and binary disassembler tool Ghidra [2] to implement this analysis. This is a tool development oriented project.
+
 \[1\]: [https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic-binary-instrumentation-tool.html](https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic-binary-instrumentation-tool.html)
+
 \[2\]: [https://ghidra-sre.org/](https://ghidra-sre.org/)
 
 **Level of challenge: medium to high**
