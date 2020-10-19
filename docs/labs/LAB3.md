@@ -211,7 +211,7 @@ static int uob_socket_create(int family, int type,
 Similarly to before we need to register our hook and initialize our module:
 ``` C
 /* data structure containing all our hooks */
-static struct uob_hook_list uob_hooks[] __lsm_ro_after_init = {
+static struct security_hook_list uob_hooks[] __lsm_ro_after_init = {
   LSM_HOOK_INIT(socket_create, uob_socket_create),
 }
 
