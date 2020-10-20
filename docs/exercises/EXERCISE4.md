@@ -20,4 +20,4 @@
 			$ make obj-intel64/inscount-dif.so TARGET=intel64
 			$ ../../../pin -t obj-intel64/inscount-dif.so -- loop
 	
-Open inscount.out. You will see two numbers. icount and icount2, with *icount2 < icount*. Can you explain the reason? [Hint: Something to so with instrumentation and analysis routines!!]
+	Open inscount.out. You will see two numbers. icount and icount2, with *icount2 < icount*. Can you explain the reason? [Hint: Something to so with instrumentation and analysis routines!!]
