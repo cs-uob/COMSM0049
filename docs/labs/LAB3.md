@@ -331,7 +331,6 @@ When a new program is executed this happen:
 ```
 parent fork
 child execve
-parent wait
 ```
 
 Before the execve, we want to interact with our LSM to add some restrictions on what the program we are about to execute can do (e.g. no socket_create, no write etc...).
