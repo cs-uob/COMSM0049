@@ -169,7 +169,7 @@ We also need to start our pseudo file system module and register the file above:
 ``` C
 static int __init init_uob_fs(void)
 {
-  struct dentry *prov_dir;
+  struct dentry *uob_dir;
 
   pr_info("UoB fs: Initializing");
   /* create uob directory in /sys/kernel/security/ */
@@ -213,7 +213,7 @@ Similarly to before we need to register our hook and initialize our module:
 /* data structure containing all our hooks */
 static struct security_hook_list uob_hooks[] __lsm_ro_after_init = {
   LSM_HOOK_INIT(socket_create, uob_socket_create),
-}
+};
 
 static __init int uob_init(void)
 {
