@@ -309,7 +309,7 @@ You need inside the function `uob_socket_create` to:
 1. retrieve the pid of the `current` task. You may want to use the function `task_pid_vnr`. Use elixir (linked above) to identify how this function is used with `current`.
 2. check if the pid is in the list you built earlier. Check again the [linked list](https://kernelnewbies.org/FAQ/LinkedLists) documentation.
 
-## Going further
+## Going further (extra)
 
 ### A cleaner implementation
 
