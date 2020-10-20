@@ -167,7 +167,7 @@ static ssize_t uob_write_pid(struct file *file, const char __user *buf,
 We are going to use [securityfs](https://lwn.net/Articles/153366/) to expose our pseudofile.
 We also need to start our pseudo file system module and register the file above:
 ``` C
-static int __init init_uob_fs(void)
+static __init int init_uob_fs(void)
 {
   struct dentry *uob_dir;
 
