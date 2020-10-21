@@ -279,6 +279,7 @@ make security W=1
 
 In the configuration menu, make sure to select your module.
 Alternatively in `security/Kconfig` set `default` to `y` for your module.
+You can update the list of security modules via the configuration menu or run `sed -i -e "s/CONFIG_LSM=\"yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,apparmor\"/CONFIG_LSM=\"yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,apparmor,uob\"/g" .config` afterward.
 
 This will only compile what is contained in the `security` folder and be much faster than compiling the entire kernel.
 Fix any error and warning associated with the `uob` LSM.
