@@ -277,6 +277,9 @@ make menuconfig
 make security W=1
 ```
 
+In the configuration menu, make sure to select your module.
+Alternatively in `security/Kconfig` set `default` to `y` for your module.
+
 This will only compile what is contained in the `security` folder and be much faster than compiling the entire kernel.
 Fix any error and warning associated with the `uob` LSM.
 Once you are satisfied compile the entire kernel, reboot and using `dmesg | grep UoB` you should be able to see the message printed by your LSM!
