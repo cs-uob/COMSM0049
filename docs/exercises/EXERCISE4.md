@@ -5,6 +5,7 @@
 3. What do you understand by fix-point iteration from dataflow analysis point of view?
 4. What is a transfer function for a dataflow analysis
 5. What is a interprocedural control flow graph?
+6. 6. Familiarize yourself with Ghidra after watching the Ghidra Scripting video. Try running [cfg-gen-ghidra.py](../code/cfg-gen-ghidra.py) within Ghidra on any binary.
 
 ## Dynamic Analysis: 
 
