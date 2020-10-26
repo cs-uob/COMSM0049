@@ -37,7 +37,7 @@ The easiest way to record your “screen” is to use OBS or ZOOM.
 
 ### Short presentation - individual (graded 30%)
 
-You will individually present your project to both lecturers + one TA. You will provide an overview of the whole project and highlight your individual contributions. You will be expected to demonstrate sufficient knowledge of the project.
+You will individually present your project to both lecturers + one TA. You will provide an overview of the whole project and highlight your individual contributions. You will be expected to demonstrate sufficient knowledge of the project. You should prepare a 5 minutes presentation that will be followed by 10 minutes of questions.
 
 **Submission Instructions:** TBC
 
