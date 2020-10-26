@@ -35,12 +35,6 @@ The easiest way to record your “screen” is to use OBS or ZOOM.
 
 **Submission Instructions:** TBC
 
-### Short presentation - individual (graded 30%)
-
-You will individually present your project to both lecturers + one TA. You will provide an overview of the whole project and highlight your individual contributions. You will be expected to demonstrate sufficient knowledge of the project. You should prepare a 5 minutes presentation that will be followed by 10 minutes of questions. The questions will cover both the presentation and the overall project.
-
-**Submission Instructions:** TBC
-
 ### Final write up - group (graded 40%)
 
 You should submit a 4 pages report (excluding reference and appendix) following [USENIX Latex conference template](https://www.usenix.org/conferences/author-resources/paper-templates). Your report should contain a minimum of six academic citations. We suggest the following structure:
@@ -51,6 +45,12 @@ Evaluation
 Conclusion
 
 Do not hesitate to use figures to illustrate your point, well-drawn figures can communicate more than a thousand words.
+
+**Submission Instructions:** TBC
+
+### Short presentation - individual (graded 30%)
+
+You will individually present your project to both lecturers + one TA. You will provide an overview of the whole project and highlight your individual contributions. You will be expected to demonstrate sufficient knowledge of the project. You should prepare a 5 minutes presentation that will be followed by 10 minutes of questions. The questions will cover both the presentation and the overall project.
 
 **Submission Instructions:** TBC
 
