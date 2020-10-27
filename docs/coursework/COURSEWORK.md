@@ -38,11 +38,11 @@ The easiest way to record your “screen” is to use OBS or ZOOM.
 ### Final write up - group (graded 40%)
 
 You should submit a 4 pages report (excluding reference and appendix) following [USENIX Latex conference template](https://www.usenix.org/conferences/author-resources/paper-templates). Your report should contain a minimum of six academic citations. We suggest the following structure:
-Introduction
-Background
-Design & Implementation
-Evaluation
-Conclusion
+- Introduction
+- Background
+- Design & Implementation
+- Evaluation
+- Conclusion
 
 Do not hesitate to use figures to illustrate your point, well-drawn figures can communicate more than a thousand words.
 
