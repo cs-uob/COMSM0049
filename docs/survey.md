@@ -70,29 +70,29 @@ While there are some rough edges, given that it is 1) a new unit, 2) under a new
 
 As promised a detailed report on the survey we launched after the end of week 3. We will run a further survey around week 7 to gather how you felt overall about the teaching part of the unit.
 
-1- I feel that I am keeping up with the unit.
-2- Comments.
-3- Rate the videos and reading material.
-4- Comments about the videos and reading material.
-5- Rate the exercise sheets.
-6- Comments about the exercise sheets.
-7- Rate the labs.
-8- Comments about the labs.
-9- Rate the Q&A.
-10- Comments on the Q&A (if you are not participating, tell us why).
-11- Rate the peer labs.
-12- Comments on the peer lab (if you are not participating, tell us why).
+1. I feel that I am keeping up with the unit.
+2. Comments.
+3. Rate the videos and reading material.
+4. Comments about the videos and reading material.
+5. Rate the exercise sheets.
+6. Comments about the exercise sheets.
+7. Rate the labs.
+8. Comments about the labs.
+9. Rate the Q&A.
+10. Comments on the Q&A (if you are not participating, tell us why).
+11. Rate the peer labs.
+12. Comments on the peer lab (if you are not participating, tell us why).
 
 ### Results & General Comments
 
 We received 11 response to our survey out of 39 students (as per blackboard so +- some).
 
-81% of students are keeping up with the unit.
-Video and reading material rating: 3.82
-Exercise sheet rating: 3.55
-Labs rating: 4.18
-Q&A rating: 4.18
-Peer labs rating: 3.64
+1. 81% of students are keeping up with the unit.
+2. Video and reading material rating: 3.82
+3. Exercise sheet rating: 3.55
+4. Labs rating: 4.18
+5. Q&A rating: 4.18
+6. Peer labs rating: 3.64
 
 Overall students like the lab and Q&A, the videos and the reading material are good, but the peer labs and the exercise sheet not so much. In the next survey, we will separate rating for video and reading material as to understand a bit more precisely what you don’t like.
 
