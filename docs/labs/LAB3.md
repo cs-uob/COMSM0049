@@ -313,6 +313,24 @@ You need inside the function `uob_socket_create` to:
 1. retrieve the pid of the `current` task. You may want to use the function `task_pid_vnr`. Use elixir (linked above) to identify how this function is used with `current`.
 2. check if the pid is in the list you built earlier. Check again the [linked list](https://kernelnewbies.org/FAQ/LinkedLists) documentation.
 
+## A little help
+
+You can watch this video to help you get started with the core element of the lab
+(try to do it yourself first as it contains the solution).
+
+<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/b38f100b-920b-41a0-8de7-796ebe25ba19?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
+
+Pointer to material referenced in the video:
+- [copy_from_user](https://lwn.net/Articles/695991/)
+- [memdup_user](https://www.kernel.org/doc/htmldocs/kernel-api/API-memdup-user.html)
+- [kstrtoint](https://www.kernel.org/doc/htmldocs/kernel-api/API-kstrtoint.html)
+- [kfree](https://www.kernel.org/doc/htmldocs/kernel-api/API-kfree.html)
+- [socket_creat hook](https://github.com/torvalds/linux/blob/master/include/linux/lsm_hooks.h#L819)
+- [list of unix systems errors](https://www-numi.fnal.gov/offline_software/srt_public_context/WebDocs/Errors/unix_system_errors.html)
+
+Double check that what I type is correct. In the video, I program from "memory"
+and I may not remember the exact name of all functions/macros.
+
 ## Going further (extra)
 
 ### A cleaner implementation
