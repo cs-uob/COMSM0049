@@ -331,6 +331,9 @@ Pointer to material referenced in the video:
 Double check that what I type is correct. In the video, I program from "memory"
 and I may not remember the exact name of all functions/macros.
 
+**Clarification:** we are not writing anything to disk here. In our scenario, our pseudofile
+simply allows user space to set our pid variable.
+
 ## Going further (extra)
 
 ### A cleaner implementation
