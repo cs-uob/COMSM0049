@@ -336,6 +336,8 @@ and I may not remember the exact name of all functions/macros.
 **Clarification:** we are not writing anything to disk here. In our scenario, our pseudofile
 simply allows user space to set our pid variable.
 
+**Note:** you can get current pid directly doing `current->pid`.
+
 ## Going further (extra)
 
 ### A cleaner implementation
