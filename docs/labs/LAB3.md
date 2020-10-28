@@ -321,6 +321,7 @@ You can watch this video to help you get started with the core element of the la
 <iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/b38f100b-920b-41a0-8de7-796ebe25ba19?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
 
 Pointer to material referenced in the video:
+- [linux write man](https://www.man7.org/linux/man-pages/man2/write.2.html)
 - [copy_from_user](https://lwn.net/Articles/695991/)
 - [memdup_user](https://www.kernel.org/doc/htmldocs/kernel-api/API-memdup-user.html)
 - [kstrtoint](https://www.kernel.org/doc/htmldocs/kernel-api/API-kstrtoint.html)
