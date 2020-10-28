@@ -65,3 +65,47 @@ A lot of students really appreciate the practical nature of the unit. We are rea
 ### Conclusion
 
 While there are some rough edges, given that it is 1) a new unit, 2) under a new method of delivery and 3) under less than ideal circumstances, we think things are going pretty well. A majority of students have engaged well with the unit and seem overall relatively happy. An important thing to monitor is the workload level mid-term. We are also concerned about a group of a dozen students who don’t seem to be engaging with the unit properly.
+
+## Week 2 Survey
+
+As promised a detailed report on the survey we launched after the end of week 3. We will run a further survey around week 7 to gather how you felt overall about the teaching part of the unit.
+
+1- I feel that I am keeping up with the unit.
+2- Comments.
+3- Rate the videos and reading material.
+4- Comments about the videos and reading material.
+5- Rate the exercise sheets.
+6- Comments about the exercise sheets.
+7- Rate the labs.
+8- Comments about the labs.
+9- Rate the Q&A.
+10- Comments on the Q&A (if you are not participating, tell us why).
+11- Rate the peer labs.
+12- Comments on the peer lab (if you are not participating, tell us why).
+
+### Results & General Comments
+
+We received 11 response to our survey out of 39 students (as per blackboard so +- some).
+
+81% of students are keeping up with the unit.
+Video and reading material rating: 3.82
+Exercise sheet rating: 3.55
+Labs rating: 4.18
+Q&A rating: 4.18
+Peer labs rating: 3.64
+
+Overall students like the lab and Q&A, the videos and the reading material are good, but the peer labs and the exercise sheet not so much. In the next survey, we will separate rating for video and reading material as to understand a bit more precisely what you don’t like.
+
+### Discussion
+
+We had very positive feedback on the labs. The students really enjoy the practical aspects of the unit and we are told that the labs are interesting and challenging. We hope to keep it that way. We are adding videos on common problems with the labs to try to support the students given the covid situation (obviously there is a delay as we need first to gather common problems), we also answer questions during the Q&A and throughout the week on discord. Generally, students feel that if they get stuck they get the help they need relatively quickly.
+
+In the last Q&A recording did not show some of what was being shown during the live stream (i.e. non-browser application). That should hopefully be sorted for the next Q&A. During the Q&A, questions are mostly focused on the labs.
+
+This lead to our next point: the exercise sheet. We would like the students to engage with the exercise sheet during the Q&A session. We are hoping to trigger discussion, but this is not happening. We are asked for correction for the exercises, but we would really like for something more interactive to happen. Some questions are open-ended and similar to what will be found in the exam. We believe that the best way to learn how to answer such questions is to discuss them in “class” (this year during the Q&A).  There may be a mismatch of expectation that we need to correct and we need to communicate more clearly what we think should happen.
+
+Students are not convinced by the scheduled peer lab sessions and prefer to work on their own time and organise themselves. This is understandable. We believe that we could do without them or replacing one of the two hours of peer labs by an extra hour of TA supported lab. This is unlikely to happen during TB1, but we will make sure the department is aware.
+
+We have released the coursework format following popular demand. The topic(s) are still under embargo as per instructed by the department so students don’t work on coursework before week 8. We have attempted to strike a balance between group work and individual contributions. We will communicate submission details and deadline once confirmed with the administration.
+
+Finally, while a number of students have engaged very well with the unit and we start to recognise some name on discord. Other students seem to be disengaging. We are concerned and hope they could leverage the opportunity to interact with TAs and lecturers while we are still available.
