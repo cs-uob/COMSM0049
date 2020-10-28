@@ -325,7 +325,7 @@ Pointer to material referenced in the video:
 - [memdup_user](https://www.kernel.org/doc/htmldocs/kernel-api/API-memdup-user.html)
 - [kstrtoint](https://www.kernel.org/doc/htmldocs/kernel-api/API-kstrtoint.html)
 - [kfree](https://www.kernel.org/doc/htmldocs/kernel-api/API-kfree.html)
-- [socket_creat hook](https://github.com/torvalds/linux/blob/master/include/linux/lsm_hooks.h#L819)
+- [socket_create hook](https://github.com/torvalds/linux/blob/master/include/linux/lsm_hooks.h#L819)
 - [list of unix systems errors](https://www-numi.fnal.gov/offline_software/srt_public_context/WebDocs/Errors/unix_system_errors.html)
 
 Double check that what I type is correct. In the video, I program from "memory"
