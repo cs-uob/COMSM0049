@@ -338,7 +338,7 @@ simply allows user space to set our pid variable.
 
 **Note:** you can get current pid directly doing `current->pid`.
 
-**Code from the video:**
+### Code from the video
 
 hooks.c
 ```C
