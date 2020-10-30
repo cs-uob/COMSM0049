@@ -7,14 +7,13 @@ This project validates the whole unit, there is no other assessment. It represen
 We expect every members of a group to participate fully in the project. You are free to organise as you wish, but your personal contribution will be evaluated and need to be demonstrated (see below). If you have any concern about your group dynamic, do contact us via e-mail.
 
 Do remember this is a level 7 unit (i.e. Master-level), consequently, you need to demonstrate independent work and ambition beyond what would be expected from BSc students.
-Deliverable
 
 ## Form a group
 
 It is the students’ responsibility to form their groups. You may find it difficult completing this coursework alone. You should e-mail us ([thomas.pasquier@bristol.ac.uk](mailto:thomas.pasquier@bristol.ac.uk) and [sanjay.rawat@bristol.ac.uk](mailto:sanjay.rawat@bristol.ac.uk)) your group no later than the Thursday of Week 7. In addition, provide a two paragraphs description of your project. We will provide short feedback to all groups. If you need further feedback, contact us to schedule a meeting (if WE think you need more feedback, we will tell you too).
 
 
-## Submission
+## Deliverables & Submissions
 
 ### Project proposal - group (graded 10%)
 
