@@ -18,7 +18,7 @@ It is the students’ responsibility to form their groups. You may find it diffi
 
 ### Project proposal - group (graded 10%)
 
-By the Wednesday of Week 8, you need to have finalised a proposal of your project. You will describe the problem you aim to tackle. The main objective of this deliverable is to ensure that everyone is on track and that you have thought through what you need to do. Your proposal should be at most 2 A4 pages following [USENIX Latex conference template](https://www.usenix.org/conferences/author-resources/paper-templates). and contain the following information:
+By the Wednesday of Week 8, you need to have finalised a proposal of your project. You will describe the problem you aim to tackle. The main objective of this deliverable is to ensure that everyone is on track and that you have thought through what you need to do. Your proposal should be **at most** 2 A4 pages following [USENIX Latex conference template](https://www.usenix.org/conferences/author-resources/paper-templates). and contain the following information:
 - The group members;
 - The problem you aim to address;
 - How you plan to address it;
@@ -29,7 +29,7 @@ By the Wednesday of Week 8, you need to have finalised a proposal of your projec
 
 ### Project demonstration - group (grade 20%)
 
-You will demonstrate that your solution works. You will submit a video demonstrating your project. Your project should be coming with a README. You will follow the readme instruction and demonstrate that you obtain the results presented in the paper and that you can reproduce the evaluation. The video should be no longer than 10 minutes.
+You will demonstrate that your solution works. You will submit your code and a video demonstrating your project. Your project should be coming with a README. You will follow the readme instruction and demonstrate that you obtain the results presented in your report and that you can reproduce the evaluation. The video should be no longer than 10 minutes.
 
 The easiest way to record your “screen” is to use OBS or ZOOM.
 
