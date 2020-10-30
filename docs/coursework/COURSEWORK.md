@@ -45,6 +45,8 @@ You should submit a 4 pages report (excluding reference and appendix) following 
 
 Do not hesitate to use figures to illustrate your point, well-drawn figures can communicate more than a thousand words.
 
+**Note:** If you did not implement everything you described in your proposal this does not mean that you will fail. You should discuss why it could not be done (e.g. technical challenges, slight change of direction, alternative approach taken etc.). Reflecting on the lessons learn is important.
+
 **Submission Instructions:** TBC
 
 ### Short presentation - individual (graded 30%)
