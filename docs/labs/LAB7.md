@@ -369,6 +369,7 @@ of extra functionality that you can explore. A few of them are listed bellow (in
 * hide processes (you should look at the [`task` data structure]()https://elixir.bootlin.com/linux/v3.2/source/include/linux/sched.h#L1224) flags and also explore how to remove entries from [`/proc`](https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html)).
 * implement a simple way for you malware to interact with your rootkit from userspace;
 * hide open ports;
+* try to build a rootkit for a more recent version of the kernel. Is it harder? Why?
 * etc...
 
 There is a lot you can potentially do, if you have the time/will feel free to go crazy on this.
