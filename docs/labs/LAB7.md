@@ -316,17 +316,17 @@ user from noticing this.
 In Linux, you retrieve such information via the [`sysinfo` system call](https://man7.org/linux/man-pages/man2/sysinfo.2.html).
 
 **Question:** As you did previously for read and write, "hack" the sysinfo system call and
-modify in the structure returned by the original system call the values in "load"
-by random value so that the load appear to be between 0% and 20% (you may need
+modify, in the structure returned by the original system call, the values in `load`
+by random values so that the system load appears to be between 0% and 20% (you may need
 to put some thought into it as fully random value are not a great idea).
 You may want to use the [`get_random_bytes`](https://elixir.bootlin.com/linux/v3.2/source/include/linux/random.h#L57) function.
 
 ## Step 4: Root whenever!
 
-You can hack the `kill` system call that pass signal to processes to grant root
+You can "hack" the `kill` system call that pass signal to processes to grant root
 privilege to any process.
 
-Your hacked `kill` system call may look something like this:
+Your "hacked" `kill` system call may look something like this:
 ```C
 asmlinkage int
 hacked_kill(pid_t pid, int sig)
