@@ -366,7 +366,7 @@ of extra functionality that you can explore. A few of them are listed bellow (in
 * hide memory consumption;
 * ensure that your module cannot ever be unloaded (see [this](https://www.kernel.org/doc/htmldocs/kernel-hacking/routines-module-use-counters.html))
 * hide directories/files starting with a given prefix ("hack" [`getdents64`](https://linux.die.net/man/2/getdents64) and [`getdents`](https://linux.die.net/man/2/getdents));
-* hide processes (you should look at the [`task` data structure]()https://elixir.bootlin.com/linux/v3.2/source/include/linux/sched.h#L1224 flags and also explore how to remove entries from `/proc`).
+* hide processes (you should look at the [`task` data structure]()https://elixir.bootlin.com/linux/v3.2/source/include/linux/sched.h#L1224) flags and also explore how to remove entries from [`/proc`](https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html)).
 * implement a simple way for you malware to interact with your rootkit from userspace;
 * hide open ports;
 * etc...
