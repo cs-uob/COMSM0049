@@ -12,7 +12,7 @@ In this lab you will build a rootkit (please, watch the [corresponding video](ht
 Kernel development should not be done on your working OS!
 You may lose data (e.g. crash may corrupt the file system) or you may have difficulty to boot the machine.
 A few suggestions:
-- Use the provided VM!
+- Use the [provided VM](../vagrants/lab7/Vagrantfile)!
 - Push your code to github/another machine.
 - Save your VM state (right click on the VM in the virtualbox UI).
 
