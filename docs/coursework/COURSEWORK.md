@@ -6,8 +6,6 @@ This project validates the whole unit, there is no other assessment. It represen
 
 We expect every member of a group to participate fully in the project. You are free to organise as you wish, but your personal contribution will be evaluated and need to be demonstrated (see below). If you have any concern about your group dynamic, do contact us via e-mail.
 
-Do remember this is a level 7 unit (i.e. Master-level), consequently, you need to demonstrate independent work and ambition beyond what would be expected from BSc students.
-
 ## Form a group
 
 It is the students’ responsibility to form their groups.
