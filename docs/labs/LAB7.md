@@ -161,6 +161,9 @@ lsmod | grep rootkit
 You should see the output of your module, but it should not be on the list!
 If you don't use `unhide` the module cannot be uninstalled!
 Think carefully about when/how `unhide` should be used.
+You may need to purse further, in the lab to find a solution.
+In the meantime, you can restart the VM if you want to get back to a state where
+your module is not loaded.
 
 ## Step 2: Wrapping system calls
 
@@ -294,8 +297,8 @@ simply reboot the machine)
 This is happening because we forgot to restore our system call table to its
 original state!
 
-**Question**: modify your exit function to restore the system call table.
-Think carefully about what may be happening.
+**Question**: modify your code to restore the system call table.
+Think carefully about what may be happening and when it should happen.
 
 **Hint:** you need to use code similar to this, but putting back `original_read`.
 ```C
