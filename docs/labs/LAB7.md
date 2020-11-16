@@ -297,7 +297,7 @@ simply reboot the machine)
 This is happening because we forgot to restore our system call table to its
 original state!
 
-**Question**: modify your code to restore the system call table.
+**Question**: modify your `lkm_example_exit` to restore the system call table.
 Think carefully about what may be happening and when it should happen.
 
 **Hint:** you need to use code similar to this, but putting back `original_read`.
