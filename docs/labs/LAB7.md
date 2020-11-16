@@ -160,6 +160,7 @@ lsmod | grep rootkit
 
 You should see the output of your module, but it should not be on the list!
 If you don't use `unhide` the module cannot be uninstalled!
+Think carefully about when/how `unhide` should be used.
 
 ## Step 2: Wrapping system calls
 
@@ -294,6 +295,7 @@ This is happening because we forgot to restore our system call table to its
 original state!
 
 **Question**: modify your exit function to restore the system call table.
+Think carefully about what may be happening.
 
 **Hint:** you need to use code similar to this, but putting back `original_read`.
 ```C
