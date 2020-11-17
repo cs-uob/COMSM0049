@@ -349,6 +349,8 @@ hacked_kill(pid_t pid, int sig)
 }
 ```
 
+**Note:** you need to define the signal. Do look at UNIX/LINUX signal documentation.
+
 **Question:** implement the `give_root` function. See the skeleton bellow and check
 the [`cred` data structure](https://elixir.bootlin.com/linux/v3.2/source/include/linux/cred.h#L116):
 ```C
