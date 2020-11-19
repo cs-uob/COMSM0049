@@ -8,11 +8,9 @@
 	2. What are the shortcomings of W xor X (DEP) w.r.t. to ite inability to prevent attacks?
 	3. How can mprotect function be used to perform an attack in the presence of a small unrandomized code region with a shellcode to execute? \[see the section "Unrandomized Code"\] 
 	
-3. some question on ASLR (https://www.usenix.org/system/files/login/articles/105516-Schwartz.pdf)
-4. Some question on https://cisofy.com/lynis/
-5. Some question on CFI (reading tough call and find out how arguments at call site and callee are being computed and why?)
-6. From your Lab 2, you exploited a stack buffer overflow bug in a C program. Which of the CFI-- forward or backward edge-- could have been used to prevent that and why? 
-7. Why do virtual calls lead to more overhead for CFI solution?
+3. Why does C++ code imposes more challenges for a *fine-grained* CFI?
+4. From your Lab 2, you exploited a stack buffer overflow bug in a C program. Which of the CFI-- forward or backward edge-- could have been used to prevent that and why? 
+5. Why do virtual calls lead to more overhead for CFI solution?
 	
 ## Fuzzing:
 
