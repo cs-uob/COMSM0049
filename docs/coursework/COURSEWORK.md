@@ -99,7 +99,7 @@ You may want to watch this [video](https://www.youtube.com/watch?v=4rFxZw3USIs&a
 **Project 6:** Given a binary:
 
 1. iterate over all the functions
-2. for each function F, find any loop (if there are) (You may want to use algorithms like Tarjan or Johnson: see https://en.wikipedia.org/wiki/Cycle_(graph_theory))
+2. for each function F, find any loop (if there are) (You may want to use algorithms like Tarjan or Johnson: see [this wikipedia article](https://en.wikipedia.org/wiki/Cycle_(graph_theory).
 3. Each loop depends on the concept of back-edge (the edge that forms the loop). Often this is implemented by a compare and jump instruction to the beginning of the loop. By using dataflow analysis, you need to find if this compare instruction depends on a constant or a variable. If it is a variable, perform a dataflow analysis to find if it is related to any of the arguments of the function.
 4. output such functions that satisfy the later condition ie. the ones depend on a variable. Often such functions are involved in buffer overflows!
 
