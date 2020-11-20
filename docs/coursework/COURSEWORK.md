@@ -116,7 +116,7 @@ Once you can identify tainted information at the byte-level that is affecting a 
 
 ### Lab 7
 
-**Project 11:** Expand the rootkit you implemented in Lab 7 to further hide your malicious payload (this is quite open-ended, but lab 7 gives a few potential directions, do check the lab).
+**Project 11:** Expand the rootkit you implemented in [Lab 7](https://cs-uob.github.io/COMSM0049/labs/LAB7.html) to further hide your malicious payload (this is quite open-ended, but lab 7 gives a few potential directions, do check the lab).
 
 ### Open-ended
 
