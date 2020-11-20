@@ -56,7 +56,6 @@ Do not hesitate to use figures to illustrate your point, well-drawn figures can 
 
 **Submission Instructions:** see on blackboard.
 
-
 | Max-grade | Category                | Comment                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |-----------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 10%       | Presentation            | You should use the provided latex template properly. Reference should be appropriately formatted. We expect the presentation standard to be on par with the reading material seen during lectures.                                                                                                                                                                                                                                          |
