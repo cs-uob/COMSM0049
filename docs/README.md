@@ -70,7 +70,7 @@ compiled a [list of final year projects](projects/list.md).
 | 8    | N/A          | N/A          | [Coursework](coursework/COURSEWORK.md)                 |
 | 9    | N/A          | N/A          | [Coursework](coursework/COURSEWORK.md)                  |
 | 10   | N/A          | N/A          | [Coursework](coursework/COURSEWORK.md)                  |
-| 11   | [Revision Week Q&A]()         | Revision Week         | Revision Week         |
+| 11   | [Revision Week Q&A](WEEK11.md)         | Revision Week         | Revision Week         |
 
 
 As per appropriate for a master-level unit, students are expected to work independently outside of lectures and labs.
