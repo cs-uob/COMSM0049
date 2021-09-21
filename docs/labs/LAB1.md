@@ -1,6 +1,6 @@
 # Lab 1: Format Strings
 
-<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/accacae9-030c-4625-985b-f692784fd7ec?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
+<!-- <iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/accacae9-030c-4625-985b-f692784fd7ec?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe> -->
 
 ## Material
 
