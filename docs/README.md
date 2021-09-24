@@ -4,18 +4,16 @@ The [System & Software Security Unit](https://www.bris.ac.uk/unit-programme-cata
 The exam option is worth 10 credits and the coursework option 15 credits.
 As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessment/regulations-and-code-of-practice-for-taught-programmes/programme-design/) "one credit point represents approximately 10 notional hours of student input".
 
-<!--
-**[Welcome Video!](https://web.microsoftstream.com/video/194159e4-4302-482d-8df5-00bf1794164e)**
+**[Welcome Video!](https://web.microsoftstream.com/video/afc4a843-836c-46f0-ac47-f06dcc5ca499)**
 
-<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/194159e4-4302-482d-8df5-00bf1794164e?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe> 
--->
+<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/afc4a843-836c-46f0-ac47-f06dcc5ca499?autoplay=false&showinfo=true" allowfullscreen style="border:none;"></iframe>
 
 ## Schedule
 
 ### Week 1-7
 
 - Mondays 2pm to 4pm (MVB 1.15) - Lab sessions
-- Fridays 2pm to 3pm (??) - Q&A session
+- Fridays 2pm to 3pm (Online) - Q&A session
 
 This is 3 hours of synchronous activities.
 In addition, you are expected each week to watch the lecture videos and engage in self-directed learning.
