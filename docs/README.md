@@ -50,19 +50,19 @@ compiled a [list of final year projects](projects/list.md).
 
 ## Course Structure
 
-| Week | Lecture                                                            | Lab                   | Independent Work                            |
-|------|--------------------------------------------------------------------|-----------------------|---------------------------------------------|
-| 1    | [Week 1 (Software Vulnerabilities & Attacks I)](lectures/WEEK1.md) | [Lab 1](labs/LAB1.md) | [Exercises Sheet 1](exercises/EXERCISE1.md) |
-| 2    | [Week 2 (OS Security)](lectures/WEEK2.md)                          | Lab 2                 | [Exercises Sheet 2](exercises/EXERCISE2.md) |
- 3    | Week 3  (Software Vulnerabilities & Attacks II)                    | Lab 3                 | Exercises Sheet 3                           |
-| 4    | Week 4  (Software Defense I)                                       | Lab 4                 | Exercises Sheet 4                           |
-| 5    | Week 5  (Software Defense II)                                      | Lab 5                 | Exercises Sheet 5                           |
-| 6    | Week 6  (Hardware Security)                                        | Lab 6                 | Exercises Sheet 6                           |
-| 7    | Week 7  (Hardware Vulnerabilities)                                 | Lab 7                 | Exercises Sheet 7                           |
-| 8    | N/A                                                                | N/A                   | Coursework                                  |
-| 9    | N/A                                                                | N/A                   | Coursework                                  |
-| 10   | N/A                                                                | N/A                   | Coursework                                  |
-| 11   | Revision Week Q&A                                                  | Revision Week         | Revision Week                               |
+| Week | Lecture                                                              | Lab                   | Independent Work                            |
+|------|----------------------------------------------------------------------|-----------------------|---------------------------------------------|
+| 1    | [Week 1 (Software Vulnerabilities & Attacks I)](lectures/WEEK1.md)   | [Lab 1](labs/LAB1.md) | [Exercises Sheet 1](exercises/EXERCISE1.md) |
+| 2    | [Week 2 (OS Security)](lectures/WEEK2.md)                            | [Lab 2](labs/LAB2.md) | [Exercises Sheet 2](exercises/EXERCISE2.md) |
+  3    | [Week 3  (Software Vulnerabilities & Attacks II)](lectures/WEEK3.md) | Lab 3                 | [Exercises Sheet 3](exercises/EXERCISE3.md) |
+| 4    | Week 4  (Software Defense I)                                         | Lab 4                 | Exercises Sheet 4                           |
+| 5    | Week 5  (Software Defense II)                                        | Lab 5                 | Exercises Sheet 5                           |
+| 6    | Week 6  (Hardware Security)                                          | Lab 6                 | Exercises Sheet 6                           |
+| 7    | Week 7  (Hardware Vulnerabilities)                                   | Lab 7                 | Exercises Sheet 7                           |
+| 8    | N/A                                                                  | N/A                   | Coursework                                  |
+| 9    | N/A                                                                  | N/A                   | Coursework                                  |
+| 10   | N/A                                                                  | N/A                   | Coursework                                  |
+| 11   | Revision Week Q&A                                                    | Revision Week         | Revision Week                               |
 
 
 As per appropriate for a master-level unit, students are expected to work independently outside of lectures and labs.
