@@ -15,9 +15,8 @@ desire.
 
 ## Recommended Videos
 
-1. [Week 2 - Video 1](https://web.microsoftstream.com/video/41359978-1a1b-4ef5-969b-127a915b09c7)
-2. [Week 2 - Video 2](https://web.microsoftstream.com/video/e4514003-2586-4b77-8e6f-ce238e1b3eef)
-3. [Week 2 - Video 3](https://web.microsoftstream.com/video/bbc136ff-90e2-4538-8996-48f9f0febd17)
+1. [Week 2 - Video 1](https://www.youtube.com/watch?v=c8ucr4UAKyQELC_Inside_LSM)
+
 
 ## Warning
 
