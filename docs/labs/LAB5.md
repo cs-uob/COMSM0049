@@ -1,5 +1,5 @@
 # Lab 5
-
+Ghidra User guide at https://ghidra.re/docs/
 ## Static Analysis Lab with Ghidra
 In this lab, we will develop a *trivial* static binary code analyzer that will search for known buffer overflow prone library functions like `strcpy`, `memcpy` etc.
 However, we will construct a backward callgraph based slice (see [video](https://web.microsoftstream.com/video/1d5bf380-3aa3-4279-a432-a0caf144e0e8)) to know which functions call such vulnerable functions (because buffer overflow will affect these functions).
