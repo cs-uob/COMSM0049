@@ -12,4 +12,4 @@ Also remember to work on the accompanying [exercises sheet](../exercises/EXERCIS
 
 # Q&A Session
 
-<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/fdec3386-7074-4805-b2e2-94032cca21a5?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
+Friday 2pm-3pm
