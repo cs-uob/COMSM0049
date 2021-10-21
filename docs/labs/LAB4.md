@@ -54,7 +54,7 @@ We're giving helper files to consult which provide a similar exploit for a diffe
 
 9.  Once successful, open another terminal and type:  
 ```
-$/tmp/nc 127.0.0.1 5678
+/tmp/nc 127.0.0.1 5678
 pwd
 ```
 You've got a reverse shell!
