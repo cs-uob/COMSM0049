@@ -6,7 +6,33 @@
 
 Setting up the environment:  
 
-0. download ROPGadget and install from: [URL](https://github.com/JonathanSalwan/ROPgadget). Its a github repo, so you can either clone it or (suggested) simple use "Download zip" option. 
+1. Here's a Vagrant file for this weeks lab that we have tested.
+
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "box" do |box|
+                box.vm.box = "ubuntu/bionic64"
+                box.vm.hostname = "lab4-box"
+                box.vm.provider "virtualbox" do |virtualbox|
+        virtualbox.name="lab4-box"
+    end
+ end
+end
+```
+
+Run the usual `vagrant up` to bring the VM up, and `vagrant ssh` to login.  Your current folder will be mounted in `/vagrant` as before.
+You'll need to install some extra dependencies for this lab to get going comfortably.  From a shell:
+
+```
+sudo apt update
+sudo apt install -y python3-pip gdb gcc-multilib
+pip3 install capstone
+```
+
+0. Download ROPGadget and install from: [URL](https://github.com/JonathanSalwan/ROPgadget). Its a github repo, so you can either clone it or (suggested) simple use "Download zip" option. 
 1. Download netcat (the latest release of netcat that comes pre-installed in Ubuntu has removed a particular option (-e) that we need.
 Having said that, official netcat release still shipped with that option! So, we are not completely artificial ;). [URL:](https://sourceforge.net/projects/netcat/). However, the same is also avaialble [here](../code/nc071.tar.gz).
 2. untar it and build: `./configure` and `make` command (**do not do** *make install*!)
@@ -36,3 +62,9 @@ pwd
 2. Can't concatenate strings and bytes?  Just use bytes! `bytes("Your string", "ascii")`.
 3. Try and get the exploit chain running first!  Break on the first gadget (In GDB: `b *0x08BLABLA`) and check it is working as expected.  Are things going into the right registers? (In GDB: `si`: step instruction, `i r`: info registers)
 4. Once you're convinced the ROP chain is running the `strace` tool is very helpful to debug what system calls *actually* get made by your program.  The `-v` flag will show all the arguments to system calls, `-e trace=execve` to just show `execve` calls.  Does the call look like what you'd expect?  You may have to add some new code to your exploit to get it working if the memory you're using isn't clean!
+
+# Optional bonus
+
+- Get the `nc` exploit going in 64-bit mode too!  Is it easier or harder?
+- Have a play at using [pwntools](https://docs.pwntools.com/en/stable/) to write your exploit instead of ROPgadget.  Is it easier? Harder?
+- Have a go at a return to libc exploit as discussed in the lecture.  You'll need to defeat ASLR for this one.
