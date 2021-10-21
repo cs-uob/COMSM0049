@@ -44,12 +44,14 @@ Having said that, official netcat release still shipped with that option! So, we
 		ROPgadget --binary vuln3-32 --ropchain > out-rop.txt
 		
    Have a look at `out-rop.txt`.  You'll see that at the bottom there is a Python program which you can complete to generate your shellcode exploit (in particular the buffer padding).  Run the program generate the exploit and test it works with the vulnerable program.
+
 8.  The shellcode in the previous step execve'd `/bin/sh`.  This time we'd like you to run the following command:
 
 		/tmp/nc -lnp 5678 -tte /bin/sh
 
    This command will spawn a reverse-shell server listening on localhost port 5678 that feeds all the input it gets into `/bin/sh`.  Effectively enabling you to run programs remotely!
 We're giving helper files to consult which provide a similar exploit for a different machine: [exploit-nc.py](../code/exploit-nc.py), but you'll need to get it working on *your* machine.  In particular the gadgets, configuration and Python version may be different!
+
 9.  Once successful, open another terminal and type:  
 ```
 $/tmp/nc 127.0.0.1 5678
