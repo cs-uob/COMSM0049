@@ -61,10 +61,11 @@ You've got a reverse shell!
 
 # Hints
 
-1. To figure out the padding needed to overflow the buffer try using binary search.  If you run `perl -e 'print "A"x124, "DCBA"' >input` you can quickly test different inputs. What would you expect to see when you have correctly got control of the return address?  What would you expect to see if you've gone too far compared to not far enough?
-2. Can't concatenate strings and bytes?  Just use bytes! `bytes("Your string", "ascii")`.
-3. Try and get the exploit chain running first!  Break on the first gadget (In GDB: `b *0x08BLABLA`) and check it is working as expected.  Are things going into the right registers? (In GDB: `si`: step instruction, `i r`: info registers)
-4. Once you're convinced the ROP chain is running the `strace` tool is very helpful to debug what system calls *actually* get made by your program.  The `-v` flag will show all the arguments to system calls, `-e trace=execve` to just show `execve` calls.  Does the call look like what you'd expect?  You may have to add some new code to your exploit to get it working if the memory you're using isn't clean!
+1.  To figure out the padding needed to overflow the buffer try using binary search.  If you run `perl -e 'print "A"x124, "DCBA"' >input` you can quickly test different inputs. What would you expect to see when you have correctly got control of the return address?  What would you expect to see if you've gone too far compared to not far enough?
+2.  Can't concatenate strings and bytes?  Just use bytes! `bytes("Your string", "ascii")`.
+3.  The calling convention for a system call on 32bit X86 Linux is: `eax` syscall number, `ebx,ecx,edx,esi,edi,ebp` arguments as required.
+4.  Try and get the exploit chain running first!  Break on the first gadget (In GDB: `b *0x08BLABLA`) and check it is working as expected.  Are things going into the right registers? (In GDB: `si`: step instruction, `i r`: info registers)
+5.  Once you're convinced the ROP chain is running the `strace` tool is very helpful to debug what system calls *actually* get made by your program.  The `-v` flag will show all the arguments to system calls, `-e trace=execve` to just show `execve` calls.  Does the call look like what you'd expect?  You may have to add some new code to your exploit to get it working if the memory you're using isn't clean!
 
 # Optional bonus
 
