@@ -73,11 +73,11 @@ Students will struggle to complete their coursework on time if they haven't enga
 ## Labs Answers:
 [Lab 1](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/Lab1.docx)
 
-[Lab 2](labs/lab2.doc)
+[Lab 2](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/Lab2.docx)
 
-[Lab 3](labs/lab3.doc)
+[Lab 3](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/Lab3.docx)
 
-[Lab 4](labs/lab4.doc)
+[Lab 4](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/Lab4.docx)
 
 **[Mock Exam](mock.pdf)**
 
