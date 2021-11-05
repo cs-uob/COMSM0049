@@ -70,6 +70,12 @@ Hence, reading materials and exercises are provided alongside labs and lectures.
 Students (especially those on the coursework option) are **very strongly encouraged** to do this work diligently during the first 7 weeks of the term.
 Students will struggle to complete their coursework on time if they haven't engaged with the unit material beforehand.
 
+## Labs Answers:
+[Lab 1](lab1.docx)
+[Lab 2](lab2.docx)
+[Lab 3](lab3.docx)
+[Lab 4](lab4.docx)
+
 **[Mock Exam](mock.pdf)**
 
 ## Reading Material
