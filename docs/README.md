@@ -71,7 +71,7 @@ Students (especially those on the coursework option) are **very strongly encoura
 Students will struggle to complete their coursework on time if they haven't engaged with the unit material beforehand.
 
 ## Labs Answers:
-[Lab 1](labs/lab1.doc)
+[Lab 1](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/Lab1.docx)
 
 [Lab 2](labs/lab2.doc)
 
