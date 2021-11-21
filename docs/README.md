@@ -79,6 +79,11 @@ Students will struggle to complete their coursework on time if they haven't enga
 
 [Lab 4](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/Lab4.docx)
 
+[Lab 5](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/Lab 5 Ghidra guide.docx) Lab 5 call-graph-back-slice-solution.py(https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/Lab 5 call-graph-back-slice-solution.py)
+
+[Lab 6](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/Lab6.docx)
+
+
 **[Mock Exam](mock.pdf)**
 
 ## Reading Material
