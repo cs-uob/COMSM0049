@@ -60,8 +60,8 @@ compiled a [list of final year projects](projects/list.md).
 | 6    | [Week 6 (Hardware Vulnerabilities)](lectures/WEEK7.md)               | [Lab 6](labs/LAB6.md) | [Exercises Sheet 6](exercises/EXERCISE7.md) |
 | 7    | [Week 7  (Hardware Security)](lectures/WEEK6.md)                     | Lab 7                 | [Exercises Sheet 7](exercises/EXERCISE6.md) |
 | 8    | N/A                                                                  | N/A                   | [Coursework](coursework/COURSEWORK.md)      |
-| 9    | N/A                                                                  | N/A                   | [Coursework](coursework/coursework.md)      |
-| 10   | N/A                                                                  | N/A                   | [Coursework](coursework/coursework.md)      |
+| 9    | N/A                                                                  | N/A                   | [Coursework](coursework/COURSEWORK.md)      |
+| 10   | N/A                                                                  | N/A                   | [Coursework](coursework/COURSEWORK.md)      |
 | 11   | Revision Week Q&A                                                    | Revision Week         | Revision Week                               |
 
 
