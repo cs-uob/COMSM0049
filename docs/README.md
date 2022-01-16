@@ -57,8 +57,8 @@ compiled a [list of final year projects](projects/list.md).
 |  3   | [Week 3 (Software Vulnerabilities & Attacks II)](lectures/WEEK3.md)  | [Lab 3](labs/LAB3.md) | [Exercises Sheet 3](exercises/EXERCISE3.md) |
 | 4    | [Week 4 (Software Defense I)](lectures/WEEK4.md)                     | [Lab 4](labs/LAB4.md) | [Exercises Sheet 4](exercises/EXERCISE4.md) |
 | 5    | [Week 5 (Software Defense II)](lectures/WEEK5.md)                    | [Lab 5](labs/LAB5.md) | [Exercises Sheet 5](exercises/EXERCISE5.md) |
-| 6    | [Week 6 (Hardware Vulnerabilities)](lectures/WEEK7.md)               | [Lab 6](labs/LAB6.md) | [Exercises Sheet 6](exercises/EXERCISE7.md) |
-| 7    | [Week 7  (Hardware Security)](lectures/WEEK6.md)                     | Lab 7                 | [Exercises Sheet 7](exercises/EXERCISE6.md) |
+| 6    | [Week 6 (Hardware Vulnerabilities)](lectures/WEEK7.md)               | [Lab 6](labs/LAB6.md) | [Exercises Sheet 6](exercises/EXERCISE6.md) |
+| 7    | [Week 7  (Hardware Security)](lectures/WEEK6.md)                     | Lab 7                 | [Exercises Sheet 7](exercises/EXERCISE7.md) |
 | 8    | N/A                                                                  | N/A                   | [Coursework](coursework/COURSEWORK.md)      |
 | 9    | N/A                                                                  | N/A                   | [Coursework](coursework/COURSEWORK.md)      |
 | 10   | N/A                                                                  | N/A                   | [Coursework](coursework/COURSEWORK.md)      |
