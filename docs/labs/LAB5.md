@@ -14,6 +14,6 @@ we will use this binary later on for analysis.
 ### Steps for Ghidra Scripting
 1. Download Ghidra and unzip it (I assume you have already done this!).
 2. In [the video](https://web.microsoftstream.com/video/c6f34b71-ca81-46f8-88f5-a50718ff5b64), I showed you how to launch Ghidra and create a project. I also showed you how to open ScriptManager. In the ScriptManager window, there is a *list* sign on the right top corner menu (script directories). Click on it. In the subsequent window, you can either see a Ghidra_script directory added already and if not, create a ghidra_script directory in your home directory and add same via ScriptManager.
-3. Download [call-graph-back-slice.py](../code/call-graph-back-slice.py) sample script in that direcroty.
+3. Download [call-graph-back-slice.py](../code/call-graph-back-slice.py) sample script in that directory.
 4. This `call-graph-back-slice.py` file contains all the instructions you should follow.
 5. After completing the code, load the `dnstracer` binary in the opened project and double-click it. Ghidra will ask to analyze it. Once done, open the ScriptManager and select your scripting file. Run it and check the output.
