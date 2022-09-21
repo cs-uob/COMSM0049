@@ -36,28 +36,27 @@ Questions on the Teams channel should be your preferred course of action as ever
 
 ## Course Structure
 
-| Week       | Lab                                      | Lecture                                                                                 |
-|------------|------------------------------------------|-----------------------------------------------------------------------------------------|
-| 1  (26/09) | [Lab 1: Assembly refresher](labs/1.html) | [Lecture 1: Interesting bugs and where to find them (*Joseph*)](lectures/1/slides.pdf)  |
-| 2  (03/10) | Lab 2: Format strings                    | Lecture 2: Heap overflows and the Malloc Maleficarum (*Joseph*)                         |
-| 3  (10/10) | Lab 3: Stack smashing                    | Lecture 3: Return oriented programming; or arts and crafts with binary files (*Joseph*) |
-| 4  (17/10) | Lab 4: ROP                               | Lecture 4: Fuzzing (*Sana*)                                                             |
-| 5  (24/10) | Lab 5: Fuzzing                           | Lecture 5: Access control and Sandboxing (*Sana*)                                       |
-|------------|------------------------------------------|-----------------------------------------------------------------------------------------|
-| 6  (07/11) | Lab 6: Sandboxing                        | Lecture 6: Rowhammer, Spectre and Meltdown (*Joseph*)                                   |
-| 7  (14/11) | Lab 7: Access Control                    | Lecture 7: Hardware Security (*Sana*)                                                   |
-| 8  (21/11) | Coursework                               | Coursework                                                                              |
-| 9  (28/11) | Coursework                               | Coursework                                                                              |
-| 10 (05/12) | Coursework                               | Coursework                                                                              |
-| 11 (12/12) | Revision                                 | Revision                                                                                |
-
-
+| Week       | Lab                                      | Lecture                                                                                 | Homework |
+|------------|------------------------------------------|-----------------------------------------------------------------------------------------|--------------------------|
+| 1  (26/09) | [Lab 1: Assembly refresher](labs/1.html) | [Lecture 1: Interesting bugs and where to find them (*Joseph*)](lectures/1/slides.pdf)  | [Homework](extra/1.html) |
+| 2  (03/10) | Lab 2: Format strings                    | Lecture 2: Heap overflows and the Malloc Maleficarum (*Joseph*)                         |                          |
+| 3  (10/10) | Lab 3: Stack smashing                    | Lecture 3: Return oriented programming; or arts and crafts with binary files (*Joseph*) |                          |
+| 4  (17/10) | Lab 4: ROP                               | Lecture 4: Fuzzing (*Sana*)                                                             |                          |
+| 5  (24/10) | Lab 5: Fuzzing                           | Lecture 5: Access control and Sandboxing (*Sana*)                                       |                          |
+|------------|------------------------------------------|-----------------------------------------------------------------------------------------|--------------------------|
+| 6  (07/11) | Lab 6: Sandboxing                        | Lecture 6: Rowhammer, Spectre and Meltdown (*Joseph*)                                   |                          |
+| 7  (14/11) | Lab 7: Access Control                    | Lecture 7: Hardware Security (*Sana*)                                                   |                          |
+| 8  (21/11) | Coursework                               | Coursework                                                                              |                          |
+| 9  (28/11) | Coursework                               | Coursework                                                                              |                          |
+| 10 (05/12) | Coursework                               | Coursework                                                                              |                          |
+| 11 (12/12) | Revision                                 | Revision                                                                                |                          |
 
 As per appropriate for a master-level unit, students are expected to work independently outside of lectures and labs.
 Hence, reading materials and exercises are provided alongside labs and lectures.
 Students (especially those on the coursework option) are **very strongly encouraged** to do this work diligently during the first 7 weeks of the term.
 Students will struggle to complete their coursework on time if they haven't engaged with the unit material beforehand.
 
-## Reading Material
+## Homework
 
+This unit comes with reading material and homework (It is an Masters level unit, and one lecture a week is never going to be enough time to cover everything). Please make sure you go through it because it *may* crop up on any exam we set.  We'll try and keep it fairly light (read some papers, watch a video) and I'll try and give you questions in the style of the exam in there.  Ask in the labs if you want solutions, or try and mark them amongst yourselves (tip: if a question is worth 5 marks we generally are expecting 5 points to be made; if a question is worth 15 we're expecting roughly three times the work, but are more interested in your reasoning and thinking: there may not be any definitvely *right* answer!)
 
