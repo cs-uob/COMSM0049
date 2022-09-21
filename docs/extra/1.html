@@ -1,0 +1,13 @@
+# Week 1 Homework
+
+- Go read [Smashing the Stack For Fun and Profit by Aleph One](http://phrack.org/issues/49/14.html)
+- Go read [Exploiting a Format String Bug in Solaris CDE by Marco Ivaldi](http://phrack.org/issues/70/13.html)
+- Go lookup what the different [X86 calling conventions](https://en.wikipedia.org/wiki/X86_calling_conventions) are and make a note of them (in particular make sure you read about `cdecl`, `syscall` and the `x86-64` conventions... you'll need them for this course!
+- Go watch this video from LiveOverflow [Explaining Dirty COW local root exploit - CVE-2016-5195](https://youtu.be/kEsshExn7aE) and check you understand the race condition and how it works (12 minutes)
+- Go watch this video from Retro Game Mechanics [Super Mario World Credits Warp Explained](https://youtu.be/vAHXK2wut_I) as a *fun* example of arbitrary code execution.
+
+## Exercises
+
+- The `gets()` function from the C standard library is considered dangerous: explain why, how it could be exploited and what a programmer should use instead? (5 marks)
+- Explain how a system call is made on Linux for a 32bit X86 system (5 marks)
+- Different operating systems have taken different approaches to handling dangerous standard library functionality (like the ~%n~ format string specifier).  Alice says these features should be removed as they can be dangerous, but Bob says that they cannot be removed because legacy code may rely on them and in any case it is not the operating systems job to protect the user from their own mistakes.  Discuss (i.e. both sides of the argument with a conclusion) who is right and the relative tradeoffs (15 marks)

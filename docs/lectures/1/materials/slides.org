@@ -1,0 +1,558 @@
+#+title: Lecture 1: Interesting bugs and where to find them
+#+author: Joseph Hallett
+#+institute: University of Bristol
+#+startup: beamer
+#+options: toc:nil
+#+beamer_theme: default
+#+beamer_header: \titlegraphic{\includegraphics[height=0.5cm]{bristol.png}}
+#+beamer_color_theme: beaver
+#+beamer_font_theme: [stillsansseriflarge]serif
+#+latex_class_options: [9pt,aspectratio=169]
+#+latex_header: \usepackage{fontspec}
+#+latex_header_extra: \setsansfont{Archivo Expanded}
+#+latex_header_extra: \setmainfont{Lora}
+#+latex_header_extra: \setmonofont{PragmataPro Liga}
+
+* Welcome to Hacking
+...er, no wait I'm not alowed to call this unit that.
+
+* Welcome to +Hacking+ Systems and Software Security
+- Nevertheless, what we're going to be studying is /very much/ hacking.
+- Labs at the start of the week, lectures at the end.
+  - Get a high level overview of a technique, then get an oportunity to do it for real.
+  - Chance to ask questions and chat with us.
+
+- Pre-recorded videos from last year are available...
+  - (but we've cut down the material, and may have changed things... but if you miss a lecture its better than nothing).
+
+* Assessment
+If you're doing exams:
+- Essay style questions: 8 short (5 marks each), 4 long (15 marks each).
+- Either explaining a technique or reason about something in the context of a technique.
+- If a question is worth 5 marks give us 5 things to tick.
+- If a question says /discuss/ then we actually want a discussion (both sides argued and conclusion).
+    
+If you're doing coursework:
+- Expect something along the lines of an engineering project building on one of the techniques we'll show you; and a presentation/demo.
+- ...but we haven't written it yet!
+
+* Security
+
+#+caption: XKCD #538: Security
+
+[[./security.png]]
+
+(In our case the spanner would usually be a /keylogger/).
+
+* Lisp
+
+#+caption: XKCD #224: Lisp
+
+[[./lisp.jpg]]
+
+* Assumptions
+
+Software is built by building on other software (and hardware).
+- Abstracting stuff away into libraries means you don't need to know how the library works.
+
+But /sometimes/ the way people assume abstractions work, and how they
+actually work get misaligned.
+- This leads to opportunities for bugs and crashes!
+
+The language spec might say /undefined behaviour/ *in theory*...
+- But sometimes that behaviour is very much defined *in practice*.
+
+* Todays lecture
+
+Three classic security bugs:
+- What the assumptions are behind them
+- How those assumptions get broken
+- How we exploit them
+- How we fix them (the important bit)
+
+The next two labs will focus on exploiting two of the bugs, in
+undefended systems
+- The lab after will focus on doing it in a modern defended system.
+
+* Bug #1: Race conditions
+
+Computers can do more than one thing at once and the order is
+important.
+
+#+begin_src c
+  void increment(int *n) {
+    int temp;
+    temp = *n; // Get the value pointed to by n
+    temp += 1; // Add one to it
+    ,*n = temp; // And write it back
+  }
+#+end_src
+
+What happens if ~n~ is dereferenced again before the increment
+function has had time to complete?
+- We will lose one (or more of the increments).
+- Well understood /correctness/ issue.
+- Fix by implementing synchronous blocks or locking.
+
+* Access and open
+
+System calls for testing the permissions of a file and then opening
+them up.
+
+From the ~access 2~ manual page:
+
+#+begin_quote
+The ~access()~ system call checks the accessibility of the file named
+by the *path* argument for the access permissions indicated by the
+*mode* argument.  The value of the *mode* is either the
+bitwise-inclusive OR of the access permission to be checked ~R_OK~ for
+read permission, ~W_OK~ for write permission, and ~X_OK~ for
+execute/search permission), or the existence test (~F_OK~).
+#+end_quote
+
+* So what does this look like?
+
+#+begin_src c
+  if (access("/tmp/X", W_OK)) {
+    f = open("/tmp/X");
+    write_to_file(f);
+  } else {
+    printf("Nope.\n");
+  }
+#+end_src
+
+Suppose this code is being executed by root, and that ~/tmp/X~ is
+owned by a non-root user?
+
+Can we do similar tricks to get root to write to an arbitrary file?
+
+* Oh dear...
+
+#+begin_src shell
+  ln -s /etc/password /tmp/X
+  #+end_src
+
+What happens if we swap out the temporary file with a link to a file
+we wouldn't normally have access to after the access control check is
+done, but before the open has started?
+- Bad things (for the system admin).
+
+The assumption is that nothing can happen between /check/ and /use/ of data; but this assumption isn't always right.
+- Be /really/ careful when splitting things into steps.
+- Some static analysis tools can spot things.
+
+* You were warned...
+
+#+begin_quote
+*SECURITY CONSIDERATIONS*
+
+The result of ~access()~ should not be used to make an actual access
+control decision, since its response, even if correct at the moment it
+is formed, may be outdated at the time you act on it. ~access()~
+results should only be used to pre-flight, such as when configuring
+user interface elements or for optimization purposes.  The actual
+access control decision should be made by attempting to execute the
+relevant system call while holding the applicable credentials, and
+properly handling any resulting errors; and this must be done even
+though ~access()~ may have predicted success.
+
+Additionally, set-user-ID and set-group-ID applications should restore
+the effective user or group ID, and perform actions directly rather
+than use ~access()~ to simulate access checks for the real user or
+group ID.
+#+end_quote
+
+* Bug #2: Buffer overflow
+
+In C if you go over the end of an array you'll crash.
+- A /buffer overflow/!
+
+#+begin_src C :results raw
+  #include <string.h>
+  int main(void) {
+    char *string = "One small step for man";
+    strcpy(string, "One giant leap for a class full of prospective hackers");
+    return 0;
+  }
+#+end_src
+
+#+RESULTS:
+Bus error: 10
+
+But why does your program crash?
+- How does the program/OS know that something has gone wrong?
+
+* Segmentation faults
+
+Memory in a binary get split into /sections/...
+- If you attempt to write in memory without having the permission the
+  MMU will trigger an exception to the OS and the program will crash
+  with a segfault.
+
+ If you dump the sections of a binry using R2
+#+begin_src shell :results table
+  rabin2 -S /tmp/compiled-example-from-last-slide
+#+end_src
+
+| nth | paddr        | size   | vaddr         | vsize  | perm   | name                     |
+|-----+--------------+--------+---------------+--------+--------+--------------------------|
+| ~0~ | ~0x00003f14~ | ~0x48~ | ~0x100003f14~ | ~0x48~ | ~-r-x~ | ~0.__TEXT.__text~        |
+| ~1~ | ~0x00003f5c~ | ~0xc~  | ~0x100003f5c~ | ~ 0xc~ | ~-r-x~ | ~1.__TEXT.__stubs~       |
+| ~2~ | ~0x00003f68~ | ~0x4e~ | ~0x100003f68~ | ~0x4e~ | ~-r-x~ | ~2.__TEXT.__cstring~     |
+| ~3~ | ~0x00003fb8~ | ~0x48~ | ~0x100003fb8~ | ~0x48~ | ~-r-x~ | ~3.__TEXT.__unwind_info~ |
+| ~4~ | ~0x00004000~ | ~0x8~  | ~0x100004000~ | ~ 0x8~ | ~-rw-~ | ~4.__DATA_CONST.__got~   |
+
+* But sometimes we get away with it right?
+
+Sometimes if you don't go too far off the end of an array the program crash it just continues
+- So what happens /before/ we trigger the fault?
+
+* So how do functions work?                                       :B_columns:
+
+** In C                                                      :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.49
+:END:
+
+#+begin_src C
+  void function(int a,
+                int b,
+                int c) {
+    char buffer1[5];
+    char buffer2[10];
+  }
+
+  void main() {
+    function(1, 2, 3);
+  }
+#+end_src
+
+** In 32-bit X86 Assembly                                         :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.49
+:END:
+
+#+begin_src asm
+  function:
+          push ebp
+          mov ebp,esp
+          sub esp,0x20
+          leave
+          ret
+  main:
+          push %ebp
+          mov ebp,esp
+          push 3
+          push 2
+          push 1
+          call function
+          leave
+          ret
+#+end_src
+
+* So what does this look like in memory?
+
+#+begin_src
+bottom of                                                            top of
+memory                                                               memory
+           buffer2       buffer1   sfp   ret   a     b     c
+<------   [            ][        ][    ][    ][    ][    ][    ]
+	   
+top of                                                            bottom of
+stack                                                                 stack
+#+end_src
+
+* Lets try something a bit more complex
+
+#+begin_src C
+  void function(char *str) {
+    char buffer[16];
+    strcpy(buffer, str);
+  }
+
+  void main() {
+    char large_string[256];
+    int i;
+
+    for (i=0; i<255; i++)
+      large_string[i] = 'A';
+
+    function(large_string);
+  }
+#+end_src
+
+* Now memory will look like
+
+#+begin_src
+bottom of                                                            top of
+memory                                                               memory
+                  buffer            sfp   ret   *str
+<------          [                ][    ][    ][    ]
+
+top of                                                            bottom of
+stack                                                                 stack
+#+end_src
+
+* As memory fills...
+
+#+begin_src
+bottom of                                                            top of
+memory                                                               memory
+                  buffer            sfp   ret   *str
+<------          [AAAAAAAAAAAAAAAA][    ][    ][    ]
+
+top of                                                            bottom of
+stack                                                                 stack
+#+end_src
+
+First the buffer will be filled with ~A~s...
+
+* Little by little...
+
+#+begin_src
+bottom of                                                            top of
+memory                                                               memory
+                  buffer            sfp   ret   *str
+<------          [AAAAAAAAAAAAAAAA][AAAA][AAAA][AAAA]
+
+top of                                                            bottom of
+stack                                                                 stack
+#+end_src
+
+Then whatever else is on the stack will be overwritten...
+
+* And eventually a crash...
+
+#+begin_src
+bottom of                                                            top of
+memory                                                               memory
+                  buffer            sfp   ret   *str
+<------          [AAAAAAAAAAAAAAAA][AAAA][AAAA][AAAA]AAAAAAAAAAAAAAAAAAA...
+
+top of                                                            bottom of
+stack                                                                 stack
+#+end_src
+
+And then whatever else until the segfault happens...
+- but what if we stop before the segfault happens?
+*
+* Return to a crash
+
+#+begin_src
+bottom of                                                            top of
+memory                                                               memory
+                  buffer            sfp   ret   *str
+<------          [AAAAAAAAAAAAAAAA][AAAA][AAAA][    ]
+
+top of                                                            bottom of
+stack                                                                 stack
+#+end_src
+
+
+Let's say we stop here: what is going to happen next?
+- The return address will be loaded into memory and we'll start executing from ~0x41414141~ (~'A'~ in ASCII is byte ~0x41~).
+- Which is /likely/ to be a junk address and will crash the program from a nonsensical instruction/non-executable memory.
+
+* But what if it isn't?
+
+#+begin_src
+bottom of                                                            top of
+memory                                                               memory
+                  buffer            sfp   ret   *str
+<------          [eb802192AAAAAAAA][AAAA][????][    ]
+                  ^                       |
+top of            |                       |                       bottom of
+stack             +-----------------------+                           stack
+#+end_src
+
+Suppose instead of returning to ~0x41414141~ we aim to return to something a little more useful
+- Stack addresses are usually predictible-ish
+
+Suppose we stick into our buffer not just a series of letters, but something that corresponds to program code?
+- We could trick the computer into running arbitrary programs.
+- This is really bad... (arbitrary code execution).
+
+* Faulty assumptions
+
+You can't assume that a program will crash just because that's what its supposed to do.
+- Sometimes undefined behaviour is pretty defined in practice right up until the crash.
+
+How do we stop it?
+- Make addresses less predictible? If its hard to guess where in the stack you are you're less likely to be able to calculate it cleanly (ASLR).
+- Stick a canary in the stack and check it hasn't been overwritten before returning (stack canaries).
+- Use a research grade CPU architecture like CHERI that doesn't allow you to abuse pointers like this (come chat with me in the labs!)
+
+* Bug #3: Format strings
+
+...or why is it /sometimes/ fun to set your phone's name to ~%08x~
+
+What happens if I compile this:
+
+#+begin_src C
+  printf("Hello %s");
+#+end_src
+
+* Oh but its only a /warning/...
+
+#+begin_src 
+warning: more '%' conversions than data arguments
+printf("Hello %s");
+              ^
+#+end_src
+
+The program gives a warning (but still compiles it).
+- If I run it it'll /probably/ crash with a segfault when you dereference that pointer for the ~%s~ specifier.
+
+* There's that word again
+
+Probably.
+
+- Oh it'll /probably/ crash.
+- But we are enterprising and devious!
+- Can we get it to do something useful?
+
+* Here's a silly program!
+
+#+begin_src C
+  int main(int argc, char *argv[]) {
+    printf("This program is called: ");
+    printf(argv[0]); // What! You never heard of %s?
+    printf("\n");
+    return 0;
+  }
+#+end_src
+
+It just prints the name of our program, the compiler warns it may be insecure but surely not?
+#+begin_src 
+  warning: format string is not a string literal (potentially insecure)
+  printf(argv[0]); // What! You never heard of %s?
+         ^~~~~~~
+#+end_src
+
+* Look I don't come up with the naming conventions
+What happens if we name our program something silly... like ~%08x-%08x-%08x-%08x~
+
+#+begin_src
+$ ./%08x-%08x-%08x-%08x 
+This program is called: ./000120a8-00000000-118a0041-4f6d0188
+#+end_src
+
+Well that's not right... what on earth is going on?
+- The answer is that ~printf~ is assuming you know what you're doing.
+- It doesn't know that the arguments weren't passed, and is assuming you know what you're doing and will put the correct values in to where it is expecting them.
+- This gives us a mechanism for dumping whats on the stack (and potentially registers) and leaking information.
+
+* It's a good job the ~printf~ functions just print stuff, right?
+
+No writing here!
+- So its not going to lead to arbitrary code execution!
+- Right?
+- /...right...?/
+
+* Tabular output
+
+Say you want to print an address book on an old teletype and you're too clever for your own good.
+
+Something like:
+
+#+begin_src
+  Joseph Hallett Office 3.36
+                 Merchant Venturers Building
+                 Opposite the stairs
+
+  Sana Belguith Just down the corridor from 3.36
+                Also Merchant Venturers Building
+                Near IT
+#+end_src
+
+How do you ensure that the addresses are aligned?
+- A sensible person would use `strlen` after printing the name.
+- But an efficient programmer, on the other hand...
+
+* ...But an efficient programmer
+
+#+begin_src C
+  unsigned int offset;
+  printf("%s%n%s\n", name, &offset, address[0]);
+  while(++address) {
+    for (int i = 0; i < offset; i++)
+      putchar(' ');
+    printf(" %s\n", address);
+  }
+#+end_src
+
+Saves a whole single call to ~strlen~!
+- What a wonderful optimization!
+- Whole nanoseconds of time eliminated!
+
+* %n
+
+If you dive into the bowels of your C programmers manual in ~man 3
+printf~ you'll find this beauty when it describes all the format
+specifiers:
+
+#+begin_quote
+*n*
+
+The number of characters written so far is stored into the integer
+indicated by the ~int *~ (or variant) pointer argument. No argument is
+converted.  The format argument must be in write-protected memory if
+this specifier is used; see *SECURITY CONSIDERATIONS* below.
+#+end_quote
+
+Nothing worrying there eh!?
+
+* Security considerations?
+
+#+begin_quote
+~%n~ can be used to write arbitrary data to potentially
+carefully-selected addresses.  Programmers are therefore strongly
+advised to never pass untrusted strings as the format argument,
+as an attacker can put format specifiers in the string to mangle
+your stack, leading to a possible security hole.
+#+end_quote
+
+Good thing we're not going careful to select our addresses, and we know that nothing useful will /ever/ end up on the stack.
+- Especially not a return address!
+- Or anything else we might want to corrupt...
+
+
+* How do we fix this?
+
+So this stupidity is in the C library which means this behaviour is /standard/.
+- Worse than that, it's mandated by the standard which means if you want to have a standards-conformant compiler...
+
+Almost all systems have decided that a /truly/ standards compliant compiler isn't worth it.
+- Windows :: Does not implement ~%n~ for ~printf~.
+- OpenBSD :: Crashes your program and sends an email to the system admin telling them all about the sort of format flags you use.
+- MacOS :: Removed the  ~%n~ format specifier (1989s defences for 2021!).
+- Linux :: ...is standards compliant.
+
+Don't assume it is safe to ignore warnings!
+- ...and if when connecting your phone to a car or bluetooth speaker it calls it /Connected to 028ffee1!/... 
+
+* Smashing the stack for fun and profit
+
+A lot of this is covered in various papers.
+
+- From 1996 :: [[http://phrack.org/issues/49/1.html]]
+- From 2021 ::  [[http://phrack.org/issues/70/13.html]]
+
+We're going to spend a lab or two playing with these last two bugs
+- But I'm going to turn the defences off, so its easy and possible for you to hack like its 1999!
+- And then I'll turn them back on then once we've covered ROP and we'll start doing some state of the art stuff!
+
+* What we covered
+
+- An introduction to how faulty assumptions lead to three different types of classic software bugs.
+  - /Race conditions, buffer overflows, and format string vulnerabilities/.
+- Gave an overview of how to exploit them to get /privilege escalation/ and /arbitrary code execution/.
+- Gave an introduction about how to defend against them.
+
+** Next time
+- Labs to practice what we learned
+- Next lecture: heap overflows and (or everything you didn't want to know about how ~malloc~ works).
+
+* 
