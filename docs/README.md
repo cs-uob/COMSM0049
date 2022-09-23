@@ -38,7 +38,7 @@ Questions on the Teams channel should be your preferred course of action as ever
 
 | Week       | Lab                                      | Lecture                                                                                 | Homework |
 |------------|------------------------------------------|-----------------------------------------------------------------------------------------|--------------------------|
-| 1  (26/09) | [Lab 1: Assembly refresher](labs/1.html) | [Lecture 1: Interesting bugs and where to find them (*Joseph*)](lectures/1/slides.pdf)  | [Homework](extra/1.html) |
+| 1  (26/09) | [Lab 1: Assembly refresher](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/1.md) | [Lecture 1: Interesting bugs and where to find them (*Joseph*)](lectures/1/slides.pdf)  | [Homework](extra/1.html) |
 | 2  (03/10) | Lab 2: Format strings                    | Lecture 2: Heap overflows and the Malloc Maleficarum (*Joseph*)                         |                          |
 | 3  (10/10) | Lab 3: Stack smashing                    | Lecture 3: Return oriented programming; or arts and crafts with binary files (*Joseph*) |                          |
 | 4  (17/10) | Lab 4: ROP                               | Lecture 4: Fuzzing (*Sana*)                                                             |                          |
