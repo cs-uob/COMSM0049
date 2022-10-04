@@ -36,20 +36,20 @@ Questions on the Teams channel should be your preferred course of action as ever
 
 ## Course Structure
 
-| Week       | Lab                                      | Lecture                                                                                 | Homework |
-|------------|------------------------------------------|-----------------------------------------------------------------------------------------|--------------------------|
-| 1  (26/09) | [Lab 1: Assembly refresher](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/1.md) | [Lecture 1: Interesting bugs and where to find them (*Joseph*)](lectures/1/slides.pdf)  | [Homework](extra/1.html) |
-| 2  (03/10) | [Lab 2: Format strings](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/2.md) | Lecture 2: Heap overflows and the Malloc Maleficarum (*Joseph*)                         |                          |
-| 3  (10/10) | Lab 3: Stack smashing                    | Lecture 3: Return oriented programming; or arts and crafts with binary files (*Joseph*) |                          |
-| 4  (17/10) | Lab 4: ROP                               | Lecture 4: Fuzzing (*Sana*)                                                             |                          |
-| 5  (24/10) | Lab 5: Fuzzing                           | Lecture 5: Access control and Sandboxing (*Sana*)                                       |                          |
-|------------|------------------------------------------|-----------------------------------------------------------------------------------------|--------------------------|
-| 6  (07/11) | Lab 6: Sandboxing                        | Lecture 6: Rowhammer, Spectre and Meltdown (*Joseph*)                                   |                          |
-| 7  (14/11) | Lab 7: Access Control                    | Lecture 7: Hardware Security (*Sana*)                                                   |                          |
-| 8  (21/11) | Coursework                               | Coursework                                                                              |                          |
-| 9  (28/11) | Coursework                               | Coursework                                                                              |                          |
-| 10 (05/12) | Coursework                               | Coursework                                                                              |                          |
-| 11 (12/12) | Revision                                 | Revision                                                                                |                          |
+| Week       | Lab                                                                                         | Lecture                                                                                  | Homework                 |
+|------------|---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|--------------------------|
+| 1  (26/09) | [Lab 1: Assembly refresher](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/1.md) | [Lecture 1: Interesting bugs and where to find them (*Joseph*)](lectures/1/slides.pdf)   | [Homework](extra/1.html) |
+| 2  (03/10) | [Lab 2: Format strings](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/2.md)     | [Lecture 2: Heap overflows and the Malloc Maleficarum](lectures/2/slides.pdf) (*Joseph*) | [Homework](extra/2.html) |
+| 3  (10/10) | Lab 3: Stack smashing                                                                       | Lecture 3: Return oriented programming; or arts and crafts with binary files (*Joseph*)  |                          |
+| 4  (17/10) | Lab 4: ROP                                                                                  | Lecture 4: Fuzzing (*Sana*)                                                              |                          |
+| 5  (24/10) | Lab 5: Fuzzing                                                                              | Lecture 5: Access control and Sandboxing (*Sana*)                                        |                          |
+|------------|---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|--------------------------|
+| 6  (07/11) | Lab 6: Sandboxing                                                                           | Lecture 6: Rowhammer, Spectre and Meltdown (*Joseph*)                                    |                          |
+| 7  (14/11) | Lab 7: Access Control                                                                       | Lecture 7: Hardware Security (*Sana*)                                                    |                          |
+| 8  (21/11) | Coursework                                                                                  | Coursework                                                                               |                          |
+| 9  (28/11) | Coursework                                                                                  | Coursework                                                                               |                          |
+| 10 (05/12) | Coursework                                                                                  | Coursework                                                                               |                          |
+| 11 (12/12) | Revision                                                                                    | Revision                                                                                 |                          |
 
 As per appropriate for a master-level unit, students are expected to work independently outside of lectures and labs.
 Hence, reading materials and exercises are provided alongside labs and lectures.
