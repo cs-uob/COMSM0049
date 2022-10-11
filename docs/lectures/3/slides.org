@@ -1,0 +1,995 @@
+#+title: Return Oriented Programming
+#+author: Joseph Hallett
+#+institute: University of Bristol
+#+startup: beamer
+#+options: toc:nil
+#+latex_class_options: [9pt,aspectratio=169]
+#+beamer_header: \titlegraphic{\includegraphics[height=0.5cm]{bristol.png}}
+#+beamer_font_theme: [stillsansseriflarge]serif
+#+latex_header: \usepackage{fontspec}
+#+latex_header_extra: \setsansfont{Archivo Expanded}
+#+latex_header_extra: \setmainfont{Lora}
+#+latex_header_extra: \setmonofont{PragmataPro Liga}
+#+latex_header_extra: \definecolor{UOBred}{rgb}{0.6706, 0.1216, 0.1765}
+#+latex_header_extra: \setbeamercolor{palette primary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette secondary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette tertiary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette quaternary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
+#+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
+
+* The plan
+
+- Quick recap as to how C functions work
+- Quick recap of the /smashing the stack for fun and profit/ attack
+- How we fixed it
+- How we broke it again
+- How we're going to try and fix it
+
+* Stack smashing
+
+Lets suppose we have this function:
+
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+What does the stack look like as we call it?
+
+* Function call first
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+No arguments to this function to make things easy!
+- (Though if we did then we'd look up the calling convention: stack for 32bit cdecl, registers then stack for AMD64; somnething else on Windows/ARM)
+First we =call= it by saving where we were and sticking it on the stack (=SIP=), and loading the address of =greet()= into =rip=.
+
+#+begin_src
+  top of stack                      bottom of stack
+                                             esp
+                                             v
+  -------------------------------------------------
+                                             |SIP |
+  -------------------------------------------------
+#+end_src
+
+Next we need to create a new stack frame:
+- How do we do that and how much space do we need?
+- How much space do we need?
+
+* Stack frame next
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+We need to save the previous stack frame so we need enough space for the current base pointer, plus space for the 4 =chars= of the name.
+
+#+begin_src
+  top of stack                      bottom of stack
+                                esp     ebp
+                                v       v
+  -------------------------------------------------
+                                | | | | |SBP |SIP |
+  -------------------------------------------------
+                                ^
+                                name
+#+end_src
+
+Then we need to make those three function calls to =printf()=, =gets()= and =printf()=...
+
+* First =printf()=!
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+#+begin_src
+  top of stack                      bottom of stack
+         esp     ebp
+         v       v
+  -------------------------------------------------
+              ...|SBP |SIP |    | | | | |SBP |SIP |
+  ---------------------|----|----------------------
+                       |    |   ^
+                       |    |   name
+                       |    `-> "Who should I greet? "
+                       `-> line 2 of greet()
+#+end_src
+
+* Next =gets()=!
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+#+begin_src
+  top of stack                      bottom of stack
+       esp       ebp
+       v         v
+  -------------------------------------------------
+              ...|SBP |SIP |    | | | | |SBP |SIP |
+  ---------------------|----|----------------------
+                       |    |   ^
+                       |    |   |name
+                       |    `---'
+                       `-> line 3 of greet()
+#+end_src
+
+* Finally =printf()= again!
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+#+begin_src
+  top of stack                      bottom of stack
+       esp  ebp
+       v    v
+  -------------------------------------------------
+         ...|SBP |SIP |    |    |J|o|0| |SBP |SIP |
+  ----------------|----|----|----------------------
+                  |    |    |   ^
+                  |    |    |   |name
+                  |    |    `---'
+                  |    `-> "Hello %s!\n"    
+                  `-> line 4 of greet()
+#+end_src
+
+At which point we print /"Hello Jo!"/...
+
+* We're all done now...
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+All done now...
+
+#+begin_src
+  top of stack                      bottom of stack
+                                esp     ebp
+                                v       v
+  -------------------------------------------------
+                                |J|o|0| |SBP |SIP |
+  -------------------------------------------------
+                                ^
+                                name
+#+end_src
+
+* Move the stack pointer back down
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+Leave any leftover data in the stack /wilderness/ by moving the stack pointer back up.
+
+#+begin_src
+  top of stack                      bottom of stack
+                                        ebp
+                                        v
+  -------------------------------------------------
+                                |J|o|0| |SBP |SIP |
+  -------------------------------------------------
+                                        ^
+                                        esp
+#+end_src
+
+* Restore the previous stack frame...
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+Pop the stack into the base pointer...
+
+#+begin_src
+  top of stack                      bottom of stack
+                                                            ebp
+                                                            v
+  -------------------------------------------------
+                                |J|o|0| |SBP |SIP |...
+  -------------------------------------------------
+                                             ^
+                                             esp
+#+end_src
+
+* Restore the instruction pointer
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+Pop the stack into the instruction pointer
+
+#+begin_src
+  top of stack                      bottom of stack
+                                                            ebp
+                                                            v
+  -------------------------------------------------
+                                |J|o|0| |SBP |SIP |...
+  -------------------------------------------------
+                                                  ^
+                                                  esp
+#+end_src
+
+* What happens when you actually run this?
+#+begin_src shell
+  $ make test
+  cc test.c -o test
+
+  $ ./test
+  warning: this program uses gets(), which is unsafe.
+  Who should I greet? Jo
+  Hello Jo!
+#+end_src
+
+No warning at compile time but one at /runtime/
+
+* Smashing the stack
+
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+If we overflow the buffer...
+
+#+begin_src
+  top of stack                      bottom of stack
+       esp  ebp
+       v    v
+  -------------------------------------------------
+         ...|SBP |SIP |    |    |D|r| |S|ana |Belg|uith0
+  ----------------|----|----|----------------------
+                  |    |    |   ^
+                  |    |    |   |name
+                  |    |    `---'
+                  |    `-> "Hello %s!\n"    
+                  `-> line 4 of greet()
+#+end_src     
+
+* Then we crash
+#+begin_src C
+  void greet() {
+    char name[4];
+    printf("Who should I greet? ");
+    gets(name);
+    printf("Hello %s!\n", name);
+  }
+#+end_src
+
+Then when we return we try and jump to =Belg= (=0x6c674265=)... and we'll promptly crash.
+
+#+begin_src
+  top of stack                      bottom of stack
+                                                            ebp
+                                                            v
+  -------------------------------------------------
+                                |D|r| |S|ana |Belg|...
+  -------------------------------------------------
+                                                  ^
+                                                  esp
+#+end_src
+
+* Shellcoding
+
+But stack addresses are (somewhat) easily to guess...
+- If we arrange for there to be program code where we're returning to...
+- We can trick the program into running it for us.
+
+#+begin_src
+  top of stack                      bottom of stack
+                                                            ebp
+                                                            v
+  -------------------------------------------------
+         |909090exec("/bin//sh")exit(0);|SBP |*    |...
+  ---------^----------------------------------|----
+           |                                  |   ^
+           `----------------------------------'   esp
+#+end_src
+
+(Get on with lab 3!)
+
+* So how do we respond to this?
+Two /main/ issues:
+
+** ASLR, or why is it so easy to guess where the stack is?
+
+If we make it random, then it should be harder to guess /exactly/ where things are
+- But randomness is /crazily/ expensive
+- Randomising things costs time at program startup
+- 32-bit x86 has limited numbers of bits for doing randomness
+
+** W\oplus{}X, or why are we running code off of the stack?
+
+Program code shouldn't exist on the stack: why are we running from there?
+- Can implement the protection in hardware (fast!)
+
+* W\oplus{}X
+
+For each page of program memory, add an extra bit.
+Memory can be marked as either /writeable/ or /executable/.
+
+- Writable :: you're allowed to change the value of memory
+- Executable :: you're allowed to run code from this memory
+
+Program loading will be slower (2 extra systemcalls) but  /overall/ good improvement to security
+- Mark code region as writable with =mprotect=
+- Load code into memory
+- Mark code as executable with =mprotect=
+
+** There's one class of programs that's going to hate this!
+
+* JITting compilers
+
+JavaScript and Java both compile programs on the fly a few instructions at a time
+- Makes for really fast VMs...
+- But two extra syscalls per JIT'd block means /significant/ overhead
+
+(So still mechanisms to turn it off...)
+
+\vfill
+\footnotesize
+/(Also makes polymorphic malware harder to write for you virus lovers...)/
+
+* But why do we need to load code anyway?
+
+=$ man 3 system=
+
+#+begin_src
+SYSTEM(3)                  Library Functions Manual                  SYSTEM(3)
+
+NAME
+     system - pass a command to the shell
+
+SYNOPSIS
+     #include <stdlib.h>
+
+     int
+     system(const char *string);
+
+DESCRIPTION
+     The system() function hands the argument string to the command
+     interpreter sh(1).  The calling process waits for the shell to finish
+     executing the command, ignoring SIGINT and SIGQUIT, and blocking SIGCHLD.
+#+end_src
+
+* Return to libc
+** Solar Designer strikes again!
+
+The =system()= function does everything an =execve= shellcode does
+- And its already loaded into memory and marked executable
+
+  In 32bit cdecl calling conventions arguments to functions go via the stack
+  - Which we control with an overflow
+
+* So lets do this!
+Instead of this:
+#+begin_src
+  top of stack                      bottom of stack
+                                                            ebp
+                                                            v
+  -------------------------------------------------
+         |909090exec("/bin//sh")exit(0);|SBP |*    |...
+  ---------^----------------------------------|----
+           |                                  |   ^
+           `----------------------------------'   esp
+  
+#+end_src
+
+Lets do this:
+#+begin_src
+  top of stack                      bottom of stack
+                   libc has a handy... "/bin/sh" <--.                 ebp
+                                                    |                 v
+  --------------------------------------------------|----
+         |AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA|SBP |*    |*   |...
+  --------------------------------------------|----------
+                                              |   ^
+                               system() <-----'   esp
+#+end_src
+
+* It's an art
+
+Solar Designer described the exploit in a mailing list post to the /Bugtraq/ list in 1997.
+It ends with...
+
+#+begin_quote
+That's all for now.
+
+I hope I managed to prove that exploiting buffer overflows should be an art.
+
+Signed,
+
+Solar Designer
+#+end_quote
+
+* So how are we going to deal with this?
+
+Return to libc works because:
+- Library functions are in predictible locations
+- Arguments go via the stack which is corruptable
+
+** How are we going to fix this?
+- ASLR :: no really, we do need to randomise stuff... but 32bit computers really just don't have enough bits...
+- Arguments :: Window's fastcall convention passes things via registers first and then the stack. So do syscalls.  Maybe time to retire it?
+
+Both these fixes mean fundamentally changing how the OS and CPU work which we normally try and avoid...
+
+* Welcome to 64bit
+** Advert                                                             :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.49
+:BEAMER_opt: [t]
+:END:
+[[./64bit.jpg]]
+
+** Description                                                        :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.49
+:BEAMER_opt: [t]
+:END:
+New 64bit architecture!  Everyone upgrade!
+- This was what I had in my iBook when I first came to uni
+  - (back in 2006 =:-(=)
+
+No more passing on the stack (by default)!
+
+Loads of bits for randomisation!
+
+*** We're good now right...?
+
+* Randomness is still expensive though
+
+#+begin_src shell
+  nm -D /usr/lib/libc.so.96.2 | wc -l
+#+end_src
+
+#+RESULTS:
+1679
+
+That's a lot of symbols to randomise!
+And a lot of entropy to spend at program link time...
+
+(Sana will cover ASLR implementation in a few weeks...)
+
+* Quick ASLR
+
+So instead of loading /each function/ into a random location lets load /each library/ at a random offset!
+- One random number per library instead of 1679.
+- You can just =mmap()= in the whole library which is /fast/ 
+- You still don't know where the functions are /precisely/
+
+But it does mean that if a single pointer is leaked from that library, then /all/ the pointers are leaked
+- You might not know where =fprintf= and =fscanf= are in memory...
+- But you know there are precisely =b0= bytes between them
+#+begin_src
+$ nm -nD /usr/lib/libc.so.96.2 
+...
+0006a900 T fprintf
+0006a9b0 T sscanf
+...
+#+end_src
+
+* Return to libc 2.0
+
+Now to use /return to libc/ our attack chain is a bit more complex
+
+1. Find a buffer overflow
+2. Break ASLR by leaking a pointer to a library
+3. Return to =main= to restart the program without re-randomising
+4. Re-exploit buffer overflow to jump to the library function you now know the address of
+
+Its hardly arbitrary code execution though... can we do better?
+
+* And you thought assembly was bad...
+
+** Code                                                               :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.79
+:BEAMER_opt: [t]
+:END:
+#+begin_src 
+  ++++++++++[>+++++++>++++++++++>+++>+<<<<-]
+  >++.>+.+++++++..+++.>++.<<+++++++++++++++.
+  >.+++.------.--------.>+.>.
+#+end_src
+
+This is /brainfuck/.  It assumes memory is a big tape of /cells/.
+- =+= :: increments a cells value
+- =-= :: decrements a cells value
+- =>= :: moves to the next cell
+- =<= :: moves to the previous cell
+- =[= and =]= :: define a loop until the cell at the end is zero
+- =.= :: outputs the current cell value
+- =,= :: reads an input to the current cell
+
+It is /provably/ Turing complete (given an infinite tape):
+- So /any/ program that can be written...
+- /Could/ be written in brainfuck
+
+** Picture                                                            :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.2
+:BEAMER_opt: [t]
+:END:
+[[./turing.jpg]]
+[[./church.jpg]]
+
+* Good films start at the end
+
+** Explanation                                                       :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.49
+:BEAMER_opt: [t]
+:END:
+Why do we need to start a function at the beginning?
+- Functions do a bunch of interesting stuff then =ret=
+
+*** Return oriented programming
+A /gadget/ is the stuff immediately before the =ret=
+- Typically 1 or 2 instructions
+- If we could construct a brainfuck compiler out of just these gadgets...
+  - Then we could encode /any/ program as a sequence of returns through the gadgets...
+  - ...by dumping /multiple/ return addresses on the stack with our overflow
+
+** Picture                                                            :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.49
+:BEAMER_opt: [t]
+:END:
+
+#+begin_src asm
+  ...
+  xor rax, rax
+  ret
+
+  ...
+  inc rax
+  ret
+  
+  ...
+  inc rbx
+  ret
+  
+  ...
+  pop rbx
+  ret
+
+  ...
+  syscall
+  ret
+#+end_src
+
+* Oh no...
+
+** Explanation                                                       :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.49
+:BEAMER_opt: [t]
+:END:
+
+Lets pretend we want to call =exit(0)= to crash a program early (but cleanly).
+- =exit= is syscall number 6 
+- Calling convention is syscall in =rax=, return code in =rbx=.
+
+*** Can we use these gadgets to make this syscall?
+
+** Picture                                                            :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.49
+:BEAMER_opt: [t]
+:END:
+
+#+begin_src asm
+    ...
+  xor_a:       xor rax, rax
+               ret
+           
+               ...
+  inc_a:       inc rax
+               ret
+
+  inc_b:       ...
+               inc rbx
+               ret
+           
+               ...
+  pop_b:       pop rbx
+               ret
+           
+               ...
+  sys:         syscall
+               ret
+#+end_src
+
+* Oh no, oh no...
+
+** Explanation                                                       :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.49
+:BEAMER_opt: [t]
+:END:
+
+Lets pretend we want to call =exit(0)= to crash a program early (but cleanly).
+- =exit= is syscall number 6 
+- Calling convention is syscall in =rax=, return code in =rbx=.
+
+*** Can we use these gadgets to make this syscall?
+
+Yes! We'd just have to return back through 10 instructions!
+** Picture                                                            :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.49
+:BEAMER_opt: [t]
+:END:
+
+#+begin_src asm
+  xor_a                   ; rax = 0, rbx = ?
+  pop_b                   ; rax = 0, rbx = 0xffffffff
+  0xffffffff
+  inc_b                   ; rax = 0; rbx = 0
+  inc_a                   ; rax = 1, rbx = 0
+  inc_a                   ; rax = 2, rbx = 0
+  inc_a                   ; rax = 3, rbx = 0
+  inc_a                   ; rax = 4, rbx = 0
+  inc_a                   ; rax = 5, rbx = 0
+  inc_a                   ; rax = 6, rbx = 0
+  sys                     ; exit(0)
+#+end_src
+
+* Are we really doing this? (yes)
+
+Lets start with an overflow onto a return address, like we've been doing all week.
+
+#+begin_src
+ <- overflown buffer 
+  ----------------------
+...AAA|sip |
+  ----------------------
+#+end_src
+* Are we really doing this? (setup)
+
+Lets stick our ROP chain on the stack
+
+#+begin_src
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -----^-------------------------------------------------------------------
+       rsp
+#+end_src
+
+And lets start returning!
+* Are we really doing this? (1)
+
+#+begin_src
+rip -> xor rax, rax                rax: ?
+       ret                         rbx: ?
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -----------^-------------------------------------------------------------
+             rsp
+#+end_src
+
+* Are we really doing this? (2)
+
+#+begin_src
+       xor rax, rax                rax: 0
+rip -> ret                         rbx: ?
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -----------^-------------------------------------------------------------
+             rsp
+#+end_src
+
+* Are we really doing this? (3)
+
+#+begin_src
+rip -> pop rbx                     rax: 0
+       ret                         rbx: ?
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -----------------^-------------------------------------------------------
+                   rsp
+#+end_src
+
+* Are we really doing this? (4)
+
+#+begin_src
+       pop rbx                     rax: 0
+rip -> ret                         rbx: FFFFFFFF
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------^-----------------------------------------------
+                           rsp
+#+end_src
+
+* Are we really doing this? (5)
+
+#+begin_src
+rip -> inc rbx                     rax: 0
+       ret                         rbx: FFFFFFFF
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------^-----------------------------------------
+                                 rsp
+#+end_src
+
+* Are we really doing this? (6)
+
+#+begin_src
+       inc rbx                     rax: 0
+rip -> ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------^-----------------------------------------
+                                 rsp
+#+end_src
+* Are we really doing this? (7)
+
+#+begin_src
+rip -> inc rax                     rax: 0
+       ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------^-----------------------------------
+                                       rsp
+#+end_src
+* Are we really doing this? (8)
+
+#+begin_src
+       inc rax                     rax: 1
+rip -> ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------^-----------------------------------
+                                       rsp
+#+end_src
+* Are we really doing this? (9)
+
+#+begin_src
+rip -> inc rax                     rax: 1
+       ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------^-----------------------------
+                                             rsp
+#+end_src
+* Are we really doing this? (10)
+
+#+begin_src
+       inc rax                     rax: 2
+rip -> ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------^-----------------------------
+                                             rsp
+#+end_src
+* Are we really doing this? (11)
+
+#+begin_src
+rip -> inc rax                     rax: 2
+       ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------------^-----------------------
+                                                   rsp
+#+end_src
+* Are we really doing this? (12)
+
+#+begin_src
+       inc rax                     rax: 3
+rip -> ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------------^-----------------------
+                                                   rsp
+#+end_src
+* Are we really doing this? (13)
+
+#+begin_src
+rip -> inc rax                     rax: 3
+       ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------------------^-----------------
+                                                         rsp
+#+end_src
+* Are we really doing this? (14)
+
+#+begin_src
+       inc rax                     rax: 4
+rip -> ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------------------^-----------------
+                                                         rsp
+#+end_src
+* Are we really doing this? (15)
+
+#+begin_src
+rip -> inc rax                     rax: 4
+       ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------------------------^-----------
+                                                               rsp
+#+end_src
+* Are we really doing this? (16)
+
+#+begin_src
+       inc rax                     rax: 5
+rip -> ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------------------------^-----------
+                                                               rsp
+#+end_src
+* Are we really doing this? (17)
+
+#+begin_src
+rip -> inc rax                     rax: 5
+       ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------------------------------^-----
+                                                                     rsp
+#+end_src
+* Are we really doing this? (18)
+
+#+begin_src
+       inc rax                     rax: 6
+rip -> ret                         rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  -------------------------------------------------------------------^-----
+                                                                     rsp
+#+end_src
+* Are we really doing this? (19)
+
+#+begin_src
+rip -> syscall                     rax: 6
+                                   rbx: 0
+ 
+ <- overflown buffer 
+  -------------------------------------------------------------------------
+...AAA|xor_a|pop_b|FFFFFFF|inc_b|inc_a|inc_a|inc_a|inc_a|inc_a|inc_a|sys |...
+  ------------------------------------------------------------------------^
+                                                                          rsp
+#+end_src
+
+Woohoo! =exit(0)= is called!
+
+* Return Oriented Programming
+
+We just wrote an entire program by writing our shellcode as a path through pre-existing code in our program
+- Arbitrary code execution purely through reuse!
+- Most sufficiently large programs will contain enough usable gadgets that arbitrary code can be loaded
+
+This is /(pretty much)/ the state of the art for arbitrary code execution via a buffer overflow
+- (/ish.../ there's JOP too which is similar but for case statements)
+
+We're going to be trying this /in practice/ for Mondays lab =:-D=
+
+* How do we stop this?
+* How do we stop this?
+We can't trivially.
+
+ROP falls out from fundamental decisions about how computers were architected that we made back in the 60s
+- Von Neumann vs Harvard architectures
+
+There are techniques that we can use to make it harder though
+- Shadow stacks :: keep a second stack for stack consistency checking and have the kernel kill the program if it ever gets out of sync
+- Full ASLR :: really randomise everything
+- Instruction Pointer Integrity Protections :: on return check that our instruction pointer goes only to whitelisted addresses (or is aligned)
+
+* How do we stop this?
+
+...maybe we should just fix the buffer overflow?
+- Rust/Zig!
+- Not using unsafe languages
+
+  \vfill
+/(But wheres the fun in that?)/
+
+* Recap
+
+We went from:
+- buffer overflows in the 90s...
+- ...up to ROP in the 20s
+
+All that CS theory you learned in first year is actually useful for something.
+
+There are worse ways of programming than assembly language!
+
+** Next time
+- In the lab :: ROP
+- Lectures :: Sana's taking over for a few weeks!
+
+(I'll be back once more to talk about why computer hardware is fundamentally broken)
