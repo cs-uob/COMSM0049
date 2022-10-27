@@ -1,0 +1,345 @@
+#+title: Why software engineers don't get bonuses
+#+author: Joseph Hallett
+#+institute: University of Bristol
+#+startup: beamer
+#+options: toc:nil
+#+latex_class_options: [9pt,aspectratio=169]
+#+beamer_header: \titlegraphic{\includegraphics[height=0.5cm]{bristol.png}}
+#+beamer_font_theme: [stillsansseriflarge]serif
+#+latex_header: \usepackage{fontspec}
+#+latex_header_extra: \setsansfont{Archivo Expanded}
+#+latex_header_extra: \setmainfont{Lora}
+#+latex_header_extra: \setmonofont{PragmataPro Liga}
+#+latex_header_extra: \definecolor{UOBred}{rgb}{0.6706, 0.1216, 0.1765}
+#+latex_header_extra: \setbeamercolor{palette primary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette secondary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette tertiary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette quaternary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
+#+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
+
+* Abstraction, abstraction...
+
+In computer science we like to pretend that it's all digital...
+- Perfect 1s and 0s.
+- Computers that work exactly how the specifications say.
+- Hardware can be (largely) ignored.
+- Lower level details... /that's for electrical engineers not us!/
+
+** This doesn't always work out.
+
+* Money, money, money...
+
+It mostly works out though...
+- But this whole unit is about what happens when computers start doing weird things.
+
+** Electrical engineers, and computer architects make mistakes
+Cost of fixing hardware is big
+- You cannot trivially fix a silicon wafer
+- You cannot recall old hardware and change the circuits
+  
+Cost of fixing software is cheap
+- It's just code!
+
+** When there is a bug... its the software engineers who fix it
+Consequently we have to clean up after their messes
+- So software is always running late
+- So we don't get a bonus =:-(=
+
+  \vfill
+  \footnotesize
+(or so said my first boss)
+
+* Plan
+
+In this lecture we'll cover two ways hardware is broken.
+- Rowhammer and DRAM
+- Meltdown/Spectre and CPUs
+
+We'll also cover how software works around it.
+
+* DRAM glorious, DRAM!
+
+Memory! Used to store all the things the computer is thinking about
+that we can't fit in a register!
+- Implemented using a /capacitor/ and a /transistor/ per bit
+- /Ganged/ (arranged) into long rows (~8k bits per row)
+- Placed into /banks/ of ganged rows
+
+When we want to read a bit of memory:
+- We find the row it is in.
+- Activate the row by letting the capacitors discharge
+- Which copies the row into an active memory buffer
+
+DRAM needs to be /refreshed/ so the capactiors don't lose their charge over time
+- Roughly every 64ms for modern hardware
+
+* Electronic Engineering is messy
+
+** Capacitors leak charge
+
+** Current in wires induces current in other nearby wires
+
+** The 1s and 0s aren't charged or uncharged capacitors
+- Its whether a capacitor is currently discharging more or less than a
+  threshhold voltage
+
+But this is all fine because electronic components are large!
+
+* Or they were...
+
+- As memory capacity has /increased/...
+- The physical dimensions of memory has got /smaller/.
+
+  \vfill
+  #+begin_quote
+  ``The +Dwarves+ *Electrical engineers* tell no tale; but even as +mithril+
+  *memory density* was the foundation of their wealth, so also it was
+  their destruction: they delved too greedily and too deep, and
+  disturbed that from which they fled, +Durin's Bane+ *Rowhammer*."
+
+  --- *Gandalf the Greyhat*
+  #+end_quote
+
+* Flipping bits
+
+** Paper                                                             :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.49
+:END:
+
+[[./flippingbits.png]]
+
+** Description                                                       :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.49
+:END:
+
+Rowhammering is a well known bug in DRAM chips since ~2010
+
+*** If you repeatedly charge and discharge a row in DRAM really quickly it can cause errors in nearby rows
+Manufacturers all knew about it, but didn't really bother to document it.
+- Seen as a /reliability/ issue, not a /security/ issue
+- Cached memory largely fixes it.
+
+Several papers discuss it and explore it
+- Almost all RAM is vulnerable to it (to some extent)
+- /Maybe/ you could do something malicious theoretically?
+- Still treated as a /reliability/ issue
+
+* Flipping bits, in practice
+
+** Code                                                              :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.49
+:END:
+
+#+begin_src asm
+  code1a:
+          mov eax, [X]
+          mov ebx, [Y]
+          clrflush [X]
+          clrflush [Y]
+          mfence
+          jmp code1a
+#+end_src
+
+** Explanation                                                       :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.49
+:END:
+
+ Find two memory addresses X and Y that are in separate rows of RAM and:
+1. Load =*X= into the active buffer
+2. Load =*Y= into the active buffer
+3. Kick =*X= out of the cache (so next read goes directly to RAM)
+4. Kick =*Y= out of the cache (so next read goes directly to RAM)
+5. Ensure that the cache is really gone
+6. Repeat (as fast as you can)
+
+* Token ASCII Art Diagram
+
+** Diagram                                                          :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.2
+:END:
+#+begin_src text
+     ⋮    |      ! |
+          +--------+
+  Row n+0 |        <- X
+          +--------+
+  Row n+1 | !      |
+          +--------+
+  Row n+2 |        | 
+          +--------+
+  Row n+3 |      ! | 
+          +--------+
+  Row n+4 |        <- Y
+          +--------+
+     ⋮    |    !   |
+        
+          +--------+
+  Active  |X/Y/X/Y/|
+          +--------+
+#+end_src
+
+** Explanation                                                       :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.79
+:END:
+
+If you perform the rowhammer with the above RAM layout
+- /Eventually/ you'll get errors in the adjacent rows (the =!='s)
+- This is called /single-sided/ Row Hammering 
+
+* Double Sided Rowhammering
+
+** Diagram                                                          :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.2
+:END:
+#+begin_src text
+     ⋮    |        |
+          +--------+
+  Row n+0 |      ! |
+          +--------+
+  Row n+1 |        <- X
+          +--------+
+  Row n+2 |!!!!!!!!| 
+          +--------+
+  Row n+3 |        <- Y 
+          +--------+
+  Row n+4 |   !    |   
+          +--------+
+     ⋮    |        |
+        
+          +--------+
+  Active  |X/Y/X/Y/|
+          +--------+
+#+end_src
+
+** Explanation                                                       :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.79
+:END:
+
+If you select =X= and =Y= so there is excactly 1 row between them
+- /Eventually/ you'll get errors in the adjacent rows (the =!='s)
+- /Quickly/ you'll get errors in the in-between row
+- This is called /double-sided/ Row Hammering 
+
+* So what?
+
+So we can introduce (typically) single bit errors in RAM... so what?
+
+** Mark Seaborne and Halvar Flake (and others) continue exploring
+- Discover double-sided variant of Rowhammering
+- Find that its not just all RAM which is susceptible to this, but that its /all rows/ in /all ram/ (between 30--100%... but improvements later make it 100%).
+
+They discover the bit flips are consistent
+- Same bits flip every time when you Rowhammer the same rows
+
+And even consistent between the same RAM products
+- If Alice and Bob have the same make RAM from the same manufacturer
+- Then if they Rowhammer the same rows the same bits will always flip
+
+* This seems bad, but so what?
+- You can violate the integrity of RAM, but is that all?
+- How could you possibly use this as part of an attack to get arbitrary code execution?
+
+* NaCl Sandbox
+
+/Privileged/ sandbox for running /native code/ from a web browser safely.
+- Checks if the code is /safe/ (i.e. doesn't contain any weird syscalls or violate safety properties)
+- If so, it loads the chunks of instructions aligned on 32B boundaries
+
+#+begin_src asm
+          and eax, 0x000F                 ; Truncate address to 32 bits and mask to be 32-byte aligned
+          add rax, r15                    ; Add r15, the sandbox base address
+          jmp [rax]                       ; Jump to the loaded code snippet
+#+end_src
+
+\vfill
+** Can we use Rowhammer to escape the sandbox?
+
+\footnotesize
+(I mean obviously we can, but its more fun if you work out how to do
+it rather than me telling you...)
+
+
+* Variadic Instruction Sets
+
+X86 is a dense instruction set
+- Different instructions have different lengths
+- Some have multiple length
+
+#+begin_src text
+  20ea0: 48 b8 0f 05 eb 0c f4 f4 f4 f4    movabs rax, 0xf4f4f4ff40ceb050f
+  20ea2:       0f 05                      syscall
+  20ea4:             eb 0c                jmp 0xe
+#+end_src
+
+** Last chance to guess the exploit?
+
+* Escaping NaCL
+
+Code section is readable, so lets try and Rowhammer that =and eax, 0x000F=!
+- Conveniently the code section is also readable (but not writable) by the loaded process so we can tell if it has worked
+
+So the attack:
+1. Load a sequence of safe code that happens to be /unsafe/ if you were to run it with a 1-bit offset
+2. Rowhammer the loading code so that NaCl checks the code with no-offset, but runs it with an offset
+3. Probably the program is gonna crash 'cos the loading code isn't valid
+4. Or we Rowhammer the Kernel's memory and crash the entire computer
+5. ...or it works?
+
+** Luckily most unprivileged users are allowed to run crashy programs millions of times without batting an eyelid
+See this course.
+
+* Whoops!
+
+Mark Seaborn and Halvar Flake have managed to Rowhammer their way to aribtrary code execution.
+- Guess it was security bug after all... =B-)=
+- Also publish a similar but fiddlier Linux root privilege escallation attack using Rowhammer
+
+** Short term:
+- =clflush= is banned in NaCl loaded code
+- =clflush= is banned from non-root code (sometimes)
+
+* Those aren't sustainable solutions...  
+Buy better RAM?
+- But how do you tell?
+
+...with error correction codes (ECC)?
+- Expensive though, and slower /(worth it for a server, not for a laptop...)/
+- Still a potential denial of service/vulnerability if you can corrupt multiple bits at once with Rowhammer
+
+...which refreshes faster?
+- If you can't Rowhammer faster than the refresh speed the attack doesn't work
+- But this slows down the /whole/ computer.
+
+...and which refreshes neigbouring rows more often?
+- More recent DRAM standards do this...
+- Again, slows things down.
+
+* Are we depressed yet?
+
+Have you considered taking up pottery?
+- Mud is not susceptible to Rowhammer or any of the techniques covered in this course
+- Mud will not make you sad (except when your bowls collapse)
+- You can make bowls and mugs and /super cute/ pots!
+
+\vfill
+** Honestly, I cannot recommend it highly enough.
+
+* Buckle up...
+[[./brandnames.png]]
+  
