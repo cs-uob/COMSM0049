@@ -1,4 +1,4 @@
-#+title: Why software engineers don't get bonuses
+#+title: Why software engineers don't get bonuses\newline{}(or Rowhammer, Meltdown and Spectre)
 #+author: Joseph Hallett
 #+institute: University of Bristol
 #+startup: beamer
@@ -274,7 +274,6 @@ And even consistent between the same RAM products
 (I mean obviously we can, but its more fun if you work out how to do
 it rather than me telling you...)
 
-
 * Variadic Instruction Sets
 
 X86 is a dense instruction set
@@ -343,3 +342,233 @@ Have you considered taking up pottery?
 * Buckle up...
 [[./brandnames.png]]
   
+* CPU Pipelines
+
+#+begin_src dot :file pipelines.png :exports results 
+  digraph pipe {
+    graph [rankdir=LR splines=true fontname="Lora"];
+    node [fontname="Lora"];
+    
+
+    node [shape=box];
+    subgraph clusterCPU {
+      label="CPU";
+      Fetch -> Decode -> Execute -> Writeback;
+    }
+  }
+#+end_src
+
+#+RESULTS:
+[[file:pipelines.png]]
+
+** In modern CPUs instructions take different times to complete...
+
+So we /pipeline/ them
+- As one instruction is /executing.../
+- The next can be being /decoded/...
+- And the next can be being /fetched/.
+
+Significant performance gains!
+
+* Branch Prediction
+
+#+begin_src C++
+  unsigned long factorial(unsigned long n) {
+    unsigned long result = 1;
+
+    while (n) [[likely]]
+      result *= n--;
+
+    return result
+  }
+#+end_src
+
+Conditionals can cause a problem however...
+- Can't load fetch the next multiply until we know if n > 0
+- So pipeline stalls
+
+** Solution
+ 
+/Speculate/ that the loop is /likely/ to be taken...
+- CPU assumes it will be and fetches anyway
+- If the assumption is wrong the CPU pipeline will have to be flushed before writeback...
+- ...but that should only happen once per call
+- Speedup from removing the pipeline stall is bigger than the single pipeline flush
+
+More performance gains!
+- Especially with /Symmetric Multi-Threading/.
+
+* Watch the pointer closely...
+
+Suppose we have two arrays: =array1= and =array2=:
+- What happens if we run this code?
+
+#+begin_src C
+  if (x < array1_size) [[likely]]
+    y = array2[array1[x]];
+#+end_src
+
+* Which array is the pointer under?
+
+=y= gets indexed by whatever is in =array[x]=
+
+What about if =x > array1_size=?
+#+begin_src C
+  if (x < array1_size) [[likely]]
+    y = array2[array1[x]];
+#+end_src
+
+* No, unfortunately that's a lemon...
+
+The =if= statement won't succeed...
+
+...but we /said/ it was likely to succeed so the next line will be speculatively executed anyway
+
+#+begin_src C
+  if (x < array1_size) [[likely]]
+    y = array2[array1[x]];
+#+end_src
+
+And that would segfault anyway...
+- And it would be mean to segfault on an instruction you never were going to execute.
+- So we don't... /even if/ we've speculatively executed it.
+
+As soon as the branch misprediction is detected start the /rollback/ process
+- Undo changes to registers
+- Reset exception flags
+- Cancel any memory writes
+
+** Jobs a good 'un, am I /write/ ?
+  
+* Just the writes?
+
+#+begin_src C
+  if (x < array1_size) [[likely]]
+    y = array2[array1[x]];
+#+end_src
+
+See the caches are a separate subsystem and managed by the MMU.
+- When the second line executes the page of memory containing =array2[array1[x]]= will be cached in preparation for the load into =y=
+- And an exception signalled...
+- That the CPU will tell the OS about when it hits writeback...
+- ...which will never actually happen because the =if= will turn out to be a branch misprediction 
+
+** Everything is still good right?
+
+* Oh dear...
+
+Suppose we guarantee that for every different value of =x= a different page of memory will be cached?
+
+#+begin_src C
+  if (x < array1_size) [[likely]]
+    y = array2[array1[x]*4096];
+#+end_src
+
+(and that the branch will ALWAYS be mispredicted by the CPU).
+
+* Oh dear, Oh dear...
+
+And then we were to time how long it took to access every page of memory...
+
+[[./pagetimes.png]]
+
+Anyone want to guess what the value at =array1[x]= was?
+- Which reading should have caused a segfault of...
+
+* Oh dear, Oh dear, Oh dear
+
+Suppose this attack also worked not just with C but via Javascript...
+
+#+begin_src js
+  if (index < simpleByteArray.length) {
+      index = simpleByteArray[index | 0];
+      index = (((index * 4096)|0) & (32*1024*1024-1))|0;
+      localJunk ^= probeTable[index|0]|0;
+  }
+#+end_src
+
+So you can leak a byte of memory... big deal?
+- But given a few hours you could leak /all/ of memory
+- On any system where you can host a webpage
+
+** Good job nothing useful is ever in memory, eh?
+
+- Keys, personal data, certificates, passwords...
+
+
+* The Cloud
+
+[[./cloud.jpg]]
+
+* So how are we going to fix this?
+
+This is the /Spectre/ vulnerability, and is part of the /Meltdown/ family of attacks:
+- Meltdown :: (=CVE-2017-5754=) melts down security barriers
+- Spectre :: (=CVE-2017-5753 CVE-2017-5715)= make speculative execution scary
+
+Affects:
+- All operating systems
+- All CPUs with branch prediction
+
+* No, seriously please, how do we fix this?
+
+We have a couple of ideas:
+
+- Disable branch prediction :: would require all new hardware, and have an enormous performance impact
+- Disable caches :: would require all new hardware and have an enormous performance impact
+- Disable multithreading :: doable is software for /most/ architectures, but would halve the number of available cores.  Also doesn't actually fix the issue but makes everything much harder to exploit
+
+Which one do you think we've gone with?
+
+* Anyone's computers feeling a bit slow?
+
+When I was growing up everytime they made new computers they always felt /lots/ faster...
+- Anyone not really noticed this recently?
+
+We do have other mitigations other than turning SMT off...
+- but none of them are perfect, and all have an impact
+- and turning multithreading off really does make this /much, much/ harder to exploit
+
+#+begin_src sh :results raw
+  cat /sys/devices/system/cpu/vulnerabilities/{meltdown,spectre*}
+#+end_src
+
+#+begin_src text
+Mitigation: usercopy/swapgs barriers and __user pointer sanitization
+Mitigation: Enhanced IBRS, IBPB: conditional, RSB filling, PBRSB-eIBRS: SW sequence
+#+end_src
+
+#+begin_src sh :results raw :exports both
+  curl https://make-linux-fast-again.com/
+#+end_src
+
+#+RESULTS:
+noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off nospec_store_bypass_disable no_stf_barrier mds=off tsx=on tsx_async_abort=off mitigations=off
+
+* It isn't just you...
+
+[[./performance.png]]
+
+About a 25--30% performance penalty in the /worst/ case
+
+About a 10% in general usage
+
+* So in conclusion...
+
+Computer hardware fundamentally broken
+- RAM doesn't work
+- CPUs fundamentally broken
+
+Software can give us a solution!
+- But no one is happy about it
+- More cost, slower performance
+- And so no bonuses for you
+
+* My suggestion to all of you
+
+** People will always need clothes!
+- Sewing is fun!
+- It's about an evenings work to make a hawaiian shirt!
+- Sewing machines /not/ vulnerable to any attacks in this course
+  - (unless they're really fancy...)
+    
