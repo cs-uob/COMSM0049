@@ -20,7 +20,7 @@ The relevant people for this unit are:
 
 | Person         | Role          | Contact                                                             |
 |----------------|---------------|---------------------------------------------------------------------|
-| Sana Belguith  | Unit Director | [sana.belguith@bristol.ac.uk](mailto:sana.belguith@bristol.ac.uk)   |
+| Sana Belguith  | Unit Director| [sana.belguith@bristol.ac.uk](mailto:sana.belguith@bristol.ac.uk)   |
 | Joseph Hallett | Lecturer      | [joseph.hallett@bristol.ac.uk](mailto:joseph.hallett@bristol.ac.uk) |
 
 ## Support
