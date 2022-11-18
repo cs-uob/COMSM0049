@@ -1,0 +1,97 @@
+# Lab 6 solutions
+
+# Task 1
+* Was the output different from when you run the program outside the jail?
+
+Yes the output should be different, outside the jail, ls will display the contents of the actual root directory, inside the jail, ls will display the contents of the jail folder
+
+
+* Can you figure out why we needed to compile the program statically?
+
+Because the jail folder does not include dynamic linking libraries, and if we complied the program dynamically, the program will not run because the libraries are not there. This can be solved by copying the contents of /lib /bin folders to the jail folder, or by statically compiling the program.
+
+# Task 2
+
+The chroot can be escaped as following:
+
+```c
+void escape_sandbox(){
+  #include <sys/stat.h>
+  #include <unistd.h>
+  mkdir("escape",0700);
+  chroot("escape");
+  chdir("..");
+  chdir("..");
+  chdir("..");
+  chroot(".");
+}
+```
+
+Running this code inside the jail will output the content of the actual root filesystem.
+
+# Task 3
+
+The chroot can be escaped as following:
+
+* you need to know where your root disk is mounted using ls /dev/* command and grab the major and the minor number of the mounted device. Example:
+brw-rw---- 1 root disk      8,   1 Nov 17 14:51 /dev/sda1
+Here the major number of the device is 8 and minor number is 1.
+
+Inside the jail:
+* mknod escape b 8 1
+* mkdir rootfs
+* mount escape rootfs/
+
+After that, you should have the content of the root filesystem mounted inside the jail in rootfs folder.
+
+**It is strongly advised to run this inside a vm. If you run this on your host OS, do not delete the rootfs folder without unmounting it first using the umount command**
+
+# Task 4
+
+* What happens when you run the program?
+The program finished without errors
+
+* What is SCMP_ACT_ALLOW parameter?
+It whitelists all system calls by default
+
+# Task 5
+
+* Replace SCMP_ACT_ALLOW with another parameter to disallow all system calls. Use the help of man pages.
+
+You should use SCMP_ACT_KILL to disallow all system calls.
+
+# Task 6
+To allow the program to finish successfully, use this code:
+
+```c
+void create_sandbox(){
+  scmp_filter_ctx ctx;
+  ctx = seccomp_init(SCMP_ACT_KILL);
+  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(openat), 0);
+  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(read), 0);
+  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(newfstatat), 0);
+  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(write), 0);
+  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(close), 0);
+  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(getpid), 0);
+  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(exit_group), 0);
+  seccomp_load(ctx);
+}
+```
+
+You might need to tweak this a bit depending on your version of Linux, use strace to figure out what system calls you to need to whitelist.
+
+# Task 7
+
+* Can we inspect the system call parameters using seccomp? If no, can you figure out why?
+We can inspect some types of params, but for example, we can't dereference pointers. That's why we can't whitelist access to certain files, because we can't examine the file pointer that is passed to seccomp. 
+
+# Task 9
+
+```c
+pledge("stdio rpath", NULL);
+```
+
+# Task 10
+
+```c
+unveil("/home",NULL);
