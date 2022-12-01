@@ -14,6 +14,10 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 ### Week 8-11
 Coursework.
 
+### Week 12: 
+
+Revision session on Monday 12 December 2022 at 2pm on TeamsCOMSM0049: Systems and Software Security (Teaching Unit) 2022/23 (TB-1, A) 
+
 ## People
 
 The relevant people for this unit are:
