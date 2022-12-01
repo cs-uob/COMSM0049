@@ -17,7 +17,7 @@ Coursework.
 ### Week 12: 
 
 Revision session on Monday 12 December 2022 at 2pm on TeamsCOMSM0049: Systems and Software Security (Teaching Unit) 2022/23 (TB-1, A) 
- [Link](https://teams.microsoft.com/l/team/19%3asISxDGs5Sz6fi1Pl4LssWQ4-Kg6kY_45Q5bc4uyTlhs1%40thread.tacv2/conversations?groupId=aa5ec95b-0903-4c38-b2d3-be3260239fd9&tenantId=b2e47f30-cd7d-4a4e-a5da-b18cf1a4151b)
+ [Teams channel Link](https://teams.microsoft.com/l/team/19%3asISxDGs5Sz6fi1Pl4LssWQ4-Kg6kY_45Q5bc4uyTlhs1%40thread.tacv2/conversations?groupId=aa5ec95b-0903-4c38-b2d3-be3260239fd9&tenantId=b2e47f30-cd7d-4a4e-a5da-b18cf1a4151b)
 
 
 ## People
