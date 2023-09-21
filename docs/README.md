@@ -56,7 +56,7 @@ Questions on the Teams channel should be your preferred course of action as ever
 | 9  (28/11) | Coursework                                                                                  | Coursework                                                                                                                          |                                                                             |   |
 | 10 (05/12) | Coursework                                                                                  | Coursework                                                                                                                          |                                                                             |   |
 | 11 (12/12) | Revision                                                                                    | Revision                                                                                                                            |                                                                             |   |
--->
+
 As per appropriate for a master-level unit, students are expected to work independently outside of lectures and labs.
 Hence, reading materials and exercises are provided alongside labs and lectures.
 Students (especially those on the coursework option) are **very strongly encouraged** to do this work diligently during the first 7 weeks of the term.
