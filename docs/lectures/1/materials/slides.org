@@ -3,43 +3,75 @@
 #+institute: University of Bristol
 #+startup: beamer
 #+options: toc:nil
-#+beamer_theme: default
-#+beamer_header: \titlegraphic{\includegraphics[height=0.5cm]{bristol.png}}
-#+beamer_color_theme: beaver
-#+beamer_font_theme: [stillsansseriflarge]serif
 #+latex_class_options: [9pt,aspectratio=169]
+#+beamer_header: \titlegraphic{\includegraphics[height=0.5cm]{bristol.png}}
+#+beamer_font_theme: [stillsansseriflarge]serif
 #+latex_header: \usepackage{fontspec}
-#+latex_header_extra: \setsansfont{Archivo Expanded}
-#+latex_header_extra: \setmainfont{Lora}
-#+latex_header_extra: \setmonofont{PragmataPro Liga}
+#+latex_header: \usepackage{listings}
+#+latex_header_extra: \setsansfont{HVD Comic Serif Pro}
+#+latex_header_extra: \setmainfont{Comic Sans MS}
+#+latex_header_extra: \setmonofont{ComicCodeLigatures}
+#+latex_header_extra: \definecolor{UOBred}{rgb}{0.6706, 0.1216, 0.1765}
+#+latex_header_extra: \setbeamercolor{palette primary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette secondary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette tertiary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette quaternary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
+#+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
+#+latex_header_extra: \renewcommand{\alert}[1]{\textbf{#1}}]
 
 * Welcome to Hacking
-...er, no wait I'm not alowed to call this unit that.
+...er, no wait I'm *still* not alowed to call this unit that.
+- This is the second year we've been trying...
 
 * Welcome to +Hacking+ Systems and Software Security
 - Nevertheless, what we're going to be studying is /very much/ hacking.
-- Labs at the start of the week, lectures at the end.
-  - Get a high level overview of a technique, then get an oportunity to do it for real.
+- Combination of labs and lectures
+  - Get a high level overview of a technique, then get an opportunity to do it for real.
   - Chance to ask questions and chat with us.
 
-- Pre-recorded videos from last year are available...
-  - (but we've cut down the material, and may have changed things... but if you miss a lecture its better than nothing).
+- Each week there will be problem sheets
+  - The problems in them *exactly* match the style of the exam questions
+  - There are solutions…
+  - *BUT* I'd rather you just came and chatted with us about what your answers were in the lab
+  - There usually isn't a right answer…
+
+- Covid-era videos are available...
+  - (but we've cut down the material, and may have changed things... but if you miss a lecture, and don't like the recordings it's better than nothing).
 
 * Assessment
-If you're doing exams:
-- Essay style questions: 8 short (5 marks each), 4 long (15 marks each).
-- Either explaining a technique or reason about something in the context of a technique.
-- If a question is worth 5 marks give us 5 things to tick.
-- If a question says /discuss/ then we actually want a discussion (both sides argued and conclusion).
-    
-If you're doing coursework:
-- Expect something along the lines of an engineering project building on one of the techniques we'll show you; and a presentation/demo.
-- ...but we haven't written it yet!
+Err… we're not entirely sure?
+- They've changed things around since last year
+
+For the exam portion:
+- It'll be a mixture of long and short essay style questions
+- Closed book and easier?  Open book and harder?
+
+For the coursework:
+- It'll be take a technique from the labs and implement a general purpose tool to exploit it
+- Individual or group work
+- Marked according to how much you get done and how many people you had working on it
+
+* Reading and Homework
+
+This is a *Masters* level unit!
+- I *really* like reading
+- There will be *oodles* of reading
+
+The reading is optional *but*:
+- It will probably give you good examples and context to illustrate exam answers with =;-)=
+- It will definitely help explain ideas in more detail
+- You may prefer their explanations to mine
+
+I'll also try and link to other people's explanations of things:
+- In particular /Live0verflow/ on YouTube
+- Everyone learns differently…
+- …if you don't like my style, use someone else's notes
 
 * Security
 
 #+caption: XKCD #538: Security
-
+#+attr_latex: :width .6\linewidth
 [[./security.png]]
 
 (In our case the spanner would usually be a /keylogger/).
@@ -47,7 +79,7 @@ If you're doing coursework:
 * Lisp
 
 #+caption: XKCD #224: Lisp
-
+#+attr_latex: :width .6\linewidth
 [[./lisp.jpg]]
 
 * Assumptions
@@ -62,7 +94,7 @@ actually work get misaligned.
 The language spec might say /undefined behaviour/ *in theory*...
 - But sometimes that behaviour is very much defined *in practice*.
 
-* Todays lecture
+* Today's lecture
 
 Three classic security bugs:
 - What the assumptions are behind them
@@ -189,18 +221,18 @@ Memory in a binary get split into /sections/...
   MMU will trigger an exception to the OS and the program will crash
   with a segfault.
 
- If you dump the sections of a binry using R2
+ If you dump the sections of a binary using R2
 #+begin_src shell :results table
   rabin2 -S /tmp/compiled-example-from-last-slide
 #+end_src
 
-| nth | paddr        | size   | vaddr         | vsize  | perm   | name                     |
-|-----+--------------+--------+---------------+--------+--------+--------------------------|
-| ~0~ | ~0x00003f14~ | ~0x48~ | ~0x100003f14~ | ~0x48~ | ~-r-x~ | ~0.__TEXT.__text~        |
-| ~1~ | ~0x00003f5c~ | ~0xc~  | ~0x100003f5c~ | ~ 0xc~ | ~-r-x~ | ~1.__TEXT.__stubs~       |
-| ~2~ | ~0x00003f68~ | ~0x4e~ | ~0x100003f68~ | ~0x4e~ | ~-r-x~ | ~2.__TEXT.__cstring~     |
-| ~3~ | ~0x00003fb8~ | ~0x48~ | ~0x100003fb8~ | ~0x48~ | ~-r-x~ | ~3.__TEXT.__unwind_info~ |
-| ~4~ | ~0x00004000~ | ~0x8~  | ~0x100004000~ | ~ 0x8~ | ~-rw-~ | ~4.__DATA_CONST.__got~   |
+| nth | paddr      | size | vaddr       | vsize  | perm | name                   |
+|-----+------------+------+-------------+--------+------+------------------------|
+| ~0~   | ~0x00003f14~ | ~0x48~ | ~0x100003f14~ | ~0x48~   | ~-r-x~ | ~0.__TEXT.__text~        |
+| ~1~   | ~0x00003f5c~ | ~0xc~  | ~0x100003f5c~ | ~ 0xc~ | ~-r-x~ | ~1.__TEXT.__stubs~       |
+| ~2~   | ~0x00003f68~ | ~0x4e~ | ~0x100003f68~ | ~0x4e~   | ~-r-x~ | ~2.__TEXT.__cstring~     |
+| ~3~   | ~0x00003fb8~ | ~0x48~ | ~0x100003fb8~ | ~0x48~   | ~-r-x~ | ~3.__TEXT.__unwind_info~ |
+| ~4~   | ~0x00004000~ | ~0x8~  | ~0x100004000~ | ~ 0x8~ | ~-rw-~ | ~4.__DATA_CONST.__got~   |
 
 * But sometimes we get away with it right?
 
@@ -242,7 +274,7 @@ Sometimes if you don't go too far off the end of an array the program crash it j
           leave
           ret
   main:
-          push %ebp
+          push ebp
           mov ebp,esp
           push 3
           push 2
@@ -337,7 +369,7 @@ stack                                                                 stack
 
 And then whatever else until the segfault happens...
 - but what if we stop before the segfault happens?
-*
+  
 * Return to a crash
 
 #+begin_src
@@ -368,7 +400,7 @@ stack             +-----------------------+                           stack
 #+end_src
 
 Suppose instead of returning to ~0x41414141~ we aim to return to something a little more useful
-- Stack addresses are usually predictible-ish
+- Stack addresses are usually predictable-ish
 
 Suppose we stick into our buffer not just a series of letters, but something that corresponds to program code?
 - We could trick the computer into running arbitrary programs.
@@ -380,7 +412,7 @@ You can't assume that a program will crash just because that's what its supposed
 - Sometimes undefined behaviour is pretty defined in practice right up until the crash.
 
 How do we stop it?
-- Make addresses less predictible? If its hard to guess where in the stack you are you're less likely to be able to calculate it cleanly (ASLR).
+- Make addresses less predictable? If its hard to guess where in the stack you are you're less likely to be able to calculate it cleanly (ASLR).
 - Stick a canary in the stack and check it hasn't been overwritten before returning (stack canaries).
 - Use a research grade CPU architecture like CHERI that doesn't allow you to abuse pointers like this (come chat with me in the labs!)
 
@@ -450,7 +482,7 @@ No writing here!
 - So its not going to lead to arbitrary code execution!
 - Right?
 - /...right...?/
-
+  
 * Tabular output
 
 Say you want to print an address book on an old teletype and you're too clever for your own good.
@@ -526,8 +558,8 @@ So this stupidity is in the C library which means this behaviour is /standard/.
 
 Almost all systems have decided that a /truly/ standards compliant compiler isn't worth it.
 - Windows :: Does not implement ~%n~ for ~printf~.
-- OpenBSD :: Crashes your program and sends an email to the system admin telling them all about the sort of format flags you use.
-- MacOS :: Removed the  ~%n~ format specifier (1989s defences for 2021!).
+- OpenBSD :: Crashes your program and sends an email to the system admin telling them all about the sort of format strings you use.
+- MacOS :: Removed the ~%n~ format specifier (1989s defences for 2021!).
 - Linux :: ...is standards compliant.
 
 Don't assume it is safe to ignore warnings!
@@ -552,7 +584,11 @@ We're going to spend a lab or two playing with these last two bugs
 - Gave an introduction about how to defend against them.
 
 ** Next time
-- Labs to practice what we learned
+- Lab 1 will be a refresher course in assembly
+  - (If you're already very happy programming in assembly feel free to breeze through it and start the next one…)
+  - (Or y'know help those who thought their assembly days were behind them with Intro to Computer Architecture…)
+    
+- Then labs to practice what we learned
 - Next lecture: heap overflows and (or everything you didn't want to know about how ~malloc~ works).
 
 * 
