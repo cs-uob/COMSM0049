@@ -7,17 +7,17 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 ## Schedule
 
 ### Week 1-7
-
-- Mondays 2pm to 4pm (MVB 1.15) - Lab sessions
-- Thursdays 4pm to 5pm (QB 1.18) - Lecture
+- Thursdays 11am to 12pm (QB 1.15) - Lecture
+- Thursday 3pm to 5pm (MVB 1.15) - Lab sessions
 
 ### Week 8-11
 Coursework.
 
 ### Week 12: 
 
-Revision session on Monday 12 December 2022 at 2pm on Teams COMSM0049: Systems and Software Security (Teaching Unit) 2022/23 (TB-1, A) 
- [Teams channel Link](https://teams.microsoft.com/l/team/19%3asISxDGs5Sz6fi1Pl4LssWQ4-Kg6kY_45Q5bc4uyTlhs1%40thread.tacv2/conversations?groupId=aa5ec95b-0903-4c38-b2d3-be3260239fd9&tenantId=b2e47f30-cd7d-4a4e-a5da-b18cf1a4151b)
+Revision session will be published in due time on Teams COMSM0049: Systems and Software Security (Teaching Unit) 2023/24 (TB-1, A) 
+ [Teams channel Link](https://teams.microsoft.com/l/channel/19%3a5IMsIc5ntnsf4jmmq6g7KNwN2epdvrb_vs91FR7jafo1%40thread.tacv2/General?groupId=e990e356-9e3d-4764-9172-5df2ee2329db&tenantId=b2e47f30-cd7d-4a4e-a5da-b18cf1a4151b)
+
 
 
 ## People
@@ -45,7 +45,7 @@ Questions on the Teams channel should be your preferred course of action as ever
 | Week       | Lab                                                                                         | Lecture                                                                                                                             | Homework                                                                    |   |
 |------------|---------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|---|
 | 1  (26/09) | [Lab 1: Assembly refresher](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/1.md) | [Lecture 1: Interesting bugs and where to find them (*Joseph*)](lectures/1/slides.pdf)                                              | [Homework](extra/1.md)                                                      |   |
-| 2  (03/10) | [Lab 2: Format strings](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/2.md)     | [Lecture 2: Heap overflows and the Malloc Maleficarum (*Joseph*)](lectures/2/slides.pdf)                                              | [Homework](extra/2.md)                                                      | [Lab 2 Solution](https://github.com/cs-uob/COMSM0049/blob/master/docs/Labs%20Soluti/Lab%202%20format%20string.pdf)    |
+<!--| 2  (03/10) | [Lab 2: Format strings](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/2.md)     | [Lecture 2: Heap overflows and the Malloc Maleficarum (*Joseph*)](lectures/2/slides.pdf)                                              | [Homework](extra/2.md)                                                      | [Lab 2 Solution](https://github.com/cs-uob/COMSM0049/blob/master/docs/Labs%20Soluti/Lab%202%20format%20string.pdf)    |
 | 3  (10/10) | [Lab 3: Stack smashing](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/3.md)     | [Lecture 3: Return oriented programming (*Joseph*)](lectures/3/slides.pdf)                                                          | [Homework](extra/3.md)                                                      | [Lab 3 Solution:](https://github.com/cs-uob/COMSM0049/blob/master/docs/Labs%20Soluti/Lab%203%20Buffer%20Overflow.pdf)   |
 | 4  (17/10) | [Lab 4: ROP](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/4.md)                | [Lecture 4: Fuzzing (*Sana*)](https://github.com/cs-uob/COMSM0049/blob/master/docs/lectures/4/Intro-fuzzzing.pdf)                   | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/4.md) | [Lab 4 Solution](https://github.com/cs-uob/COMSM0049/blob/master/docs/Labs%20Soluti/Lab%204%20ROP.pdf)  |
 | 5  (24/10) | [Lab 5: Fuzzing](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/5.md)            | [Lecture 5: Access Control (*Sana*)](https://github.com/cs-uob/COMSM0049/blob/master/docs/lectures/5/Access%20Control.pdf)          | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/5.md)                                                                  | [Lab 5 Solution](https://github.com/cs-uob/COMSM0049/blob/master/docs/Labs%20Soluti/Lab%205%20Fuzzing.pdf)  |
@@ -56,7 +56,7 @@ Questions on the Teams channel should be your preferred course of action as ever
 | 9  (28/11) | Coursework                                                                                  | Coursework                                                                                                                          |                                                                             |   |
 | 10 (05/12) | Coursework                                                                                  | Coursework                                                                                                                          |                                                                             |   |
 | 11 (12/12) | Revision                                                                                    | Revision                                                                                                                            |                                                                             |   |
-
+-->
 As per appropriate for a master-level unit, students are expected to work independently outside of lectures and labs.
 Hence, reading materials and exercises are provided alongside labs and lectures.
 Students (especially those on the coursework option) are **very strongly encouraged** to do this work diligently during the first 7 weeks of the term.
