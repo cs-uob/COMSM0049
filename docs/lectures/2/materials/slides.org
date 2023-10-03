@@ -3,28 +3,35 @@
 #+institute: University of Bristol
 #+startup: beamer
 #+options: toc:nil
-#+beamer_theme: default
-#+beamer_header: \titlegraphic{\includegraphics[height=0.5cm]{bristol.png}}
-#+beamer_color_theme: beaver
-#+beamer_font_theme: [stillsansseriflarge]serif
 #+latex_class_options: [9pt,aspectratio=169]
-
+#+beamer_header: \titlegraphic{\includegraphics[height=0.5cm]{bristol.png}}
+#+beamer_font_theme: [stillsansseriflarge]serif
 #+latex_header: \usepackage{fontspec}
-#+latex_header_extra: \setsansfont{Archivo Expanded}
-#+latex_header_extra: \setmainfont{Lora}
-#+latex_header_extra: \setmonofont{PragmataPro Liga}
+#+latex_header: \usepackage{listings}
+#+latex_header: \lstset{basicstyle=\footnotesize,colums=flexible}
+#+latex_header_extra: \setsansfont{HVD Comic Serif Pro}
+#+latex_header_extra: \setmainfont{Comic Sans MS}
+#+latex_header_extra: \setmonofont{ComicCodeLigatures}
+#+latex_header_extra: \definecolor{UOBred}{rgb}{0.6706, 0.1216, 0.1765}
+#+latex_header_extra: \setbeamercolor{palette primary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette secondary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette tertiary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{palette quaternary}{bg=UOBred, fg=white}
+#+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
+#+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
+#+latex_header_extra: \renewcommand{\alert}[1]{\textbf{#1}}
 
 * Recap
 ** Last time...
 
 We went over some classic bug types, and gave a /hint/ about how to exploit them:
-- We played around with /format string vulnerabilities/ in the lab
+- We played around with some assembly in the lab
 
 ** This time...
 
 We're going to move from the /stack/ to the heap and think about some of the bugs we can find over there.
 - We're going to explore how /Glibc's/ implementation of =malloc= works and what we can do with it
-
+- Format string exploits in the lab!
 * Warning!
 
 ** Here be dragons
@@ -241,7 +248,7 @@ Anyone want to solve it?
 
 The buffer and the function pointer were allocated sequentially on the heap.
 - We overwrote the function pointer with =strcpy=
-  - Initially with ='A'= ($41_{16}$) to prove we had overwritten the right thing
+  - Initially with ='A'= (=0x41=) to prove we had overwritten the right thing
 - Then more precisely with the address of the function we /actually/ wanted to call
 
 * ...underwhelming, much?
@@ -264,7 +271,7 @@ More generally...
 :BEAMER_opt: [t]
 :BEAMER_col: 0.49
 :END:
-
+#+attr_latex: :width .8\linewidth
 [[./douglea.jpg]]
 
 Author of the first popular =malloc= implementation
@@ -286,6 +293,10 @@ First general heap overflow technique against GNU ~malloc~
 :BEAMER_opt: [t]
 :BEAMER_col: 0.49
 :END:
+
+*Every* =malloc= implementation is different.
+- I'm gonna try and keep this super high level…
+- To exploit a real malloc implementation you need to read the code and think
 
 #+begin_src C
   char *a = calloc(16 * sizeof(*a));
@@ -312,7 +323,7 @@ This gives us three pointers to memory allocated on the heap
 - Lets have a look  what is there and whats in surrounding memory
 - Lets observe how it changes as we free the memory
 
-* Zero =free()=s are...
+* Zero =free()= s are...
 #+begin_src 
 Initially:
                 0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f  
@@ -440,8 +451,8 @@ Yes this is /horrendously/ fiddly, and nowadays the =free()= routine is patched 
 - And its the basis for many heap attacks going foreward.
 
 See
-- Anonymous's Once Upon a free()... :: [http://phrack.org/issues/57/9.html]
-- Solar Designer's vulnerability notice :: [https://www.openwall.com/articles/JPEG-COM-Marker-Vulnerability]
+- Anonymous's Once Upon a free()... :: [[http://phrack.org/issues/57/9.html]]
+- Solar Designer's vulnerability notice :: [[https://www.openwall.com/articles/JPEG-COM-Marker-Vulnerability]]
 
 * One more for luck: Use after =free()=
 
