@@ -7,9 +7,11 @@
 #+beamer_header: \titlegraphic{\includegraphics[height=0.5cm]{bristol.png}}
 #+beamer_font_theme: [stillsansseriflarge]serif
 #+latex_header: \usepackage{fontspec}
-#+latex_header_extra: \setsansfont{Archivo Expanded}
-#+latex_header_extra: \setmainfont{Lora}
-#+latex_header_extra: \setmonofont{PragmataPro Liga}
+#+latex_header: \usepackage{listings}
+#+latex_header: \lstset{basicstyle=\footnotesize,colums=flexible}
+#+latex_header_extra: \setsansfont{HVD Comic Serif Pro}
+#+latex_header_extra: \setmainfont{Comic Sans MS}
+#+latex_header_extra: \setmonofont{ComicCodeLigatures}
 #+latex_header_extra: \definecolor{UOBred}{rgb}{0.6706, 0.1216, 0.1765}
 #+latex_header_extra: \setbeamercolor{palette primary}{bg=UOBred, fg=white}
 #+latex_header_extra: \setbeamercolor{palette secondary}{bg=UOBred, fg=white}
@@ -17,7 +19,7 @@
 #+latex_header_extra: \setbeamercolor{palette quaternary}{bg=UOBred, fg=white}
 #+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
 #+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
-
+#+latex_header_extra: \renewcommand{\alert}[1]{\textbf{#1}}
 * The plan
 
 - Quick recap as to how C functions work
@@ -337,7 +339,7 @@ But stack addresses are (somewhat) easily to guess...
            `----------------------------------'   esp
 #+end_src
 
-(Get on with lab 3!)
+(Get on with lab 3 this afternoon!)
 
 * So how do we respond to this?
 Two /main/ issues:
@@ -510,7 +512,7 @@ So instead of loading /each function/ into a random location lets load /each lib
 - You still don't know where the functions are /precisely/
 
 But it does mean that if a single pointer is leaked from that library, then /all/ the pointers are leaked
-- You might not know where =fprintf= and =fscanf= are in memory...
+- You might not know where =fprintf= and =sscanf= are in memory...
 - But you know there are precisely =b0= bytes between them
 #+begin_src
 $ nm -nD /usr/lib/libc.so.96.2 
@@ -674,17 +676,17 @@ Yes! We'd just have to return back through 10 instructions!
 :END:
 
 #+begin_src asm
-  xor_a                   ; rax = 0, rbx = ?
-  pop_b                   ; rax = 0, rbx = 0xffffffff
+  xor_a       ; rax = 0, rbx = ?
+  pop_b       ; rax = 0, rbx = 0xffffffff
   0xffffffff
-  inc_b                   ; rax = 0; rbx = 0
-  inc_a                   ; rax = 1, rbx = 0
-  inc_a                   ; rax = 2, rbx = 0
-  inc_a                   ; rax = 3, rbx = 0
-  inc_a                   ; rax = 4, rbx = 0
-  inc_a                   ; rax = 5, rbx = 0
-  inc_a                   ; rax = 6, rbx = 0
-  sys                     ; exit(0)
+  inc_b       ; rax = 0; rbx = 0
+  inc_a       ; rax = 1, rbx = 0
+  inc_a       ; rax = 2, rbx = 0
+  inc_a       ; rax = 3, rbx = 0
+  inc_a       ; rax = 4, rbx = 0
+  inc_a       ; rax = 5, rbx = 0
+  inc_a       ; rax = 6, rbx = 0
+  sys         ; exit(0)
 #+end_src
 
 * Are we really doing this? (yes)
@@ -955,7 +957,7 @@ We just wrote an entire program by writing our shellcode as a path through pre-e
 This is /(pretty much)/ the state of the art for arbitrary code execution via a buffer overflow
 - (/ish.../ there's JOP too which is similar but for case statements)
 
-We're going to be trying this /in practice/ for Mondays lab =:-D=
+We're going to be trying this /in practice/ for next week's lab =:-D=
 
 * How do we stop this?
 * How do we stop this?
@@ -992,4 +994,4 @@ There are worse ways of programming than assembly language!
 - In the lab :: ROP
 - Lectures :: Sana's taking over for a few weeks!
 
-(I'll be back once more to talk about why computer hardware is fundamentally broken)
+(I'll be back once more to talk about why computer hardware is fundamentally broken and why we should all be very depressed)
