@@ -1,5 +1,5 @@
-% Created 2022-11-09 Wed 10:19
-% Intended LaTeX compiler: xelatex
+% Created 2023-11-13 Mon 11:53
+% Intended LaTeX compiler: lualatex
 \documentclass[9pt,aspectratio=169]{beamer}
 \usepackage{graphicx}
 \usepackage{longtable}
@@ -11,9 +11,11 @@
 \usepackage{capt-of}
 \usepackage{hyperref}
 \usepackage{fontspec}
-\setsansfont{Archivo Expanded}
-\setmainfont{Lora}
-\setmonofont{PragmataPro Liga}
+\usepackage{listings}
+\lstset{basicstyle=\footnotesize}
+\setsansfont{HVD Comic Serif Pro}
+\setmainfont{Comic Sans MS}
+\setmonofont{ComicCodeLigatures}
 \definecolor{UOBred}{rgb}{0.6706, 0.1216, 0.1765}
 \setbeamercolor{palette primary}{bg=UOBred, fg=white}
 \setbeamercolor{palette secondary}{bg=UOBred, fg=white}
@@ -21,6 +23,7 @@
 \setbeamercolor{palette quaternary}{bg=UOBred, fg=white}
 \setbeamercolor{structure}{fg=UOBred}
 \setbeamercolor{structure}{fg=UOBred}
+\renewcommand{\alert}[1]{\textbf{#1}}
 \usetheme{default}
 \usefonttheme[stillsansseriflarge]{serif}
 \author{Joseph Hallett}
@@ -32,13 +35,13 @@
  pdftitle={Why software engineers don't get bonuses\newline{}(or Rowhammer, Meltdown and Spectre)},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 28.2 (Org mode 9.5.4)}, 
+ pdfcreator={Emacs 29.1 (Org mode 9.7-pre)}, 
  pdflang={English}}
 \begin{document}
 
 \maketitle
 
-\begin{frame}[label={sec:org3d300c2}]{Abstraction, abstraction\ldots{}}
+\begin{frame}[label={sec:orgad2f548}]{Abstraction, abstraction\ldots{}}
 In computer science we like to pretend that it's all digital\ldots{}
 \begin{itemize}
 \item Perfect 1s and 0s.
@@ -51,7 +54,7 @@ In computer science we like to pretend that it's all digital\ldots{}
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org7a24630},fragile]{Money, money, money\ldots{}}
+\begin{frame}[label={sec:org5a290b8},fragile]{Money, money, money\ldots{}}
  It mostly works out though\ldots{}
 \begin{itemize}
 \item But this whole unit is about what happens when computers start doing weird things.
@@ -83,7 +86,7 @@ Consequently we have to clean up after their messes
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orge69a615}]{Plan}
+\begin{frame}[label={sec:orga1663c7}]{Plan}
 In this lecture we'll cover two ways hardware is broken.
 \begin{itemize}
 \item Rowhammer and DRAM
@@ -93,7 +96,7 @@ In this lecture we'll cover two ways hardware is broken.
 We'll also cover how software works around it.
 \end{frame}
 
-\begin{frame}[label={sec:orgab54eaa}]{DRAM glorious, DRAM!}
+\begin{frame}[label={sec:org5f43105}]{DRAM glorious, DRAM!}
 Memory! Used to store all the things the computer is thinking about
 that we can't fit in a register!
 \begin{itemize}
@@ -115,7 +118,7 @@ DRAM needs to be \emph{refreshed} so the capactiors don't lose their charge over
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org2e5bcf6}]{Electronic Engineering is messy}
+\begin{frame}[label={sec:orgf2157f3}]{Electronic Engineering is messy}
 \begin{block}{Capacitors leak charge}
 \end{block}
 
@@ -132,7 +135,7 @@ But this is all fine because electronic components are large!
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org7101067}]{Or they were\ldots{}}
+\begin{frame}[label={sec:orgf4b673f}]{Or they were\ldots{}}
 \begin{itemize}
 \item As memory capacity has \emph{increased}\ldots{}
 \item The physical dimensions of memory has got \emph{smaller}.
@@ -149,11 +152,11 @@ disturbed that from which they fled, \sout{Durin's Bane} \alert{Rowhammer}."
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org9e9abbc}]{Flipping bits}
+\begin{frame}[label={sec:org441a6ba}]{Flipping bits}
 \begin{columns}
 \begin{column}[t]{0.49\columnwidth}
 \begin{center}
-\includegraphics[width=.9\linewidth]{./flippingbits.png}
+\includegraphics[width=\linewidth]{./flippingbits.png}
 \end{center}
 \end{column}
 
@@ -178,10 +181,10 @@ Several papers discuss it and explore it
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org6a8ad5d},fragile]{Flipping bits, in practice}
+\begin{frame}[label={sec:org2d405b1},fragile]{Flipping bits, in practice}
  \begin{columns}
 \begin{column}[t]{0.49\columnwidth}
-\begin{verbatim}
+\begin{lstlisting}[language=asm,numbers=none]
 code1a:
         mov eax, [X]
         mov ebx, [Y]
@@ -189,7 +192,7 @@ code1a:
         clrflush [Y]
         mfence
         jmp code1a
-\end{verbatim}
+\end{lstlisting}
 \end{column}
 
 \begin{column}[t]{0.49\columnwidth}
@@ -206,11 +209,11 @@ Find two memory addresses X and Y that are in separate rows of RAM and:
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org621a53a},fragile]{Token ASCII Art Diagram}
+\begin{frame}[label={sec:org0e76267},fragile]{Token ASCII Art Diagram}
  \begin{columns}
-\begin{column}[t]{0.2\columnwidth}
-\begin{verbatim}
-   ⋮    |      ! |
+\begin{column}[t]{0.3\columnwidth}
+\begin{lstlisting}[language=text,numbers=none]
+        |      ! |
         +--------+
 Row n+0 |        <- X
         +--------+
@@ -222,15 +225,15 @@ Row n+3 |      ! |
         +--------+
 Row n+4 |        <- Y
         +--------+
-   ⋮    |    !   |
+        |    !   |
 
         +--------+
 Active  |X/Y/X/Y/|
         +--------+
-\end{verbatim}
+\end{lstlisting}
 \end{column}
 
-\begin{column}[t]{0.79\columnwidth}
+\begin{column}[t]{0.69\columnwidth}
 If you perform the rowhammer with the above RAM layout
 \begin{itemize}
 \item \emph{Eventually} you'll get errors in the adjacent rows (the \texttt{!}'s)
@@ -240,11 +243,11 @@ If you perform the rowhammer with the above RAM layout
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org7f3cb5f},fragile]{Double Sided Rowhammering}
+\begin{frame}[label={sec:org5ccc044},fragile]{Double Sided Rowhammering}
  \begin{columns}
-\begin{column}[t]{0.2\columnwidth}
-\begin{verbatim}
-   ⋮    |        |
+\begin{column}[t]{0.3\columnwidth}
+\begin{lstlisting}[language=text,numbers=none]
+        |        |
         +--------+
 Row n+0 |      ! |
         +--------+
@@ -256,15 +259,15 @@ Row n+3 |        <- Y
         +--------+
 Row n+4 |   !    |   
         +--------+
-   ⋮    |        |
+        |        |
 
         +--------+
 Active  |X/Y/X/Y/|
         +--------+
-\end{verbatim}
+\end{lstlisting}
 \end{column}
 
-\begin{column}[t]{0.79\columnwidth}
+\begin{column}[t]{0.69\columnwidth}
 If you select \texttt{X} and \texttt{Y} so there is excactly 1 row between them
 \begin{itemize}
 \item \emph{Eventually} you'll get errors in the adjacent rows (the \texttt{!}'s)
@@ -275,7 +278,7 @@ If you select \texttt{X} and \texttt{Y} so there is excactly 1 row between them
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgf674be7}]{So what?}
+\begin{frame}[label={sec:orgd5275c0}]{So what?}
 So we can introduce (typically) single bit errors in RAM\ldots{} so what?
 
 \begin{block}{Mark Seaborne and Halvar Flake (and others) continue exploring}
@@ -297,25 +300,25 @@ And even consistent between the same RAM products
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgf8a5c84}]{This seems bad, but so what?}
+\begin{frame}[label={sec:org7c2160c}]{This seems bad, but so what?}
 \begin{itemize}
 \item You can violate the integrity of RAM, but is that all?
 \item How could you possibly use this as part of an attack to get arbitrary code execution?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org3793dd2},fragile]{NaCl Sandbox}
+\begin{frame}[label={sec:org3d4070e},fragile]{NaCl Sandbox}
  \emph{Privileged} sandbox for running \emph{native code} from a web browser safely.
 \begin{itemize}
 \item Checks if the code is \emph{safe} (i.e. doesn't contain any weird syscalls or violate safety properties)
 \item If so, it loads the chunks of instructions aligned on 32B boundaries
 \end{itemize}
 
-\begin{verbatim}
+\begin{lstlisting}[language=asm,numbers=none]
 and eax, 0x000F                 ; Truncate address to 32 bits and mask to be 32-byte aligned
 add rax, r15                    ; Add r15, the sandbox base address
 jmp [rax]                       ; Jump to the loaded code snippet
-\end{verbatim}
+\end{lstlisting}
 
 \vfill
 \begin{block}{Can we use Rowhammer to escape the sandbox?}
@@ -325,24 +328,24 @@ it rather than me telling you\ldots{})
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org5af369d},fragile]{Variadic Instruction Sets}
+\begin{frame}[label={sec:orgce5589d},fragile]{Variadic Instruction Sets}
  X86 is a dense instruction set
 \begin{itemize}
 \item Different instructions have different lengths
 \item Some have multiple length
 \end{itemize}
 
-\begin{verbatim}
+\begin{lstlisting}[language=text,numbers=none]
 20ea0: 48 b8 0f 05 eb 0c f4 f4 f4 f4    movabs rax, 0xf4f4f4ff40ceb050f
 20ea2:       0f 05                      syscall
 20ea4:             eb 0c                jmp 0xe
-\end{verbatim}
+\end{lstlisting}
 
 \begin{block}{Last chance to guess the exploit?}
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org4d79d9d},fragile]{Escaping NaCL}
+\begin{frame}[label={sec:org44d568d},fragile]{Escaping NaCL}
  Code section is readable, so lets try and Rowhammer that \texttt{and eax, 0x000F}!
 \begin{itemize}
 \item Conveniently the code section is also readable (but not writable) by the loaded process so we can tell if it has worked
@@ -362,7 +365,7 @@ See this course.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org59cb92c},fragile]{Whoops!}
+\begin{frame}[label={sec:org8ba3c46},fragile]{Whoops!}
  Mark Seaborn and Halvar Flake have managed to Rowhammer their way to aribtrary code execution.
 \begin{itemize}
 \item Guess it was security bug after all\ldots{} \texttt{B-)}
@@ -377,7 +380,7 @@ See this course.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org630f40f}]{Those aren't sustainable solutions\ldots{}}
+\begin{frame}[label={sec:orgaadfbbe}]{Those aren't sustainable solutions\ldots{}}
 Buy better RAM?
 \begin{itemize}
 \item But how do you tell?
@@ -402,7 +405,9 @@ Buy better RAM?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org5226c91}]{Are we depressed yet?}
+\begin{frame}[label={sec:org07a23c0}]{Are we depressed yet?}
+\begin{columns}
+\begin{column}[t]{0.6\columnwidth}
 Have you considered taking up pottery?
 \begin{itemize}
 \item Mud is not susceptible to Rowhammer or any of the techniques covered in this course
@@ -413,17 +418,27 @@ Have you considered taking up pottery?
 \vfill
 \begin{block}{Honestly, I cannot recommend it highly enough.}
 \end{block}
+\end{column}
+
+
+
+\begin{column}[t]{0.4\columnwidth}
+\begin{center}
+\includegraphics[width=\linewidth]{./pottery.jpeg}
+\end{center}
+\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:orgfd11c41}]{Buckle up\ldots{}}
+\begin{frame}[label={sec:org4fa2ac1}]{Buckle up\ldots{}}
 \begin{center}
-\includegraphics[width=.9\linewidth]{./brandnames.png}
+\includegraphics[width=\linewidth]{./brandnames.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgdd32d17}]{CPU Pipelines}
+\begin{frame}[label={sec:org16ba655}]{CPU Pipelines}
 \begin{center}
-\includegraphics[width=.9\linewidth]{pipelines.png}
+\includegraphics[width=\linewidth]{pipelines.png}
 \end{center}
 
 \begin{block}{In modern CPUs instructions take different times to complete\ldots{}}
@@ -438,8 +453,8 @@ Significant performance gains!
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org1872d65},fragile]{Branch Prediction}
- \begin{verbatim}
+\begin{frame}[label={sec:org47b3f75},fragile]{Branch Prediction}
+ \begin{lstlisting}[language=C++,numbers=none]
 unsigned long factorial(unsigned long n) {
   unsigned long result = 1;
 
@@ -448,7 +463,7 @@ unsigned long factorial(unsigned long n) {
 
   return result
 }
-\end{verbatim}
+\end{lstlisting}
 
 Conditionals can cause a problem however\ldots{}
 \begin{itemize}
@@ -472,37 +487,37 @@ More performance gains!
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgadaf499},fragile]{Watch the pointer closely\ldots{}}
+\begin{frame}[label={sec:orgd907e1a},fragile]{Watch the pointer closely\ldots{}}
  Suppose we have two arrays: \texttt{array1} and \texttt{array2}:
 \begin{itemize}
 \item What happens if we run this code?
 \end{itemize}
 
-\begin{verbatim}
+\begin{lstlisting}[language=C,numbers=none]
 if (x < array1_size) [[likely]]
   y = array2[array1[x]];
-\end{verbatim}
+\end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org519314e},fragile]{Which array is the pointer under?}
+\begin{frame}[label={sec:orga73159a},fragile]{Which array is the pointer under?}
  \texttt{y} gets indexed by whatever is in \texttt{array[x]}
 
 What about if \texttt{x > array1\_size}?
-\begin{verbatim}
+\begin{lstlisting}[language=C,numbers=none]
 if (x < array1_size) [[likely]]
   y = array2[array1[x]];
-\end{verbatim}
+\end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org811b678},fragile]{No, unfortunately that's a lemon\ldots{}}
+\begin{frame}[label={sec:org4ff5d11},fragile]{No, unfortunately that's a lemon\ldots{}}
  The \texttt{if} statement won't succeed\ldots{}
 
 \ldots{}but we \emph{said} it was likely to succeed so the next line will be speculatively executed anyway
 
-\begin{verbatim}
+\begin{lstlisting}[language=C,numbers=none]
 if (x < array1_size) [[likely]]
   y = array2[array1[x]];
-\end{verbatim}
+\end{lstlisting}
 
 And that would segfault anyway\ldots{}
 \begin{itemize}
@@ -521,11 +536,11 @@ As soon as the branch misprediction is detected start the \emph{rollback} proces
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org97decb4},fragile]{Just the writes?}
- \begin{verbatim}
+\begin{frame}[label={sec:org25338d7},fragile]{Just the writes?}
+ \begin{lstlisting}[language=C,numbers=none]
 if (x < array1_size) [[likely]]
   y = array2[array1[x]];
-\end{verbatim}
+\end{lstlisting}
 
 See the caches are a separate subsystem and managed by the MMU.
 \begin{itemize}
@@ -539,22 +554,22 @@ See the caches are a separate subsystem and managed by the MMU.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org98aaa60},fragile]{Oh dear\ldots{}}
+\begin{frame}[label={sec:org70b63f2},fragile]{Oh dear\ldots{}}
  Suppose we guarantee that for every different value of \texttt{x} a different page of memory will be cached?
 
-\begin{verbatim}
+\begin{lstlisting}[language=C,numbers=none]
 if (x < array1_size) [[likely]]
   y = array2[array1[x]*4096];
-\end{verbatim}
+\end{lstlisting}
 
 (and that the branch will ALWAYS be mispredicted by the CPU).
 \end{frame}
 
-\begin{frame}[label={sec:orge60d62e},fragile]{Oh dear, Oh dear\ldots{}}
+\begin{frame}[label={sec:org631d9ae},fragile]{Oh dear, Oh dear\ldots{}}
  And then we were to time how long it took to access every page of memory\ldots{}
 
 \begin{center}
-\includegraphics[width=.9\linewidth]{./pagetimes.png}
+\includegraphics[width=\linewidth]{./pagetimes.png}
 \end{center}
 
 Anyone want to guess what the value at \texttt{array1[x]} was?
@@ -563,16 +578,16 @@ Anyone want to guess what the value at \texttt{array1[x]} was?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org824e91f},fragile]{Oh dear, Oh dear, Oh dear}
+\begin{frame}[label={sec:org10a47b8},fragile]{Oh dear, Oh dear, Oh dear}
  Suppose this attack also worked not just with C but via Javascript\ldots{}
 
-\begin{verbatim}
+\begin{lstlisting}[language=js,numbers=none]
 if (index < simpleByteArray.length) {
     index = simpleByteArray[index | 0];
     index = (((index * 4096)|0) & (32*1024*1024-1))|0;
     localJunk ^= probeTable[index|0]|0;
 }
-\end{verbatim}
+\end{lstlisting}
 
 So you can leak a byte of memory\ldots{} big deal?
 \begin{itemize}
@@ -588,13 +603,13 @@ So you can leak a byte of memory\ldots{} big deal?
 \end{frame}
 
 
-\begin{frame}[label={sec:orga6a39e6}]{The Cloud}
+\begin{frame}[label={sec:org2a20f5f}]{The Cloud}
 \begin{center}
-\includegraphics[width=.9\linewidth]{./cloud.jpg}
+\includegraphics[width=\linewidth]{./cloud.jpg}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org8ec39d0},fragile]{So how are we going to fix this?}
+\begin{frame}[label={sec:orgc495676},fragile]{So how are we going to fix this?}
  This is the \emph{Spectre} vulnerability, and is part of the \emph{Meltdown} family of attacks:
 \begin{description}
 \item[{Meltdown}] (\texttt{CVE-2017-5754}) melts down security barriers
@@ -608,7 +623,7 @@ Affects:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org2ec8924}]{No, seriously please, how do we fix this?}
+\begin{frame}[label={sec:orgc9b8378}]{No, seriously please, how do we fix this?}
 We have a couple of ideas:
 
 \begin{description}
@@ -620,7 +635,7 @@ We have a couple of ideas:
 Which one do you think we've gone with?
 \end{frame}
 
-\begin{frame}[label={sec:orgc096649},fragile]{Anyone's computers feeling a bit slow?}
+\begin{frame}[label={sec:org38f41ce},fragile]{Anyone's computers feeling a bit slow?}
  When I was growing up everytime they made new computers they always felt \emph{lots} faster\ldots{}
 \begin{itemize}
 \item Anyone not really noticed this recently?
@@ -632,26 +647,28 @@ We do have other mitigations other than turning SMT off\ldots{}
 \item and turning multithreading off really does make this \emph{much, much} harder to exploit
 \end{itemize}
 
-\begin{verbatim}
+\begin{lstlisting}[language=sh,numbers=none]
 cat /sys/devices/system/cpu/vulnerabilities/{meltdown,spectre*}
-\end{verbatim}
+\end{lstlisting}
 
-\begin{verbatim}
+\begin{lstlisting}[language=text,numbers=none]
 Mitigation: usercopy/swapgs barriers and __user pointer sanitization
 Mitigation: Enhanced IBRS, IBPB: conditional, RSB filling, PBRSB-eIBRS: SW sequence
-\end{verbatim}
+\end{lstlisting}
 
+And on your kernel commandline:
+
+\footnotesize\ttfamily
 \begin{verbatim}
-curl https://make-linux-fast-again.com/
+noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off
+nospec_store_bypass_disable no_stf_barrier mds=off tsx=on
+tsx_async_abort=off mitigations=off
 \end{verbatim}
-
-noibrs noibpb nopti nospectre\textsubscript{v2} nospectre\textsubscript{v1} l1tf=off nospec\textsubscript{store}\textsubscript{bypass}\textsubscript{disable} no\textsubscript{stf}\textsubscript{barrier} mds=off tsx=on tsx\textsubscript{async}\textsubscript{abort}=off mitigations=off
-noibrs noibpb nopti nospectre\textsubscript{v2} nospectre\textsubscript{v1} l1tf=off nospec\textsubscript{store}\textsubscript{bypass}\textsubscript{disable} no\textsubscript{stf}\textsubscript{barrier} mds=off tsx=on tsx\textsubscript{async}\textsubscript{abort}=off mitigations=off
 \end{frame}
 
-\begin{frame}[label={sec:org57842bc}]{It isn't just you\ldots{}}
+\begin{frame}[label={sec:org6b51a88}]{It isn't just you\ldots{}}
 \begin{center}
-\includegraphics[width=.9\linewidth]{./performance.png}
+\includegraphics[width=\linewidth]{./performance.png}
 \end{center}
 
 About a 25--30\% performance penalty in the \emph{worst} case
@@ -659,7 +676,7 @@ About a 25--30\% performance penalty in the \emph{worst} case
 About a 10\% in general usage
 \end{frame}
 
-\begin{frame}[label={sec:org1e2cf2c}]{So in conclusion\ldots{}}
+\begin{frame}[label={sec:org60962f5}]{So in conclusion\ldots{}}
 Computer hardware fundamentally broken
 \begin{itemize}
 \item RAM doesn't work
@@ -674,7 +691,9 @@ Software can give us a solution!
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgb0a7027}]{My suggestion to all of you}
+\begin{frame}[label={sec:orgd079296}]{My suggestion to all of you}
+\begin{columns}
+\begin{column}[t]{0.6\columnwidth}
 \begin{block}{People will always need clothes!}
 \begin{itemize}
 \item Sewing is fun!
@@ -685,5 +704,15 @@ Software can give us a solution!
 \end{itemize}
 \end{itemize}
 \end{block}
+\end{column}
+
+
+
+\begin{column}[t]{0.4\columnwidth}
+\begin{center}
+\includegraphics[width=\linewidth]{./sewing.jpeg}
+\end{center}
+\end{column}
+\end{columns}
 \end{frame}
 \end{document}

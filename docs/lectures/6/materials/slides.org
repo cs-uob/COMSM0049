@@ -7,9 +7,11 @@
 #+beamer_header: \titlegraphic{\includegraphics[height=0.5cm]{bristol.png}}
 #+beamer_font_theme: [stillsansseriflarge]serif
 #+latex_header: \usepackage{fontspec}
-#+latex_header_extra: \setsansfont{Archivo Expanded}
-#+latex_header_extra: \setmainfont{Lora}
-#+latex_header_extra: \setmonofont{PragmataPro Liga}
+#+latex_header: \usepackage{listings}
+#+latex_header: \lstset{basicstyle=\footnotesize}
+#+latex_header_extra: \setsansfont{HVD Comic Serif Pro}
+#+latex_header_extra: \setmainfont{Comic Sans MS}
+#+latex_header_extra: \setmonofont{ComicCodeLigatures}
 #+latex_header_extra: \definecolor{UOBred}{rgb}{0.6706, 0.1216, 0.1765}
 #+latex_header_extra: \setbeamercolor{palette primary}{bg=UOBred, fg=white}
 #+latex_header_extra: \setbeamercolor{palette secondary}{bg=UOBred, fg=white}
@@ -17,6 +19,7 @@
 #+latex_header_extra: \setbeamercolor{palette quaternary}{bg=UOBred, fg=white}
 #+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
 #+latex_header_extra: \setbeamercolor{structure}{fg=UOBred}
+#+latex_header_extra: \renewcommand{\alert}[1]{\textbf{#1}}
 
 * Abstraction, abstraction...
 
@@ -166,10 +169,10 @@ Several papers discuss it and explore it
 ** Diagram                                                          :BMCOL:
 :PROPERTIES:
 :BEAMER_opt: [t]
-:BEAMER_col: 0.2
+:BEAMER_col: 0.3
 :END:
 #+begin_src text
-     ⋮    |      ! |
+          |      ! |
           +--------+
   Row n+0 |        <- X
           +--------+
@@ -181,7 +184,7 @@ Several papers discuss it and explore it
           +--------+
   Row n+4 |        <- Y
           +--------+
-     ⋮    |    !   |
+          |    !   |
         
           +--------+
   Active  |X/Y/X/Y/|
@@ -191,7 +194,7 @@ Several papers discuss it and explore it
 ** Explanation                                                       :BMCOL:
 :PROPERTIES:
 :BEAMER_opt: [t]
-:BEAMER_col: 0.79
+:BEAMER_col: 0.69
 :END:
 
 If you perform the rowhammer with the above RAM layout
@@ -203,10 +206,10 @@ If you perform the rowhammer with the above RAM layout
 ** Diagram                                                          :BMCOL:
 :PROPERTIES:
 :BEAMER_opt: [t]
-:BEAMER_col: 0.2
+:BEAMER_col: 0.3
 :END:
 #+begin_src text
-     ⋮    |        |
+          |        |
           +--------+
   Row n+0 |      ! |
           +--------+
@@ -218,7 +221,7 @@ If you perform the rowhammer with the above RAM layout
           +--------+
   Row n+4 |   !    |   
           +--------+
-     ⋮    |        |
+          |        |
         
           +--------+
   Active  |X/Y/X/Y/|
@@ -228,7 +231,7 @@ If you perform the rowhammer with the above RAM layout
 ** Explanation                                                       :BMCOL:
 :PROPERTIES:
 :BEAMER_opt: [t]
-:BEAMER_col: 0.79
+:BEAMER_col: 0.69
 :END:
 
 If you select =X= and =Y= so there is excactly 1 row between them
@@ -331,13 +334,30 @@ Buy better RAM?
 
 * Are we depressed yet?
 
+** Left column :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.6
+:END:
+
 Have you considered taking up pottery?
 - Mud is not susceptible to Rowhammer or any of the techniques covered in this course
 - Mud will not make you sad (except when your bowls collapse)
 - You can make bowls and mugs and /super cute/ pots!
 
 \vfill
-** Honestly, I cannot recommend it highly enough.
+*** Honestly, I cannot recommend it highly enough.
+
+
+
+** Right column :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.4
+:END:
+
+#+ATTR_LATEX: :width=".6\linewidth"
+[[./pottery.jpeg]]
 
 * Buckle up...
 [[./brandnames.png]]
@@ -538,12 +558,14 @@ Mitigation: usercopy/swapgs barriers and __user pointer sanitization
 Mitigation: Enhanced IBRS, IBPB: conditional, RSB filling, PBRSB-eIBRS: SW sequence
 #+end_src
 
-#+begin_src sh :results raw :exports both
-  curl https://make-linux-fast-again.com/
-#+end_src
+And on your kernel commandline:
 
-#+RESULTS:
-noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off nospec_store_bypass_disable no_stf_barrier mds=off tsx=on tsx_async_abort=off mitigations=off
+\footnotesize\ttfamily
+#+begin_src
+noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off
+nospec_store_bypass_disable no_stf_barrier mds=off tsx=on
+tsx_async_abort=off mitigations=off
+#+end_src
 
 * It isn't just you...
 
@@ -566,9 +588,24 @@ Software can give us a solution!
 
 * My suggestion to all of you
 
-** People will always need clothes!
+** Left column :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.6
+:END:
+
+*** People will always need clothes!
 - Sewing is fun!
 - It's about an evenings work to make a hawaiian shirt!
 - Sewing machines /not/ vulnerable to any attacks in this course
   - (unless they're really fancy...)
     
+
+
+** Right column :BMCOL:
+:PROPERTIES:
+:BEAMER_opt: [t]
+:BEAMER_col: 0.4
+:END:
+
+[[./sewing.jpeg]]
