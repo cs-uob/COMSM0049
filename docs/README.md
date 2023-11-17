@@ -11,7 +11,7 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 - Thursday 3pm to 5pm (MVB 1.15) - Lab sessions
 
 ### Week 8-11
-Please the coursework brief using this link [Coursework](https://github.com/cs-uob/COMSM0049/blob/master/docs/Systems%20and%20Software%20Security%20Coursework%2023-24.docx)
+Please access the coursework brief using this link [Coursework](https://github.com/cs-uob/COMSM0049/blob/master/docs/Systems%20and%20Software%20Security%20Coursework%2023-24.docx)
 
 
 ### Week 12: 
