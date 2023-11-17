@@ -11,7 +11,8 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 - Thursday 3pm to 5pm (MVB 1.15) - Lab sessions
 
 ### Week 8-11
-Coursework.
+Please the coursework brief using this link [Coursework](https://github.com/cs-uob/COMSM0049/blob/master/docs/Coursework)
+
 
 ### Week 12: 
 
