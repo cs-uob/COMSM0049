@@ -48,7 +48,7 @@ Questions on the Teams channel should be your preferred course of action as ever
 ## Course Structure
 
 | Week       | Lecture (Monday 11am-12pm QUEENS BLDG 1.68 )                                        |   Lab (Tuesday 1-3pm MVB 1.15)   | Homework        |   
-|------------|---------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|---|
+|------------|-------------------------------------------------------------------------------------|----------------------------------|-----------------|
 | 1  (16/09) | [Lecture 1: Interesting bugs and where to find them (*Joseph*)](lectures/1/slides.pdf)  | [Lab 1: Assembly refresher](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/1.md)                            | [Homework]                                                      |   
 | 2  (23/09) | [Lab 2: Format strings](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/2.md)       | [Lecture 2: Heap overflows and the Malloc Maleficarum (Joseph)](lectures/2/slides.pdf) |[Homework]                                                 |               |   |
  | 3  (30/09) | [Lab 3: Stack smashing](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/3.md)      | [Lecture 3: Return oriented programming (*Joseph*)](lectures/3/slides.pdf)         | [Homework]    |   |
