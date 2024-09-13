@@ -7,8 +7,8 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 ## Schedule
 
 ### Week 1-7
-- Thursdays 11am to 12pm (QB 1.15) - Lecture
-- Thursday 3pm to 5pm (MVB 1.15) - Lab sessions
+- Monday 11am-12pm QUEENS BLDG 1.68 - Lecture
+- Tuesday 1-3pm MVB 1.15 - Lab sessions
 
 ### Week 8-11
 Please access the coursework brief using this link [Coursework](https://github.com/cs-uob/COMSM0049/blob/master/docs/Systems%20and%20Software%20Security%20Coursework%2023-24.docx)
