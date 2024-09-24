@@ -264,7 +264,7 @@ Recompile the C hello world for 32bit Linux: what's the calling
 convention now?
 
 ``` shell
-cc -m32 -o hello-c-32.o hello-c
+cc -m32 -o hello-c-32.o hello.c
 objdump -d hello-c-32.o
 ```
 
