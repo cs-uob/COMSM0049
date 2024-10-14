@@ -67,7 +67,7 @@ Hence, reading materials and exercises are provided alongside labs and lectures.
 Students (especially those on the coursework option) are **very strongly encouraged** to do this work diligently during the first 7 weeks of the term.
 Students will struggle to complete their coursework on time if they haven't engaged with the unit material beforehand.
 
-You can find in this link lab notes that would help complete the labs: [Lab notes](https://github.com/cs-uob/COMSM0049/blob/master/docs/Labs%20Soluti/Lab%20Notes.pptx)
+You can find in this link lab notes that would help you complete the labs: [Lab notes](https://github.com/cs-uob/COMSM0049/blob/master/docs/Labs%20Soluti/Lab%20Notes.pptx)
 
 ## Homework
 
