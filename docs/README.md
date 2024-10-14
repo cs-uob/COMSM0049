@@ -67,6 +67,8 @@ Hence, reading materials and exercises are provided alongside labs and lectures.
 Students (especially those on the coursework option) are **very strongly encouraged** to do this work diligently during the first 7 weeks of the term.
 Students will struggle to complete their coursework on time if they haven't engaged with the unit material beforehand.
 
+You can find in this link lab notes that would help complete the labs: [Lab notes](https://github.com/cs-uob/COMSM0049/blob/master/docs/Labs%20Soluti/Lab%20Notes.pptx)
+
 ## Homework
 
 This unit comes with reading material and homework (It is an Masters level unit, and one lecture a week is never going to be enough time to cover everything). Please make sure you go through it because it *may* crop up on any exam we set.  We'll try and keep it fairly light (read some papers, watch a video) and I'll try and give you questions in the style of the exam in there.  Ask in the labs if you want solutions, or try and mark them amongst yourselves (tip: if a question is worth 5 marks we generally are expecting 5 points to be made; if a question is worth 15 we're expecting roughly three times the work, but are more interested in your reasoning and thinking: there may not be any definitively *right* answer!)
