@@ -11,8 +11,9 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 - Tuesday 1-3pm MVB 1.15 - Lab sessions
 
 ### Week 8-11
-Please access the coursework brief using this link [Coursework](https://github.com/cs-uob/COMSM0049/blob/master/docs/Systems%20and%20Software%20Security%20Coursework%2023-24.docx)
+[The coursework is available on the unit Github page.](https://cs-uob.github.io/COMSM0049/coursework/)
 
+[A PDF is also available.](https://github.com/cs-uob/COMSM0049/blob/master/docs/coursework/coursework.pdf)
 
 ### Week 12: 
 
