@@ -7,13 +7,17 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 ## Schedule
 
 ### Week 1-7
-- Monday 11am-12pm QUEENS BLDG 1.68 - Lecture
+- Monday 2pm--3pm QUEENS BLDG 1.68 - Lecture
 - Tuesday 1-3pm MVB 1.15 - Lab sessions
 
 ### Week 8-11
+
+Will be coursework (and it may change up until its released so don't go looking up what last years was under the expectation it won't!)
+<!--
 [The coursework is available on the unit Github page.](https://cs-uob.github.io/COMSM0049/coursework/)
 
 [A PDF is also available.](https://github.com/cs-uob/COMSM0049/blob/master/docs/coursework/coursework.pdf)
+-->
 
 ### Week 12: 
 
@@ -30,10 +34,9 @@ The relevant people for this unit are:
 |----------------|---------------|---------------------------------------------------------------------|
 | Sana Belguith  | Unit Director | [sana.belguith@bristol.ac.uk](mailto:sana.belguith@bristol.ac.uk)   |
 | Joseph Hallett | Lecturer      | [joseph.hallett@bristol.ac.uk](mailto:joseph.hallett@bristol.ac.uk) |
-| Andy Baldrian  | TA            | [andy.baldrian@bristol.ac.uk](mailto:andy.baldrian@bristol.ac.uk)   |
-| Graham Peden   | TA            | [gp15281@bristol.ac.uk](mailto:gp15281@bristol.ac.uk)               |
-| Akin Eker      | TA            | [akin.eker@bristol.ac.uk](mailto:akin.eker@bristol.ac.uk)           |
-| Emerson Suter  | TA            | [ph19691@bristol.ac.uk](mailto:ph19691@bristol.ac.uk)               |
+| Andy Baldrian  | TA            |                                                                     |
+| Aagi Thomas    | TA            |                                                                     |
+| Zhiyuan Xu     | TA            |                                                                     |
 
 ## Support
 
@@ -74,3 +77,16 @@ You can find in this link lab notes that would help you complete the labs: [Lab 
 
 This unit comes with reading material and homework (It is an Masters level unit, and one lecture a week is never going to be enough time to cover everything). Please make sure you go through it because it *may* crop up on any exam we set.  We'll try and keep it fairly light (read some papers, watch a video) and I'll try and give you questions in the style of the exam in there.  Ask in the labs if you want solutions, or try and mark them amongst yourselves (tip: if a question is worth 5 marks we generally are expecting 5 points to be made; if a question is worth 15 we're expecting roughly three times the work, but are more interested in your reasoning and thinking: there may not be any definitively *right* answer!)
 
+## FAQs
+
+### Is this going to be on the exam?
+
+Have we mentioned it in class, the lab, in passing?  Could be if so!
+
+### Is the exam open book?
+
+Nope, and we can't do anything about it.
+
+### If I do X for my coursework/exam will it score marks?
+
+The markscheme (once released) is available to you for the coursework but the same principles apply to both.  This stuff is hard and there often isn't a definitively *right* answer; instead of focussing on whether something is the textbook answer explain your rationale as to why what you've said should get marks, and we'll use our judgement.  We want you to pass and value well reasoned, well thought out, delightfully subversive answers sometimes more than the correct ones.  Show us you've engaged with the course and are aware of your answers limitations and strengths and you'll score highly.
