@@ -21,8 +21,8 @@ Will be coursework (and it may change up until its released so don't go looking 
 
 ### Week 12: 
 
-Revision session will be published in due time on Teams COMSM0049: Systems and Software Security (Teaching Unit) 2023/24 (TB-1, A) 
- [Teams channel Link](https://teams.microsoft.com/l/channel/19%3a5IMsIc5ntnsf4jmmq6g7KNwN2epdvrb_vs91FR7jafo1%40thread.tacv2/General?groupId=e990e356-9e3d-4764-9172-5df2ee2329db&tenantId=b2e47f30-cd7d-4a4e-a5da-b18cf1a4151b)
+Revision session will be published in due time on Teams COMSM0049: Systems and Software Security (Teaching Unit) 2025-26 (TB-1, A) 
+ [Teams channel Link](https://teams.microsoft.com/l/channel/19%3AcYK1Ug2QCuvov46ZU8PO4TgImmW9ns232J5k32pD94M1%40thread.tacv2/General?groupId=6e3df5d7-04a6-4537-ad20-06ab328fb055&tenantId=b2e47f30-cd7d-4a4e-a5da-b18cf1a4151b)
 
 
 
