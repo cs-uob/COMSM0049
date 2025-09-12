@@ -33,7 +33,7 @@ The relevant people for this unit are:
 | Person         | Role          | Contact                                                             |
 |----------------|---------------|---------------------------------------------------------------------|
 | Sana Belguith  | Unit Director | [sana.belguith@bristol.ac.uk](mailto:sana.belguith@bristol.ac.uk)   |
-| Jo Hallett     | Lecturer      | [joseph.hallett@bristol.ac.uk](mailto:joseph.hallett@bristol.ac.uk) |
+| Jo Hallett     | Lecturer      | [Jo.hallett@bristol.ac.uk](mailto:Jo.hallett@bristol.ac.uk) |
 | Andy Baldrian  | TA            |                                                                     |
 | Aagi Thomas    | TA            |                                                                     |
 | Zhiyuan Xu     | TA            |                                                                     |
@@ -45,7 +45,7 @@ The most effective way to get the help you need is to:
 
 1. Check unit slides/notes.
 2. Try the Teams channel for the unit
-3. Contact [Sana](mailto:sana.belguith@bristol.ac.uk) or [Joseph](mailto:joseph.hallett@bristol.ac.uk).
+3. Contact [Sana](mailto:sana.belguith@bristol.ac.uk) or [Jo](mailto:Jo.hallett@bristol.ac.uk).
 
 Questions on the Teams channel should be your preferred course of action as every students on the unit can benefit from the answers (otherwise we end up saying the same thing repeatedly).
 
