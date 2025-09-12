@@ -33,7 +33,7 @@ The relevant people for this unit are:
 | Person         | Role          | Contact                                                             |
 |----------------|---------------|---------------------------------------------------------------------|
 | Sana Belguith  | Unit Director | [sana.belguith@bristol.ac.uk](mailto:sana.belguith@bristol.ac.uk)   |
-| Jo Hallett     | Lecturer      | [Jo.hallett@bristol.ac.uk](mailto:Jo.hallett@bristol.ac.uk) |
+| Jo Hallett     | Lecturer      | [Jo.hallett@bristol.ac.uk](mailto:joseph.hallett@bristol.ac.uk) |
 | Andy Baldrian  | TA            |                                                                     |
 | Aagi Thomas    | TA            |                                                                     |
 | Zhiyuan Xu     | TA            |                                                                     |
