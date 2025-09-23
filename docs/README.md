@@ -37,6 +37,7 @@ The relevant people for this unit are:
 | Andy Baldrian  | TA            |                                                                     |
 | Aagi Thomas    | TA            |                                                                     |
 | Zhiyuan Xu     | TA            |                                                                     |
+| Jay Parker     | TA            |                                                                     |
 
 ## Support
 
