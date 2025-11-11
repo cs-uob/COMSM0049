@@ -67,13 +67,14 @@ To allow the program to finish successfully, use this code:
 void create_sandbox(){
   scmp_filter_ctx ctx;
   ctx = seccomp_init(SCMP_ACT_KILL);
-  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(openat), 0);
-  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(read), 0);
-  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(newfstatat), 0);
-  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(write), 0);
-  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(close), 0);
-  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(getpid), 0);
-  seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(exit_group), 0);
+  seccomp_rule_add(ctx,SCMP_ACT_ALLOW,SCMP_SYS(openat),0);
+  seccomp_rule_add(ctx,SCMP_ACT_ALLOW,SCMP_SYS(close),0);
+  seccomp_rule_add(ctx,SCMP_ACT_ALLOW,SCMP_SYS(write),0);
+  seccomp_rule_add(ctx,SCMP_ACT_ALLOW,SCMP_SYS(read),0);
+  seccomp_rule_add(ctx,SCMP_ACT_ALLOW,SCMP_SYS(getpid),0);
+  seccomp_rule_add(ctx,SCMP_ACT_ALLOW,SCMP_SYS(fstat),0);
+  seccomp_rule_add(ctx,SCMP_ACT_ALLOW,SCMP_SYS(exit_group),0);
+  seccomp_rule_add(ctx,SCMP_ACT_ALLOW,SCMP_SYS(mmap),0);
   seccomp_load(ctx);
 }
 ```
