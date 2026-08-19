@@ -30,14 +30,13 @@ Revision session will be published in due time on Teams COMSM0049: Systems and S
 
 The relevant people for this unit are:
 
-| Person         | Role          | Contact                                                             |
-|----------------|---------------|---------------------------------------------------------------------|
-| Sana Belguith  | Unit Director | [sana.belguith@bristol.ac.uk](mailto:sana.belguith@bristol.ac.uk)   |
-| Jo Hallett     | Lecturer      | [Jo.hallett@bristol.ac.uk](mailto:joseph.hallett@bristol.ac.uk) |
-| Andy Baldrian  | TA            |                                                                     |
-| Aagi Thomas    | TA            |                                                                     |
-| Zhiyuan Xu     | TA            |                                                                     |
-| Jay Parker     | TA            |                                                                     |
+| Person              | Role          | Contact                                                           |
+|---------------------+---------------+-------------------------------------------------------------------|
+| Sana Belguith       | Unit Director | [sana.belguith@bristol.ac.uk](mailto:sana.belguith@bristol.ac.uk) |
+| Gretchen Jo Hallett | Lecturer      | [jo.hallett@bristol.ac.uk](mailto:jo.hallett@bristol.ac.uk)       |
+| Andy Baldrian       | TA            |                                                                   |
+| Jiun Tang           | TA            |                                                                   |
+| Jay Parker          | TA            |                                                                   |
 
 ## Support
 
@@ -46,26 +45,26 @@ The most effective way to get the help you need is to:
 
 1. Check unit slides/notes.
 2. Try the Teams channel for the unit
-3. Contact [Sana](mailto:sana.belguith@bristol.ac.uk) or [Jo](mailto:Jo.hallett@bristol.ac.uk).
+3. Contact [Sana](mailto:sana.belguith@bristol.ac.uk) or [Gretch](mailto:jo.hallett@bristol.ac.uk).
 
 Questions on the Teams channel should be your preferred course of action as every students on the unit can benefit from the answers (otherwise we end up saying the same thing repeatedly).
 
 ## Course Structure
 
-| Week       | Lecture (Monday 11am-12pm QUEENS BLDG 1.68 )                                        |   Lab (Tuesday 1-3pm MVB 1.15)   | Homework        |   
-|------------|-------------------------------------------------------------------------------------|----------------------------------|-----------------|
-| 1  (22/09) | [Lecture 1: Interesting bugs and where to find them (*Jo*)](lectures/1/slides.pdf)  | [Lab 1: Assembly refresher](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/1.md)                            | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/1.md)                                                      |   
-| 2  (29/09) |[Lecture 2: Heap overflows and the Malloc Maleficarum (Jo)](lectures/2/slides.pdf) | [Lab 2: Format strings](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/2.md)       | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/2.md)                                                 |               |   |
- | 3  (06/10) | [Lecture 3: Return oriented programming (*Jo*)](lectures/3/slides.pdf)         | [Lab 3: Stack smashing](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/3.md)      | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/3.md)    |   
-| 4  (13/10) | [Lecture 4: Fuzzing (*Sana*)](https://github.com/cs-uob/COMSM0049/blob/master/docs/lectures/4/Intro-fuzzzing-updated.pptx)                                       |[Lab 4: ROP](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/4.md)          |  [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/4.md)|   
-| 5  (20/10) |[Lecture 5: Access Control (*Sana*)](https://github.com/cs-uob/COMSM0049/blob/master/docs/lectures/5/Access%20Control.pptx)       |  [Lab 5: Fuzzing](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/5.md)           | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/5.md)                                |  
-|5  (27/10)|--------------Reading Week----------|-----------Reading Week----------|-----------------------|
-| 7  (03/11) |  [Lecture 6: Rowhammer, Spectre and Meltdown (*Jo*)](lectures/6/slides.pdf)      |[In-Class Test]       |  [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/6.md)                                      |   
-| 8  (10/11) | [Lecture 7: Hardware Security (*Sana*)](https://github.com/cs-uob/COMSM0049/blob/master/docs/lectures/7/Hardware%20Security.pptx)))                                                                                            |  [Lab 7: Sandboxing](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/6.md) |  [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/7.md)                  |  
-| 9  (11/11) | [Coursework](https://github.com/cs-uob/COMSM0049/blob/master/docs/coursework/Systems%20and%20Software%20Security%20Coursework%2025-26.docx)                                                                                 | Coursework                                                                                                                          |                                                                             |   |
-| 10  (18/11) | Coursework                                                                                  | Coursework                                                                                                                          |                                                                             |   |
-| 11 (25/12) | Coursework                                                                                  | Coursework                                                                                                                          |                                                                             |   |
-| 12 (02/12) | Revision                                                                                    | Revision      |       |   |
+| Week        | Lecture (Monday 11am-12pm QUEENS BLDG 1.68 )                                                                                                | Lab (Tuesday 1-3pm MVB 1.15)                                                                | Homework                                                                    |   |   |
+|-------------+---------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+---+---|
+| 1  (22/09)  | [Lecture 1: Interesting bugs and where to find them (*Gretch*)](lectures/1/slides.pdf)                                                          | [Lab 1: Assembly refresher](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/1.md) | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/1.md) |   |   |
+| 2  (29/09)  | [Lecture 2: Heap overflows and the Malloc Maleficarum (Gretch)](lectures/2/slides.pdf)                                                          | [Lab 2: Format strings](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/2.md)     | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/2.md) |   |   |
+| 3  (06/10)  | [Lecture 3: Return oriented programming (*Gretch*)](lectures/3/slides.pdf)                                                                      | [Lab 3: Stack smashing](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/3.md)     | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/3.md) |   |   |
+| 4  (13/10)  | [Lecture 4: Fuzzing (*Sana*)](https://github.com/cs-uob/COMSM0049/blob/master/docs/lectures/4/Intro-fuzzzing-updated.pptx)                  | [Lab 4: ROP](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/4.md)                | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/4.md) |   |   |
+| 5  (20/10)  | [Lecture 5: Access Control (*Sana*)](https://github.com/cs-uob/COMSM0049/blob/master/docs/lectures/5/Access%20Control.pptx)                 | [Lab 5: Fuzzing](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/5.md)            | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/5.md) |   |   |
+| 5  (27/10)  | --------------Reading Week----------                                                                                                        | -----------Reading Week----------                                                           | -----------------------                                                     |   |   |
+| 7  (03/11)  | [Lecture 6: Rowhammer, Spectre and Meltdown (*Gretch*)](lectures/6/slides.pdf)                                                                  | [In-Class Test]                                                                             | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/6.md) |   |   |
+| 8  (10/11)  | [Lecture 7: Hardware Security (*Sana*)](https://github.com/cs-uob/COMSM0049/blob/master/docs/lectures/7/Hardware%20Security.pptx)))         | [Lab 7: Sandboxing](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/6.md)         | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/7.md) |   |   |
+| 9  (11/11)  | [Coursework](https://github.com/cs-uob/COMSM0049/blob/master/docs/coursework/Systems%20and%20Software%20Security%20Coursework%2025-26.docx) | Coursework                                                                                  |                                                                             |   |   |
+| 10  (18/11) | Coursework                                                                                                                                  | Coursework                                                                                  |                                                                             |   |   |
+| 11 (25/12)  | Coursework                                                                                                                                  | Coursework                                                                                  |                                                                             |   |   |
+| 12 (02/12)  | Revision                                                                                                                                    | Revision                                                                                    |                                                                             |   |   |
 
 As per appropriate for a master-level unit, students are expected to work independently outside of lectures and labs.
 Hence, reading materials and exercises are provided alongside labs and lectures.
@@ -86,8 +85,13 @@ Have we mentioned it in class, the lab, in passing?  Could be if so!
 
 ### Is the exam open book?
 
-Nope, and we can't do anything about it.
+Nope, and we can't do anything about it (we tried).
 
 ### If I do X for my coursework/exam will it score marks?
 
 The markscheme (once released) is available to you for the coursework but the same principles apply to both.  This stuff is hard and there often isn't a definitively *right* answer; instead of focussing on whether something is the textbook answer explain your rationale as to why what you've said should get marks, and we'll use our judgement.  We want you to pass and value well reasoned, well thought out, delightfully subversive answers sometimes more than the correct ones.  Show us you've engaged with the course and are aware of your answers limitations and strengths and you'll score highly.
+
+### Hang on, who's Gretch I thought they were called Jo?!
+
+Joseph found a buffer overrun in his DNA, and accidentally overwrote her own name and gender. Turns out she's much happier nowadays. 🏳️‍⚧️
+
