@@ -7,8 +7,8 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 ## Schedule
 
 ### Week 1-7
-- Monday 2pm--3pm QUEENS BLDG 1.68 - Lecture
-- Tuesday 1-3pm MVB 1.15 - Lab sessions
+- Thursday 12-1pm QUEENS BLDG 1.68 - Lecture
+- Thursday 2-4pm MVB 1.15 - Lab sessions Lab 
 
 ### Week 8-11
 
@@ -52,7 +52,7 @@ Questions on the Teams channel should be your preferred course of action as ever
 
 ## Course Structure
 
-| Week        | Lecture (Monday 11am-12pm QUEENS BLDG 1.68 )                                                                                                | Lab (Tuesday 1-3pm MVB 1.15)                                                                | Homework                                                                    |   |   |
+| Week        | Lecture (Thursday 12-1pm QUEENS BLDG 1.68 )                                                                                                | Lab (Thursday 2-4pm MVB 1.15)                                                                | Homework                                                                    |   |   |
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|---|---|
 | 1  (22/09)  | [Lecture 1: Interesting bugs and where to find them (*Gretch*)](lectures/1/slides.pdf)                                                      | [Lab 1: Assembly refresher](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/1.md) | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/1.md) |   |   |
 | 2  (29/09)  | [Lecture 2: Heap overflows and the Malloc Maleficarum (Gretch)](lectures/2/slides.pdf)                                                      | [Lab 2: Format strings](https://github.com/cs-uob/COMSM0049/blob/master/docs/labs/2.md)     | [Homework](https://github.com/cs-uob/COMSM0049/blob/master/docs/extra/2.md) |   |   |
