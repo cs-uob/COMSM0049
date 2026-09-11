@@ -1,4 +1,4 @@
-# Week 6 Homework
+# Week 7 Homework
 
 As always, skim the lot of the reading, and go into more detail if
 there are things you're particularly interested in or which I didn't
