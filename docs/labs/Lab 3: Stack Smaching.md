@@ -1,4 +1,4 @@
-# Lab 3: Buffer Overflows
+# Lab 3: Stack Smaching
 
 ## Material
 
