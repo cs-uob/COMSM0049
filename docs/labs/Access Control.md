@@ -1,4 +1,4 @@
-# COMSM0049: Lab 6 -- Access Control
+# COMSM0049: Lab 6 -- Access Control - This is an optional lab, you can go through just for fun
 
 ## Material
 
