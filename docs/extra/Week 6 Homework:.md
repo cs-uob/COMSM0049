@@ -1,4 +1,4 @@
-## Homework:
+## Week 6 Homework:
 
 ## Readings: 
 1. Costan, V. and Devadas, S., 2016. Intel SGX explained. Cryptology ePrint Archive.
