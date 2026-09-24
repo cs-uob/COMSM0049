@@ -474,8 +474,11 @@ conference on Computer and Communications Security*. 2009.
 
 Linux is all very fun and good, but lets try some other systems. Got a
 modern Mac? Try and write an assembly hello world. Got a Windows
-machine? Do the same! Theres an ancient UNIX teletype in the foyer… can
-anyone get hello world running on that?
+machine? Do the same! ~~Theres an ancient UNIX teletype~~ There used to
+be a Raspberry Pi hooked up to an ancient teletype in the foyer… ~~can
+anyone get hello world running on that?~~ the students a few years ago
+managed to get hello world running on that, but you can't, since it's
+gone now. Sorry.
 
 If you want something a bit more tricksy though… try and write it in
 assembly for OpenBSD[^8]. You'll find a Vagrant box for it under
