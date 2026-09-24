@@ -263,9 +263,17 @@ Go look up what it is for 64bit Linux and make a note of it.
 Recompile the C hello world for 32bit Linux: what's the calling
 convention now?
 
+
 ``` shell
 cc -m32 -o hello-c-32.o hello-c
 objdump -d hello-c-32.o
+```
+
+**Note:** The VM  may be missing the required 32-bit startup libraries. If so, run the following command:
+
+``` shell
+sudo apt update 
+sudo apt install gcc-multilib libc6-dev-i386 
 ```
 
 Windows has 4 different calling conventions for C functions in x86!
