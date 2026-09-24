@@ -7,7 +7,7 @@ As per [university guidelines](http://www.bristol.ac.uk/academic-quality/assessm
 ## Schedule
 
 ### Week 1-7
-- Thursday 12-1pm QUEENS BLDG 1.68 - Lecture
+- Thursday 12-1pm QUEENS BLDG 1.18 - Lecture
 - Thursday 2-4pm MVB 1.15 - Lab sessions Lab 
 
 ### Week 8-11
