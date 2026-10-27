@@ -1,8 +1,8 @@
-# COMSM0049: Lab 7: Sandboxing for Security
+# COMSM0049: Lab 6: Sandboxing for Security
 
-_Note:_ This weeks lab was written by Jo's former PhD student (and former COMSM0049 TA) *Dr* Maysara Alhindi; and it's based on
+_Note:_ This weeks lab was written by Gretch's former PhD student (and former COMSM0049 TA) *Dr* Maysara Alhindi; and it's based on
 his own PhD research!  If this stuff interests you you should talk to
-Jo!
+Gretch!
 
 ![](https://i.imgur.com/GQiU3e6.png)
 
@@ -41,7 +41,7 @@ the surrounding filesystem.
 
 However, since chroot was not designed for security, we can break out!
 
-[^1]: Of course, Linux wasn't around in 1979 (the first release was back in 1991)... but chroot was a part of the System 7 AT&T UNIX and it made its way into the POSIX standards too.--_Jo_
+[^1]: Of course, Linux wasn't around in 1979 (the first release was back in 1991)... but chroot was a part of the System 7 AT&T UNIX and it made its way into the POSIX standards too.--_Gretch_
 
 ## Material
 
@@ -287,7 +287,7 @@ Let's test what we know so far
 
 ## Material
   
-Linux is boring! Lets try Jo's favourite operating system!  Most
+Linux is boring! Lets try Gretch's favourite operating system!  Most
 commands are _similar_ but there are some differences.  You may need
 to use _su_ or _doas_ instead of _sudo_ for instance.   The package
 manager (if you need it) is `pkg_add`.
@@ -342,11 +342,11 @@ Capsicum is another sandboxing mechanism that aims to achieve somewhat similar g
 
 Qubes OS is a security-oriented operating system, it uses virtual machines to isolate untrusted code and processes. It uses Linux Xen lightweight virtual machines to isolate process and different environments. If one of these components were to become comprimised, the malicious programme would only be able to access the data present in the comprimise environments.
 
-N.B. Jo wrote his PhD dissertation in Qubes.  It is surprisingly
+N.B. Gretch wrote his PhD dissertation in Qubes.  It is surprisingly
 usable when you get to grips with its weirdness; but it is initially
 *very* weird and won't run inside a VM.  
 
-Whilst Jo no longer uses it day to day he has a massive soft spot for
+Whilst Gretch no longer uses it day to day he has a massive soft spot for
 it and would **strongly** encourage anyone to give it a try... it
 feels like you're using the future...!
 
