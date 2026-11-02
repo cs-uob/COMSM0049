@@ -31,7 +31,7 @@ The relevant people for this unit are:
 | Person              | Role          | Contact                                                           |
 |---------------------|---------------|-------------------------------------------------------------------|
 | Sana Belguith       | Unit Director | [sana.belguith@bristol.ac.uk](mailto:sana.belguith@bristol.ac.uk) |
-| Gretchen Hallett | Lecturer      | [jo.hallett@bristol.ac.uk](mailto:jo.hallett@bristol.ac.uk)       |
+| Gretchen Hallett | Lecturer      | [gretch.hallett@bristol.ac.uk](mailto:gretch.hallett@bristol.ac.uk)       |
 | Andy Baldrian       | TA            |                                                                   |
 | Jiun Tang           | TA            |                                                                   |
 | Jay Parker          | TA            |                                                                   |
