@@ -1,29 +1,39 @@
-# Part A—Unit Specific Coursework Details
+# Part A---Unit Specific Coursework Details {#part-aunit-specific-coursework-details .unnumbered}
 
-Unit Number:  COMSM0102
+Unit Number:
 
-Unit Name:  Systems & Software Security
+: COMSM0102
 
-Unit Director:  Sana Belguith
+Unit Name:
 
-Assignment Name:  Systems & Software Security Coursework
+: Systems & Software Security
 
-Assignment Weighting:  30%
+Unit Director:
 
-## Assignment Description:
+: ~~Sana Belguith~~ Gretchen Hallett *in absentia*
+
+Assignment Name:
+
+: Systems & Software Security Coursework
+
+Assignment Weighting:
+
+: 30%
+
+## Assignment Description: {#assignment-description .unnumbered}
 
 This coursework is for unit COMSM0102 Systems & Software Security
-Coursework. It will be released on *Friday 8<sup>th</sup> November* and
-must be submitted by *Friday 29<sup>th</sup> November* at 1pm at the
-very latest. The intention is that you submit by 12pm and keep the last
-hour as an emergency reserve for technical problems.
+Coursework. It will be released on *Friday 13^th^ November* and must be
+submitted by *Thursday 3^rd^ December* at 1pm at the very latest. The
+intention is that you submit by 12pm and keep the last hour as an
+emergency reserve for technical problems.
 
 In case of problems with your submission, you must e-mail
 [coms-info@bristol.ac.uk](mailto://coms-info@bristol.ac.uk) before the
 1pm final deadline to avoid your work being counted as late. You must
 submit the coursework on the Blackboard page for the assessment unit
 COMSM0102 (not the teaching unit COMSM0049). On the assessment unit, go
-to the menu item *“Assessment, Submission and Feedback"* and follow the
+to the menu item *"Assessment, Submission and Feedback\"* and follow the
 instructions there.
 
 If you have any questions, please write your question in the Teams
@@ -33,7 +43,7 @@ individually if you prefer. We will consider the group size when we mark
 your work. A marking scheme for this coursework is included on the last
 page of this document
 
-## Introduction
+## Introduction {#introduction .unnumbered}
 
 This project validates the whole unit, there is no other assessment. It
 represents a significant investment of time and effort that should
@@ -53,57 +63,59 @@ If you decide to undertake this coursework individually, we will take
 into consideration that you are working alone and we will reflect that
 in the marking scheme.
 
-## Deliverables
+## Deliverables {#deliverables .unnumbered}
 
-Project demonstration (group, graded 30%)  
-You will demonstrate that your solution works and demonstrate your
-project. Your project should be coming with a `README`. You will follow
-the `README` instructions and demonstrate that you obtain the results
-presented in your report and that you can reproduce the evaluation. The
-video should be *no longer than 10 minutes*.
+Project demonstration (group, graded 30%)
 
-PS: Please use appropriate compression settings while processing your
-demonstration videos as Blackboard will not allow videos larger than
-100MB to be uploaded. README
+: You will demonstrate that your solution works and demonstrate your
+  project. Your project should be coming with a `README`. You will
+  follow the `README` instructions and demonstrate that you obtain the
+  results presented in your report and that you can reproduce the
+  evaluation. The video should be *no longer than 10 minutes*.
 
-Final write up (group, graded 70%)  
-You should submit a report of roughly 5 pages (excluding references and
-appendice). Your report should contain a minimum of six academic
-citations. We suggest the following structure:
+  PS: Please use appropriate compression settings while processing your
+  demonstration videos as Blackboard will not allow videos larger than
+  100MB to be uploaded. README
 
-- Introduction
+Final write up (group, graded 70%)
 
-- Background
+: You should submit a report of roughly 5 pages (excluding references
+  and appendice). Your report should contain a minimum of six academic
+  citations. We suggest the following structure:
 
-- Design & Implementation
+  - Introduction
 
-- Evaluation
+  - Background
 
-- Conclusion
+  - Design & Implementation
 
-Please use figures to illustrate your points (as appropriate).
+  - Evaluation
 
-In addition in the appendix you should:
+  - Conclusion
 
-1.  Discuss how well you met your project’s objective. If you did not
-    implement everything you planned this does not mean that you will
-    fail (or get a bad grade). You should discuss why it could not be
-    done (e.g. technical challenges, change of direction, alternative
-    approach taken, sickness of one of the group members etc.).
+  Please use figures to illustrate your points (as appropriate).
 
-2.  Your individual contribution to the project as a score (e.g., in a
-    group of three if you all worked equally 33% each) and list your
-    individual contributions. You need to all agree on this section.
+  In addition in the appendix you should:
 
-You are all expected to participate in the technical aspects as well as
-the writing. We will take into consideration the complexity of your work
-as well as your individual contributions when deciding your individual
-grades. Our intent is to ensure that no one is penalized if one (or
-several) of the students want to work above and beyond expectations. We
-will only *improve* individual grades, we won’t award any grades below
-the report grade.
+  1.  Discuss how well you met your project's objective. If you did not
+      implement everything you planned this does not mean that you will
+      fail (or get a bad grade). You should discuss why it could not be
+      done (e.g. technical challenges, change of direction, alternative
+      approach taken, sickness of one of the group members etc.).
 
-## Project
+  2.  Your individual contribution to the project as a score (e.g., in a
+      group of three if you all worked equally 33% each) and list your
+      individual contributions. You need to all agree on this section.
+
+  You are all expected to participate in the technical aspects as well
+  as the writing. We will take into consideration the complexity of your
+  work as well as your individual contributions when deciding your
+  individual grades. Our intent is to ensure that no one is penalized if
+  one (or several) of the students want to work above and beyond
+  expectations. We will only *improve* individual grades, we won't award
+  any grades below the report grade.
+
+## Project {#project .unnumbered}
 
 In the labs we have been generating exploits using *return oriented
 programming (ROP)*. For this coursework takes the lab to the next step
@@ -134,51 +146,52 @@ by generating such exploits automatically. In particular:
     Antivirus
     Evasion](https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049/iet-ifs.2018.5386))
 
-## Support provided to students during coursework period
+## Support provided to students during coursework period {#support-provided-to-students-during-coursework-period .unnumbered}
 
-Joseph and Sana are both available to answer questions on Teams or by
-email, we also set up Q&A sessions-check your timetables.
+Gretchen is available to answer questions on Teams or by email, and will
+be running office hours in the labs as usual during the coursework
+period.
 
-## Submission Details
+## Submission Details {#submission-details .unnumbered}
 
 Both final writeup and project demonstration to be submitted in
-Blackboard: Systems and Software Security (with Coursework) 2024
+Blackboard: Systems and Software Security (with Coursework) 2026
 $\rightarrow$ Assessment, submission and feedback Project $\rightarrow$
 Systems and Software Security Coursework
 
-## Marking Criteria
+## Marking Criteria {#marking-criteria .unnumbered}
 
-### Project Demonstration Marking Scheme (30%)
+### Project Demonstration Marking Scheme (30%) {#project-demonstration-marking-scheme-30 .unnumbered}
 
-| Weight | Category | Comment |
-|:---|:---|:---|
-| 10% | Technical Clarity | You will explain clearly how to run your project. Technical terminology should be used appropriately. You should assume an educated audience of your peers and explain terminologies and concepts specific to your project. It should be clear how that relates to the evaluation section of your report. |
-| 20% | Instructions Clarity | The instructions contained in your `README` should be simple to follow and lead to the results presented in your report. You need to demonstrate this, by following the instructions step by step in your video. We invite you to start from a "clean" environment. |
+  Weight   Category               Comment
+  -------- ---------------------- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  10%      Technical Clarity      You will explain clearly how to run your project. Technical terminology should be used appropriately. You should assume an educated audience of your peers and explain terminologies and concepts specific to your project. It should be clear how that relates to the evaluation section of your report.
+  20%      Instructions Clarity   The instructions contained in your `README` should be simple to follow and lead to the results presented in your report. You need to demonstrate this, by following the instructions step by step in your video. We invite you to start from a "clean\" environment.
 
-### Report Marking Scheme (70%)
+### Report Marking Scheme (70%) {#report-marking-scheme-70 .unnumbered}
 
-| Weight | Category | Comment |
-|:---|:---|:---|
-| 10% | Presentation | You should use the provided latex template properly. Reference should be appropriately formatted. We expect the presentation standard to be on par with the reading material seen during lectures. |
-| 20% | Literature Review | You will identify the relevant academic literature, show understanding of the papers you have selected and cite them appropriately. It should be clear how they relate to your work. You are expected to explore beyond the papers assigned as reading material. |
-| 20% | Design & Implementation | You should describe your implementation at an appropriate level of abstraction (refer to the reading material seen during teaching). You should clearly describe any technical challenges you faced and articulate the design decisions you made and why you believe they were appropriate. This should be understandable by an audience of your peers. |
-| 20% | Evaluation | You should evaluate how well the outcome of your work addresses your objectives. You should use quantitative (e.g. measuring performance overhead of a security mechanism) or qualitative (e.g. critical discussion of the security guarantees of a mechanism) as appropriate to your project. You are strongly encouraged to draw from evaluations found in the literature to design yours (reference this clearly when this is the case). |
+  Weight   Category                  Comment
+  -------- ------------------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  10%      Presentation              You should use the provided latex template properly. Reference should be appropriately formatted. We expect the presentation standard to be on par with the reading material seen during lectures.
+  20%      Literature Review         You will identify the relevant academic literature, show understanding of the papers you have selected and cite them appropriately. It should be clear how they relate to your work. You are expected to explore beyond the papers assigned as reading material.
+  20%      Design & Implementation   You should describe your implementation at an appropriate level of abstraction (refer to the reading material seen during teaching). You should clearly describe any technical challenges you faced and articulate the design decisions you made and why you believe they were appropriate. This should be understandable by an audience of your peers.
+  20%      Evaluation                You should evaluate how well the outcome of your work addresses your objectives. You should use quantitative (e.g. measuring performance overhead of a security mechanism) or qualitative (e.g. critical discussion of the security guarantees of a mechanism) as appropriate to your project. You are strongly encouraged to draw from evaluations found in the literature to design yours (reference this clearly when this is the case).
 
-# Part B—Universal Coursework Details
+# Part B---Universal Coursework Details {#part-buniversal-coursework-details .unnumbered}
 
-## Deadline
+## Deadline {#deadline .unnumbered}
 
 The deadline for submission of all optional unit assignments is 13:00 on
-Friday 29<sup>th</sup> November. Students should submit all required
-materials to the *“Assessment, submission and feedback”* section of
-Blackboard—it is essential that this is done on the Blackboard page
-related to the *“With Coursework”* variant of the unit.
+Thursday 3^rd^ December. Students should submit all required materials
+to the *"Assessment, submission and feedback"* section of
+Blackboard---it is essential that this is done on the Blackboard page
+related to the *"With Coursework"* variant of the unit.
 
-## Time commitment
+## Time commitment {#time-commitment .unnumbered}
 
 You are expected to work on both of your optional unit courseworks in
 the 3-week coursework period as if it were a working week in a regular
-job—that is 5 days a week for no more than 8 hours a day. The effort
+job---that is 5 days a week for no more than 8 hours a day. The effort
 spent on the assignment for each unit should be approximately equal,
 being roughly equivalent to 1.5 working weeks each. It is up to you how
 you distribute your time and workload between the two units within those
@@ -190,13 +203,13 @@ make your marks better. If you need further pastoral/mental health
 support, please talk to your personal tutor, a senior tutor, or the
 university wellbeing service.
 
-## Academic Offences
+## Academic Offences {#academic-offences .unnumbered}
 
 Academic offences (including submission of work that is not your own,
 falsification of data/evidence or the use of materials without
 appropriate referencing) are all taken very seriously by the University.
 Suspected offences will be dealt with in accordance with the
-University’s policies and procedures. If an academic offence is
+University's policies and procedures. If an academic offence is
 suspected in your work, you will be asked to attend an interview with
 senior members of the school, where you will be given the opportunity to
 defend your work. The plagiarism panel are able to apply a range of
@@ -204,7 +217,7 @@ penalties, depending the severity of the offence. These include:
 requirement to resubmit work, capping of grades and the award of no mark
 for an element of assessment.
 
-## Extenuating circumstances
+## Extenuating circumstances {#extenuating-circumstances .unnumbered}
 
 If the completion of your assignment has been significantly disrupted by
 serious health conditions, personal problems, periods of quarantine, or
@@ -219,3 +232,4 @@ You should note however that extensions are not possible for optional
 unit assignments. If your application for extenuating circumstances is
 successful, it is most likely that you will be required to retake the
 assessment of the unit at the next available opportunity.
+
