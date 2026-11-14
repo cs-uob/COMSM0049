@@ -342,11 +342,11 @@ Capsicum is another sandboxing mechanism that aims to achieve somewhat similar g
 
 Qubes OS is a security-oriented operating system, it uses virtual machines to isolate untrusted code and processes. It uses Linux Xen lightweight virtual machines to isolate process and different environments. If one of these components were to become comprimised, the malicious programme would only be able to access the data present in the comprimise environments.
 
-N.B. Gretch wrote his PhD dissertation in Qubes.  It is surprisingly
+N.B. Gretch wrote her PhD dissertation in Qubes.  It is surprisingly
 usable when you get to grips with its weirdness; but it is initially
 *very* weird and won't run inside a VM.  
 
-Whilst Gretch no longer uses it day to day he has a massive soft spot for
+Whilst Gretch no longer uses it day to day she has a massive soft spot for
 it and would **strongly** encourage anyone to give it a try... it
 feels like you're using the future...!
 
